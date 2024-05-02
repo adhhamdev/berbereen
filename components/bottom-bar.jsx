@@ -27,32 +27,32 @@ export default function BottomBar() {
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Home</span>
-          {pathname === "/" ? <SolidHomeIcon className="size-12 p-1 text-slate-700" /> : <HomeIcon className="size-12 p-1 text-slate-700" />}
+          {pathname === "/" ? <SolidHomeIcon className="size-12 p-1 text-slate-900" /> : <HomeIcon className="size-12 p-1 text-slate-700" />}
         </Link>
         <Link
           href="/explore"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Explore</span>
-          {pathname === "/explore" ? <SolidMapIcon className="size-12 p-1 text-slate-700" /> : <MapIcon className="size-12 p-1 text-slate-700" />}        </Link>
+          {pathname === "/explore" ? <SolidMapIcon className="size-12 p-1 text-slate-900" /> : <MapIcon className="size-12 p-1 text-slate-700" />}        </Link>
         <Link
           href="/market"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Market</span>
-          {pathname === "/market" ? <SolidBuildingStorefrontIcon className="size-12 p-1 text-slate-700" /> : <BuildingStorefrontIcon className="size-12 p-1 text-slate-700" />}        </Link>
+          {pathname === "/market" ? <SolidBuildingStorefrontIcon className="size-12 p-1 text-slate-900" /> : <BuildingStorefrontIcon className="size-12 p-1 text-slate-700" />}        </Link>
         <Link
           href="/saved"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Saved</span>
-          {pathname === "/saved" ? <SolidBookmarkSquareIcon className="size-12 p-1 text-slate-700" /> : <BookmarkSquareIcon className="size-12 p-1 text-slate-700" />}        </Link>
+          {pathname === "/saved" ? <SolidBookmarkSquareIcon className="size-12 p-1 text-slate-900" /> : <BookmarkSquareIcon className="size-12 p-1 text-slate-700" />}        </Link>
         <Link
           href="settings"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Settings</span>
-          {pathname === "/settings" ? <SolidCogIcon className="size-12 p-1 text-slate-700" /> : <CogIcon className="size-12 p-1 text-slate-700" />}        </Link>
+          {pathname === "/settings" ? <SolidCogIcon className="size-12 p-1 text-slate-900" /> : <CogIcon className="size-12 p-1 text-slate-700" />}        </Link>
       </div>
     </div>
   );

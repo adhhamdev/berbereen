@@ -1,3 +1,7 @@
+"use client"
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
 import {
   HomeIcon,
   MapIcon,
@@ -5,46 +9,50 @@ import {
   BookmarkSquareIcon,
   CogIcon,
 } from "@heroicons/react/24/outline";
+import {
+  HomeIcon as SolidHomeIcon,
+  MapIcon as SolidMapIcon,
+  BuildingStorefrontIcon as SolidBuildingStorefrontIcon,
+  BookmarkSquareIcon as SolidBookmarkSquareIcon,
+  CogIcon as SolidCogIcon,
+} from "@heroicons/react/24/solid";
 
 export default function BottomBar() {
+  const pathname = usePathname();
   return (
-    <div className="fixed inset-x-0 bottom-0 bg-white shadow">
+    <div className="fixed inset-x-0 bottom-0 bg-white shadow sm:hidden">
       <div className="flex justify-around py-2">
-        <a
-          href="#"
+        <Link
+          href="/"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Home</span>
-          <HomeIcon className="size-12 p-1 text-slate-700" />
-        </a>
-        <a
-          href="#"
+          {pathname === "/" ? <SolidHomeIcon className="size-12 p-1 text-slate-700" /> : <HomeIcon className="size-12 p-1 text-slate-700" />}
+        </Link>
+        <Link
+          href="/explore"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Explore</span>
-          <MapIcon className="size-12 p-1 text-slate-700" />
-        </a>
-        <a
-          href="#"
+          {pathname === "/explore" ? <SolidMapIcon className="size-12 p-1 text-slate-700" /> : <MapIcon className="size-12 p-1 text-slate-700" />}        </Link>
+        <Link
+          href="/market"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Market</span>
-          <BuildingStorefrontIcon className="size-12 p-1 text-slate-700" />
-        </a>
-        <a
-          href="#"
+          {pathname === "/market" ? <SolidBuildingStorefrontIcon className="size-12 p-1 text-slate-700" /> : <BuildingStorefrontIcon className="size-12 p-1 text-slate-700" />}        </Link>
+        <Link
+          href="/saved"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Saved</span>
-          <BookmarkSquareIcon className="size-12 p-1 text-slate-700" />
-        </a>
-        <a
-          href="#"
+          {pathname === "/saved" ? <SolidBookmarkSquareIcon className="size-12 p-1 text-slate-700" /> : <BookmarkSquareIcon className="size-12 p-1 text-slate-700" />}        </Link>
+        <Link
+          href="settings"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
         >
           <span className="sr-only">Settings</span>
-          <CogIcon className="size-12 p-1 text-slate-700" />
-        </a>
+          {pathname === "/settings" ? <SolidCogIcon className="size-12 p-1 text-slate-700" /> : <CogIcon className="size-12 p-1 text-slate-700" />}        </Link>
       </div>
     </div>
   );

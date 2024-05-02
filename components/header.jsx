@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <div>
-      <header className="text-gray-600 body-font bg-slate-400">
+      <header className="text-gray-600 body-font">
         <div className="container mx-auto flex p-5">
           <Link href="/" className="flex title-font font-medium items-center text-gray-900">
             <svg

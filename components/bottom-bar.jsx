@@ -21,7 +21,7 @@ export default function BottomBar() {
   const pathname = usePathname();
   return (
     <div className="fixed inset-x-0 bottom-0 bg-transparent backdrop-blur-xl shadow sm:hidden">
-      <div className="flex justify-around py-2">
+      <div className="flex justify-around">
         <Link
           href="/"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"

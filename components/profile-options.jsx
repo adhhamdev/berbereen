@@ -35,14 +35,14 @@ export default function ProfileOptions() {
               <div className="p-2">
                 <Link
                   href="#"
-                  className="flex items-center px-4 py-3 text-base text-gray-700 hover:bg-gray-100 rounded-lg"
+                  className="flex items-center px-4 py-1 text-base text-gray-700 hover:bg-gray-100 rounded-lg"
                 >
                   <UserCircleIcon className="size-8 p-1 text-slate-900" />
                   Profile
                 </Link>
                 <Link
                   href="#"
-                  className="flex items-center px-4 py-3 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
+                  className="flex items-center px-4 py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
                 >
                   <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
                   Sign out

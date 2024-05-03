@@ -11,10 +11,10 @@ export default function ProfileOptions() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <div className="relative">
+      <div className="relative" onBlur={() => setIsOpen(false)}>
         <button
           className="mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none"
-          onClick={() => setIsOpen((prev) => !prev)}
+          onClick={() => setIsOpen(prev => !prev)}
         >
           <Image
             src="/profile.jpg"
@@ -27,7 +27,7 @@ export default function ProfileOptions() {
         <AnimatePresence>
           {isOpen && (
             <Transition
-              className="absolute right-2 mt-2 w-48 bg-white rounded-lg shadow-lg z-20"
+              className="absolute right-2 w-48 bg-white rounded-lg shadow-lg z-20"
               initial={{ y: -10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}

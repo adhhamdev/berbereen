@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <div>
       <header className="flex items-center body-font">
-        <div className="container mx-auto flex p-5">
+        <div className="container mx-auto flex p-4">
           <Link
             href="/"
             className="flex title-font font-medium items-center text-gray-900"

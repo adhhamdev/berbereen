@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Berbereen (Beruwala)",
   description: "The platform of Berbereenians",
+  
 };
 
 export default function RootLayout({ children }) {

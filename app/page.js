@@ -1,11 +1,9 @@
-import Transition from "@/components/transition";
+
 
 export default function Home() {
   return (
-    <main>
-      <Transition layoutId="heading">
+    <div>
         <h1>Home</h1>
-      </Transition>
-    </main>
+    </div>
   );
 }

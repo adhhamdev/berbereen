@@ -6,6 +6,7 @@ import {
   CogIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import ProfileOptions from "./profile-options";
 
 export default function Header() {
   return (
@@ -35,33 +36,34 @@ export default function Header() {
         </div>
         <nav className="hidden sm:flex">
           <div className="flex items-center px-4">
-            <Link href="/" className="flex text-base items-center mr-5 hover:text-gray-900">
+            <Link href="/" className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300">
               <span className="sr-only">Home</span>
-              <HomeIcon className="size-8 p-1 text-slate-700" /> 
+              <HomeIcon className="size-7 p-1 text-slate-700" /> 
               Home
             </Link>
-            <Link href="/explore" className="flex text-base items-center mr-5 hover:text-gray-900">
+            <Link href="/explore" className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300">
               <span className="sr-only">Explore</span>
-              <MapIcon className="size-8 p-1 text-slate-700" /> 
+              <MapIcon className="size-7 p-1 text-slate-700" /> 
               Explore
             </Link>
-            <Link href="/market" className="flex text-base items-center mr-5 hover:text-gray-900">
+            <Link href="/market" className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300">
               <span className="sr-only">Market</span>
-              <BuildingStorefrontIcon className="size-8 p-1 text-slate-700" /> 
+              <BuildingStorefrontIcon className="size-7 p-1 text-slate-700" /> 
               Market
             </Link>
-            <Link href="/saved" className="flex text-base items-center mr-5 hover:text-gray-900">
+            <Link href="/saved" className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300">
               <span className="sr-only">Saved</span>
-              <BookmarkSquareIcon className="size-8 p-1 text-slate-700" /> 
+              <BookmarkSquareIcon className="size-7 p-1 text-slate-700" /> 
               Saved
             </Link>
-            <Link href="/settings" className="flex text-base items-center mr-5 hover:text-gray-900">
+            <Link href="/settings" className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300">
               <span className="sr-only">Settings</span>
-              <CogIcon className="size-8 p-1 text-slate-700" /> 
+              <CogIcon className="size-7 p-1 text-slate-700" /> 
               Settings
             </Link>
           </div>
         </nav>
+        <ProfileOptions />
       </header>
     </div>
   );

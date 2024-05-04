@@ -25,31 +25,33 @@ export default function BottomBar() {
         <Link
           href="/"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
+scroll={false}
         >
           <span className="sr-only">Home</span>
           {pathname === "/" ? <SolidHomeIcon className="size-10 p-1 text-slate-900" /> : <HomeIcon className="size-10 p-1 text-slate-700" />}
         </Link>
         <Link
           href="/explore"
-          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
+          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center" scroll={false}
         >
           <span className="sr-only">Explore</span>
           {pathname === "/explore" ? <SolidMapIcon className="size-10 p-1 text-slate-900" /> : <MapIcon className="size-10 p-1 text-slate-700" />}        </Link>
         <Link
           href="/market"
-          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
+          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center" scroll={false}
         >
           <span className="sr-only">Market</span>
           {pathname === "/market" ? <SolidBuildingStorefrontIcon className="size-10 p-1 text-slate-900" /> : <BuildingStorefrontIcon className="size-10 p-1 text-slate-700" />}        </Link>
         <Link
           href="/saved"
-          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
+          className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center" scroll={false}
         >
           <span className="sr-only">Saved</span>
           {pathname === "/saved" ? <SolidBookmarkSquareIcon className="size-10 p-1 text-slate-900" /> : <BookmarkSquareIcon className="size-10 p-1 text-slate-700" />}        </Link>
         <Link
           href="settings"
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
+scroll={false}
         >
           <span className="sr-only">Settings</span>
           {pathname === "/settings" ? <SolidCogIcon className="size-10 p-1 text-slate-900" /> : <CogIcon className="size-10 p-1 text-slate-700" />}        </Link>

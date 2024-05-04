@@ -23,6 +23,7 @@ export default function Header() {
           <Link
             href="/"
             className="flex title-font font-medium items-center text-gray-900"
+scroll={false}
           >
             <span className={`${righteous.className} ml-3 text-xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
               Berbereen.
@@ -34,6 +35,7 @@ export default function Header() {
             <Link
               href="/"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+scroll={false}
             >
               <span className="sr-only">Home</span>
               <HomeIcon className="size-7 p-1 text-slate-700" />
@@ -42,6 +44,7 @@ export default function Header() {
             <Link
               href="/explore"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+scroll={false}
             >
               <span className="sr-only">Explore</span>
               <MapIcon className="size-7 p-1 text-slate-700" />
@@ -50,6 +53,7 @@ export default function Header() {
             <Link
               href="/market"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+scroll={false}
             >
               <span className="sr-only">Market</span>
               <BuildingStorefrontIcon className="size-7 p-1 text-slate-700" />
@@ -58,6 +62,7 @@ export default function Header() {
             <Link
               href="/saved"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+scroll={false}
             >
               <span className="sr-only">Saved</span>
               <BookmarkSquareIcon className="size-7 p-1 text-slate-700" />
@@ -66,6 +71,7 @@ export default function Header() {
             <Link
               href="/settings"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+scroll={false}
             >
               <span className="sr-only">Settings</span>
               <CogIcon className="size-7 p-1 text-slate-700" />

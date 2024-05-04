@@ -8,6 +8,8 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   prefix: "",
-  theme: {},
-  plugins: [require("tailwindcss-animate")],
+  daisyui: {
+    themes: ["light"]
+  },
+  plugins: [require("tailwindcss-animate"), require('daisyui')],
 };

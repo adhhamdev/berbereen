@@ -1,9 +1,7 @@
 import Image from "next/image";
-import {
-  ArrowPathRoundedSquareIcon,
-  BookmarkIcon,
-  HeartIcon,
-} from "@heroicons/react/24/outline";
+import CardActions from "./card-actions";
+import Link from "next/link";
+import Transition from "./transition";
 
 export default function PostCard({ post }) {
   return (
@@ -16,9 +14,11 @@ export default function PostCard({ post }) {
           height={30}
           className="rounded-full"
         />
-        <p className="ml-2 text-sm font-semibold">{post.user.name}</p>
+        <p className="ml-2 text-base font-semibold">{post.user.name}</p>
         <span className="mx-1">•</span>
-        <span className="text-sm text-slate-500 font-medium">{post.createdAt}</span>
+        <span className="text-sm text-slate-500 font-medium">
+          {post.createdAt}
+        </span>
       </div>
       <div>
         <p className="w-full text-sm text-black font-medium">
@@ -29,20 +29,22 @@ export default function PostCard({ post }) {
           admiration no decisively boisterous as.
         </p>
       </div>
-      <div className="flex items-center justify-end gap-5">
-        <button className="flex items-center">
-          <BookmarkIcon className="size-5 text-slate-900" />
-          <span className="ml-1 text-slate-900">12</span>
-        </button>
-        <button className="flex items-center">
-          <ArrowPathRoundedSquareIcon className="size-5 text-slate-900" />
-          <span className="ml-1 text-slate-900">12</span>
-        </button>
-        <button className="flex items-center">
-          <HeartIcon className="size-5 text-slate-900" />
-          <span className="ml-1 text-slate-900">12</span>
-        </button>
-      </div>
+      {post.image && (
+        <div className="w-full relative h-64">
+          <Link href={`/image/${post.id}`}>
+            <Transition  layoutId={post.id}>
+              <Image
+                src={post.image}
+                alt=""
+                width={300}
+                height={300}
+                className="rounded-lg object-cover h-full max-h- max-h-64 hover:brightness-75"
+              />
+            </Transition>
+          </Link>
+        </div>
+      )}
+      <CardActions />
     </div>
   );
 }

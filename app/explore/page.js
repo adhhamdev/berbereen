@@ -1,7 +1,7 @@
 
 export default function Page() {
   return (
-    <div>
+    <div className="pt-2">
         <h1>Explore</h1>
     </div>
   );

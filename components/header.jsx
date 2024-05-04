@@ -1,3 +1,7 @@
+import { Righteous } from "next/font/google";
+
+const righteous = Righteous({ subsets: ["latin"], weight: '400'});
+
 import {
   HomeIcon,
   MapIcon,
@@ -14,26 +18,14 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 export default function Header() {
   return (
     <div>
-      <header className="flex items-center body-font">
-        <div className="container mx-auto flex p-4">
+      <header className="flex items-center body-font rounded-b-xl">
+        <div className="container mx-auto flex py-4 px-2">
           <Link
             href="/"
             className="flex title-font font-medium items-center text-gray-900"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
-            <span className="ml-3 text-xl" translate="no">
-              Berbereen
+            <span className={`${righteous.className} ml-3 text-xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
+              Berbereen.
             </span>
           </Link>
         </div>

@@ -1,5 +1,5 @@
 export default function Page() {
     return (
-        <div>Settings</div>
+        <div className="p-2">Settings</div>
     );
 }

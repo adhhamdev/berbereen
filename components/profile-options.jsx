@@ -13,13 +13,13 @@ export default function ProfileOptions() {
     <div>
       <div className="relative" onBlur={() => setIsOpen(false)}>
         <button
-          className="mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none"
+          className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none "
           onClick={() => setIsOpen(prev => !prev)}
         >
           <Image
             src="/profile.jpg"
-            width={32}
-            height={32}
+            width={40}
+            height={40}
             className="rounded-full size-full"
             alt="Profile Icon"
           />

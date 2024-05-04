@@ -1,4 +1,4 @@
- 
+
 import PostList from "@/components/post-list";
 
 export default function Home() {
@@ -7,10 +7,10 @@ export default function Home() {
       id: 0,
       title: "Title",
       content: "lorem ipsum dolor sit amet",
-      image: "/profile.jpg",
+      image: "",
       video: "",
       createdAt: new Intl.RelativeTimeFormat("en", { style: "short" }).format(
-        -((new Date().getHours()) - 5),
+        -(new Date().getHours() - 5),
         "hours"
       ),
       user: {
@@ -19,13 +19,13 @@ export default function Home() {
       },
     },
     {
-      id: 0,
+      id: 2,
       title: "Title",
       content: "lorem ipsum dolor sit amet",
       image: "/profile.jpg",
       video: "",
       createdAt: new Intl.RelativeTimeFormat("en", { style: "short" }).format(
-        -((new Date().getHours()) - 5),
+        -(new Date().getHours() - 5),
         "hours"
       ),
       user: {
@@ -34,13 +34,12 @@ export default function Home() {
       },
     },
     {
-      id: 0,
+      id: 4,
       title: "Title",
       content: "lorem ipsum dolor sit amet",
-      image: "/profile.jpg",
       video: "",
       createdAt: new Intl.RelativeTimeFormat("en", { style: "short" }).format(
-        -((new Date().getHours()) - 5),
+        -(new Date().getHours() - 5),
         "hours"
       ),
       user: {
@@ -49,13 +48,13 @@ export default function Home() {
       },
     },
     {
-      id: 0,
+      id: 8,
       title: "Title",
       content: "lorem ipsum dolor sit amet",
       image: "/profile.jpg",
       video: "",
       createdAt: new Intl.RelativeTimeFormat("en", { style: "short" }).format(
-        -((new Date().getHours()) - 5),
+        -(new Date().getHours() - 5),
         "hours"
       ),
       user: {
@@ -64,13 +63,12 @@ export default function Home() {
       },
     },
     {
-      id: 0,
+      id: 3,
       title: "Title",
       content: "lorem ipsum dolor sit amet",
-      image: "/profile.jpg",
       video: "",
       createdAt: new Intl.RelativeTimeFormat("en", { style: "short" }).format(
-        -((new Date().getHours()) - 5),
+        -(new Date().getHours() - 5),
         "hours"
       ),
       user: {

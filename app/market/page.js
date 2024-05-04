@@ -1,5 +1,5 @@
 export default function Page() {
     return (
-        <div>Market</div>
+        <div className="p-2">Market</div>
     );
 }

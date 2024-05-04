@@ -31,7 +31,7 @@ export default function PostCard({ post }) {
       </div>
       {post.image && (
         <div className="w-full relative h-64">
-          <Link href={`/image/${post.id}`}>
+          <Link href={`/image/${post.id}`} scroll={false}>
             <Transition  layoutId={post.id}>
               <Image
                 src={post.image}

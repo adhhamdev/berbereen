@@ -1,4 +1,5 @@
 import PostList from "@/components/post-list";
+import { BookmarkIcon } from "@heroicons/react/24/solid";
 
 export default function Page() {
     const listData = [
@@ -79,8 +80,8 @@ export default function Page() {
         },
       ];
     return (
-        <div className="pt-2">
-            <h1 className="ml-4 text-xl font-bold text-slate-700">Saved</h1>
+        <div>
+            <h1 className="flex items-center my-3 mx-4 text-xl font-bold text-slate-700"><BookmarkIcon className="size-7" /> Saved</h1>
             <PostList listData={listData} />
         </div>
     );

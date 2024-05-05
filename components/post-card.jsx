@@ -1,7 +1,6 @@
 import Image from "next/image";
 import CardActions from "./card-actions";
 import Link from "next/link";
-import Transition from "./transition";
 
 export default function PostCard({ post }) {
   return (
@@ -32,15 +31,13 @@ export default function PostCard({ post }) {
       {post.image && (
         <div className="w-full relative h-64">
           <Link href={`/image/${post.id}`} scroll={false}>
-            <Transition  layoutId={post.id}>
-              <Image
-                src={post.image}
-                alt=""
-                width={300}
-                height={300}
-                className="rounded-lg object-cover h-full max-h- max-h-64 hover:brightness-75"
-              />
-            </Transition>
+            <Image
+              src={post.image}
+              alt=""
+              width={300}
+              height={300}
+              className="rounded-lg object-cover h-full max-h- max-h-64 hover:brightness-75"
+            />
           </Link>
         </div>
       )}

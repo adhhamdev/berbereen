@@ -28,10 +28,10 @@ export default function Page({ params }) {
         alt=""
       />
       <div className="fixed bottom-0 left-0 right-0 p-2 m-2 bg-transparent backdrop-blur-md rounded-2xl flex justify-around">
-        <button className="flex justify-center items-center hover:bg-slate-400 rounded-xl p-2 size-full">
+        <button className="flex justify-center items-center hover:bg-slate-200 rounded-xl p-2 size-full">
           <PencilIcon className="size-6" />
         </button>
-        <button className="flex justify-center items-center hover:bg-slate-400 rounded-xl p-2 size-full">
+        <button className="flex justify-center items-center hover:bg-slate-200 rounded-xl p-2 size-full">
           <CloudArrowDownIcon className="size-6" />
         </button>
       </div>

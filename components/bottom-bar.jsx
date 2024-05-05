@@ -20,7 +20,7 @@ import {
 export default function BottomBar() {
   const pathname = usePathname();
   return (
-    <div className="fixed inset-x-0 bottom-0 bg-white shadow sm:hidden border-t-2 rounded-t-xl border-slate-300">
+    <div className="fixed inset-x-0 bottom-0 bg-white shadow sm:hidden border-t-2 border-slate-200">
       <div className="flex justify-around py-1">
         <Link
           href="/"

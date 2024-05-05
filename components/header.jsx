@@ -18,7 +18,7 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 export default function Header() {
   return (
     <div>
-      <header className="flex items-center body-font border-b-2 border-slate-200">
+      <header className="flex items-center body-font shadow">
         <div className="container mx-auto flex py-4 px-2">
           <Link
             href="/"

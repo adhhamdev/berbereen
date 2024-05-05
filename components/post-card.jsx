@@ -1,23 +1,27 @@
 import Image from "next/image";
 import CardActions from "./card-actions";
 import Link from "next/link";
+import CardOptions from "./card-options";
 
 export default function PostCard({ post }) {
   return (
-    <div className="w-full border-b-2 p1 border-slate-300 p-4 space-y-3">
-      <div className="flex items-center">
-        <Image
-          src={post.user.avatar}
-          alt=""
-          width={30}
-          height={30}
-          className="rounded-full"
-        />
-        <p className="ml-2 text-base font-semibold">{post.user.name}</p>
-        <span className="mx-1">•</span>
-        <span className="text-sm text-slate-500 font-medium">
-          {post.createdAt}
-        </span>
+    <div className="w-full border-b-2 p1 border-slate-300 p-4 pb-2 space-y-3 relative">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <Image
+            src={post.user.avatar}
+            alt=""
+            width={30}
+            height={30}
+            className="rounded-full"
+          />
+          <p className="ml-2 text-base font-semibold">{post.user.name}</p>
+          <span className="mx-1">•</span>
+          <span className="text-sm text-slate-500 font-medium">
+            {post.createdAt}
+          </span>
+        </div>
+       <CardOptions />
       </div>
       <div>
         <p className="w-full text-sm text-black font-medium">

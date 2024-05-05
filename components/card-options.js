@@ -17,8 +17,9 @@ export default function CardOptions() {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}
+            className="absolute right-2 p-2 bg-white shadow-lg z-10 rounded-lg"
           >
-            <div className="absolute right-2 p-2 bg-white shadow-lg z-10 rounded-lg">
+            <div>
               <button className="flex items-center py-2 px-4 hover:bg-slate-200 rounded-md">
                 Edit
               </button>

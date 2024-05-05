@@ -1,7 +1,3 @@
-import { Righteous } from "next/font/google";
-
-const righteous = Righteous({ subsets: ["latin"], weight: '400'});
-
 import {
   HomeIcon,
   MapIcon,
@@ -14,6 +10,7 @@ import ProfileOptions from "./profile-options";
 
 import { Suspense } from "react";
 import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
+import { righteous } from "@/lib/fonts";
 
 export default function Header() {
   return (

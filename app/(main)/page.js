@@ -1,6 +1,13 @@
 import PostList from "@/components/post-list";
+import { getLoggedInUser } from "@/lib/appwrite";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const user = await getLoggedInUser();
+
+  if (!user) redirect("/signup");
+
+  redirect("/account");
   const listData = [
     {
       id: 0,
@@ -78,9 +85,7 @@ export default function Home() {
   ];
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3">
-      <div className="bg-slate-600">
-        
-      </div>
+      <div className="bg-slate-600"></div>
       <div>
         <PostList listData={listData} />
       </div>

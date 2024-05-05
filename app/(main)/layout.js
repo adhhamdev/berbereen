@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import BottomBar from "@/components/bottom-bar";
 
-export default function RootLayout({ children }) {
+export default function Layout({ children }) {
   return (
     <>
       <Header />

@@ -1,4 +1,3 @@
-
 import PostList from "@/components/post-list";
 
 export default function Home() {
@@ -78,8 +77,14 @@ export default function Home() {
     },
   ];
   return (
-    <div>
-      <PostList listData={listData} />
+    <div className="grid grid-cols-1 sm:grid-cols-3">
+      <div className="bg-slate-600">
+        
+      </div>
+      <div>
+        <PostList listData={listData} />
+      </div>
+      <div className="bg-slate-600"></div>
     </div>
   );
 }

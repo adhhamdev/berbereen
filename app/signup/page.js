@@ -3,7 +3,8 @@ import { signUpWithEmail, signUpWithGithub, signUpWithGoogle } from "@/lib/actio
 import { righteous } from "@/lib/fonts";
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (user) redirect("/account");
+  console.log(user)
+  if (user) redirect("/");
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">

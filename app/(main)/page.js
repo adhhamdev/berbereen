@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default async function Home() {
   const user = await getLoggedInUser();
 
-  if (!user) redirect("/l");
+  if (!user) redirect("/login");
   const listData = [
     {
       id: 0,

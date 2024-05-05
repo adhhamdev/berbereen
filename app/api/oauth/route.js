@@ -1,11 +1,7 @@
 import { createAdminClient } from "@/lib/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { redirect } from "next/navigation";
-import { getLoggedInUser } from "@/lib/appwrite";
 export async function GET(request) {
-  const user = await getLoggedInUser();
-  if (!user) redirect("/login");
   const userId = request.nextUrl.searchParams.get("userId");
   const secret = request.nextUrl.searchParams.get("secret");
 

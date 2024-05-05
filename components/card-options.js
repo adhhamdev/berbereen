@@ -19,10 +19,10 @@ export default function CardOptions() {
             exit={{ y: -10, opacity: 0 }}
           >
             <div className="absolute right-2 p-2 bg-white shadow-lg z-10 rounded-lg">
-              <button className="flex items-center p-2 hover:bg-slate-200 rounded-md">
+              <button className="flex items-center py-2 px-4 hover:bg-slate-200 rounded-md">
                 Edit
               </button>
-              <button className="flex items-center p-2 hover:bg-slate-200 rounded-md">
+              <button className="flex items-center py-2 px-4 hover:bg-slate-200 rounded-md">
                 Delete
               </button>
             </div>

@@ -6,6 +6,7 @@ import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { signOut } from "@/lib/actions";
 
 export default function ProfileOptions() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function ProfileOptions() {
       <div className="relative" onBlur={() => setIsOpen(false)}>
         <button
           className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none "
-          onClick={() => setIsOpen(prev => !prev)}
+          onClick={() => setIsOpen((prev) => !prev)}
         >
           <Image
             src="/profile.jpg"
@@ -34,19 +35,19 @@ export default function ProfileOptions() {
             >
               <div className="p-2">
                 <Link
-                  href="#"
+                  href="/account"
                   className="flex items-center px-4 py-2 sm:py-1 text-base text-gray-700 hover:bg-gray-100 rounded-lg"
                 >
                   <UserCircleIcon className="size-8 p-1 text-slate-900" />
                   Profile
                 </Link>
-                <Link
-                  href="#"
+                <button
+                  onClick={async () => await signOut()}
                   className="flex items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
                 >
                   <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
                   Sign out
-                </Link>
+                </button>
               </div>
             </Transition>
           )}

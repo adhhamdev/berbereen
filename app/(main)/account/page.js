@@ -2,9 +2,9 @@ import { redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/appwrite";
 import { signOut } from "@/lib/actions";
 
-export default async function HomePage() {
+export default async function Page() {
   const user = await getLoggedInUser();
-  if (!user) redirect("/signup");
+  if (!user) redirect("/login");
 
   return (
     <>

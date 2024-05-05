@@ -1,7 +1,10 @@
 import PostList from "@/components/post-list";
 import { BookmarkIcon } from "@heroicons/react/24/solid";
-
-export default function Page() {
+import { redirect } from "next/navigation";
+import { getLoggedInUser } from "@/lib/appwrite";
+export default async function Page() {
+  const user = await getLoggedInUser();
+  if (!user) redirect("/login");
     const listData = [
         {
           id: 0,

@@ -1,14 +1,14 @@
 import { getLoggedInUser } from "@/lib/appwrite";
 import {
-  signUpWithEmail,
+  loginWithEmail,
   signUpWithGithub,
   signUpWithGoogle,
 } from "@/lib/actions";
 import { righteous } from "@/lib/fonts";
+import Link from "next/link";
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  console.log(user)
   if (user) redirect("/");
 
   return (
@@ -23,9 +23,9 @@ export default async function Page() {
           </span>
         </div>
         <h2 className="mb-6 text-3xl font-bold text-center text-gray-800">
-          Sign Up
+          Log In
         </h2>
-        <form className="space-y-4" action={signUpWithEmail}>
+        <form className="space-y-4" action={loginWithEmail}>
           <div>
             <label
               htmlFor="email"
@@ -67,9 +67,28 @@ export default async function Page() {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <span className="text-sm text-gray-600">or sign up with</span>
+          <span className="text-sm text-gray-600">Or</span>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 space-y-2">
+          <Link
+            href="/signup"
+            className="flex items-center justify-center w-full py-2 px-4  hover:bg-gray-300 focus:ring-gray-500 focus:ring-offset-gray-200 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+          >
+            <svg
+              id="Icons"
+              viewBox="0 0 24 24"
+              width="32"
+              height="32"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs></defs>
+              <path
+                className="cls-1"
+                d="M20,3H4A3,3,0,0,0,1,6V18a3,3,0,0,0,3,3H20a3,3,0,0,0,3-3V6A3,3,0,0,0,20,3Zm-.328,12.62a1,1,0,1,1-1.344,1.48l-4.143-3.76a3.937,3.937,0,0,1-4.37,0L5.672,17.1a1,1,0,0,1-1.344-1.48l3.956-3.591L4.327,8.43A1,1,0,1,1,5.673,6.95l4.979,4.529a2.005,2.005,0,0,0,2.7,0L18.327,6.95a1,1,0,0,1,1.346,1.48l-3.956,3.6Z"
+              />
+            </svg>
+            <span className="ml-2">Sign up with Email</span>
+          </Link>
           <form action={signUpWithGithub}>
             <button
               type="submit"

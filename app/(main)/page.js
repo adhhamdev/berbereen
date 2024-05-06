@@ -6,6 +6,7 @@ export default async function Home() {
   const user = await getLoggedInUser();
 
   if (!user) redirect("/login");
+  redirect("/");
   const listData = [
     {
       id: 0,

@@ -4,6 +4,14 @@ import { signOut } from "@/lib/actions";
 import Image from "next/image";
 
 export default async function Page() {
+  const followersBrief = [
+    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/21.jpg",
+  ];
   const user = await getLoggedInUser();
   if (!user) redirect("/login");
 
@@ -43,10 +51,10 @@ export default async function Page() {
           </div>
           <div className="flex gap-2 px-2">
             <button className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white dark:text-white antialiased font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2">
-              Follow
+              Post
             </button>
             <button className="flex-1 rounded-full border-2 border-gray-400 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
-              Message
+              Edit
             </button>
           </div>
         </div>
@@ -72,48 +80,17 @@ export default async function Page() {
           </div>
           <div className="flex">
             <div className="flex justify-end mr-2">
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/men/32.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/women/31.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/men/33.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/women/32.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/men/44.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
-              <Image
-                className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                src="https://randomuser.me/api/portraits/women/42.jpg"
-                alt=""
-                width={40}
-                height={40}
-              />
+              {followersBrief.map((follower, index) => {
+                return (
+                <Image
+                  className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
+                  src={follower}
+                  alt=""
+                  width={40}
+                  height={40}
+                  key={index}
+                />)
+              })}
               <span className="flex items-center justify-center bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-white font-semibold border-2 border-gray-200 dark:border-gray-700 rounded-full h-10 w-10">
                 +12
               </span>

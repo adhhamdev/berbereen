@@ -3,7 +3,11 @@ import { getLoggedInUser } from "@/lib/appwrite";
 import { signOut } from "@/lib/actions";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
+  const user = await getLoggedInUser();
+  if (!user) redirect("/login");
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/21.jpg",
@@ -12,8 +16,6 @@ export default async function Page() {
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/21.jpg",
   ];
-  const user = await getLoggedInUser();
-  if (!user) redirect("/login");
 
   return (
     <div>
@@ -51,11 +53,13 @@ export default async function Page() {
           </div>
           <div className="flex gap-2 px-2">
             <button className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white dark:text-white antialiased font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2">
-              Post
-            </button>
-            <button className="flex-1 rounded-full border-2 border-gray-400 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
               Edit
             </button>
+            <form action={signOut}>
+              <button className="flex-1 rounded-full border-2 border-gray-400 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
+                Sign Out
+              </button>
+            </form>
           </div>
         </div>
         <div className="px-4 py-4">
@@ -82,14 +86,15 @@ export default async function Page() {
             <div className="flex justify-end mr-2">
               {followersBrief.map((follower, index) => {
                 return (
-                <Image
-                  className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
-                  src={follower}
-                  alt=""
-                  width={40}
-                  height={40}
-                  key={index}
-                />)
+                  <Image
+                    className="border-2 border-white dark:border-gray-800 rounded-full h-10 w-10 -mr-2"
+                    src={follower}
+                    alt=""
+                    width={40}
+                    height={40}
+                    key={index}
+                  />
+                );
               })}
               <span className="flex items-center justify-center bg-white dark:bg-gray-800 text-sm text-gray-800 dark:text-white font-semibold border-2 border-gray-200 dark:border-gray-700 rounded-full h-10 w-10">
                 +12

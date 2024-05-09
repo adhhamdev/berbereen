@@ -12,16 +12,15 @@ import {
   BookmarkIcon as SolidBookmarkIcon,
   HeartIcon as SolidHeartIcon,
 } from "@heroicons/react/24/solid";
-import { likeAndUnlikePost } from "@/lib/actions";
 
 export default function CardActions({post, currentUser}) {
-  console.log(post.like.user)
-  const userLiked = post.like.user.some((user) => user.$id === currentUser.$id);
+  const userLiked = false;
+  // const userLiked = post.like.user.some((user) => user.$id === currentUser.$id);
   const [liked, setLiked] = useState(userLiked);
 
-  useEffect(() => {
-      likeAndUnlikePost(post.like.$id);
-  }, [liked, post.like.$id]);
+  // useEffect(() => {
+  //     likeAndUnlikePost(post.like.$id);
+  // }, [liked, post.like.$id]);
 
   return (
     <div className="flex items-center justify-end text-slate-700">

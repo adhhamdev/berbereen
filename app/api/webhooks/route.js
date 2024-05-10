@@ -10,6 +10,8 @@ export const POST = (req) => {
   const hmac = crypto.createHmac("sha1", secret);
   hmac.update(payload);
   const computedSignature = hmac.digest("hex");
+  console.log(receivedSignature)
+  console.log(computedSignature)
 
   if (computedSignature === receivedSignature) {
     console.log("Valid Signature");

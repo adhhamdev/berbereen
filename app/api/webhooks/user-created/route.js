@@ -1,5 +1,4 @@
 import { createDatabaseClient } from "@/lib/appwrite";
-import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {

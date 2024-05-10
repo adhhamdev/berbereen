@@ -6,7 +6,7 @@ export const POST = async (req) => {
     const { $id, name, email, password, emailVerification } = req.json();
     const data = { name, email, password, emailVerified: emailVerification };
     const { database } = await createDatabaseClient();
-    database.createDocument("primary", "users", $id, data);
+    database.createDocument("primary", "user", $id, data);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }

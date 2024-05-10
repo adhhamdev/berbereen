@@ -8,7 +8,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (user) redirect("/");
+  if (user) redirect("/login");
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">

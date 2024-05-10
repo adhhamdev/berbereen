@@ -6,7 +6,6 @@ export default async function Home() {
   const user = await getLoggedInUser();
   if (!user) redirect("/login");
   const posts = await getPosts();
-  console.log(posts)
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3">
       <div className="bg-slate-600"></div>

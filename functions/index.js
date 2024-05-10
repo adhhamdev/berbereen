@@ -1,4 +1,4 @@
-import { createDatabaseClient } from "./actions";
+import { createDatabaseClient } from "/actions.js";
 
 const userEventHandler = async ({ req, res, log, error }) => {
   const data = await req.json();

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/appwrite";
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (!user) redirect("/login");
+  if (!user) redirect("/signup");
     const listData = [
         {
           id: 0,

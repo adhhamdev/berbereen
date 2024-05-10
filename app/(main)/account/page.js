@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (!user) redirect("/login");
+  if (!user) redirect("/signup");
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/21.jpg",

@@ -1,6 +1,19 @@
+import { createDatabaseClient } from "@/lib/appwrite";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
-  console.log(await req.json())
-  return NextResponse.json({}, {status: 200});
+  try {
+    const { $id, name, email, password, emailVerification } = await req.json();
+    const { database } = await createDatabaseClient();
+    const data = {
+      name,
+      email,
+      password,
+      emailVerified: emailVerification,
+    };
+    await database.createDocument("primary", "user", $id, data);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+  return Response.json("", { status: 201 });
 };

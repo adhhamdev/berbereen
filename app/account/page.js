@@ -3,8 +3,7 @@ import { getLoggedInUser } from "@/lib/appwrite";
 import { deleteAccount, signOut } from "@/lib/actions";
 import Image from "next/image";
 import BackNavBtn from "@/components/back-nav-btn";
-import Transition from "../../components/transition";
-export const dynamic = "force-dynamic";
+import Transition from "../../components/transition";]
 
 export default async function Page() {
   const user = await getLoggedInUser();

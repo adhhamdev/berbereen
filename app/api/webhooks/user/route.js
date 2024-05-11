@@ -3,7 +3,8 @@ export async function POST(req) {
     const user = await req.json();
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
 
-    for (const event of events) {
+    for (i = 0; i <= events.length; i += 2) {
+      const event = events[i];
       switch (event.trim()) {
         case "users.*.create":
           console.log("User created:", user);

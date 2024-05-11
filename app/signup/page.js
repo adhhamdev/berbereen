@@ -14,7 +14,7 @@ export default async function Page() {
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">
           <span
-            className={`${righteous.className} text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}
+            className={`${righteous.className} text-4xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}
             translate="no"
           >
             Berbereen.

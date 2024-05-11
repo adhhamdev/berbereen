@@ -15,5 +15,5 @@ export async function GET(request) {
     secure: true,
   });
 
-  return NextResponse.redirect(`https://berbereen.vercel.app`);
+  return NextResponse.redirect(`${request.nextUrl.origin}/signup`);
 }

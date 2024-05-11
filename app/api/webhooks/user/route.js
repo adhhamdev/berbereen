@@ -19,7 +19,7 @@ const createUser = async (user) => {
       mfa: user.mfa,
       accessedAt: user.accessedAt,
     };
-    database.createDocument("primary", "user", user.$id, data);
+    await database.createDocument("primary", "user", user.$id, data);
   } catch (error) {
     throw new Error(error.message)
   }

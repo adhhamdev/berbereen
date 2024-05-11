@@ -2,6 +2,8 @@ import { getLoggedInUser, signUpWithEmail } from "@/lib/server/appwrite";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const user = await getLoggedInUser();
   if (user) redirect("/");

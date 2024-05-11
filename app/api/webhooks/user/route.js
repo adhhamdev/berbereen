@@ -1,3 +1,30 @@
+import {
+  createDatabaseClient,
+  createSessionClient,
+  createUsersClient,
+} from "@/lib/server/appwrite";
+
+const createUser = async (user) => {
+  try {
+    const { database } = await createDatabaseClient();
+    const data = {
+      name: user.name,
+      registration: user.registration,
+      status: user.status,
+      passwordUpdate: user.passwordUpdate,
+      email: user.email,
+      phone: user.phone,
+      emailVerification: user.emailVerification,
+      phoneVerification: user.phoneVerification,
+      mfa: user.mfa,
+      accessedAt: user.accessedAt,
+    };
+    database.createDocument("primary", "user", user.$id, data);
+  } catch (error) {
+    throw new Error(error.message)
+  }
+};
+
 export async function POST(req) {
   try {
     const user = await req.json();
@@ -7,16 +34,10 @@ export async function POST(req) {
       const event = events[i];
       switch (event) {
         case "users.*.create":
-          console.log("User created:", user);
+          await createUser(user);
           break;
         case "users.*.delete":
           console.log("User deleted:", user);
-          break;
-        case "users.*.sessions.*.create":
-          console.log("User session created:", user);
-          break;
-        case "users.*.sessions.*.delete":
-          console.log("User session deleted:", user);
           break;
         case "users.*.update.email":
           console.log("User email updated:", user);

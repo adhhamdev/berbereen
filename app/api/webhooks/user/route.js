@@ -1,7 +1,9 @@
 export async function POST(req) {
   try {
-    const text = await req.text();
-    console.log(text);
+    const user = await req.json();
+    const events = req.headers.get("x-appwrite-webhook-events");
+    console.log(events)
+    console.log(user)
   } catch (error) {
     return new Response(`Webhook error: ${error.message}`, {
       status: 400,

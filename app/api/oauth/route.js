@@ -1,6 +1,7 @@
-import { createAdminClient } from "@/lib/appwrite";
+import { createAdminClient } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
 export async function GET(request) {
   const userId = request.nextUrl.searchParams.get("userId");
   const secret = request.nextUrl.searchParams.get("secret");
@@ -15,5 +16,5 @@ export async function GET(request) {
     secure: true,
   });
 
-  return NextResponse.redirect(`${request.nextUrl.origin}/account`);
+  return NextResponse.redirect(`${request.nextUrl.origin}`);
 }

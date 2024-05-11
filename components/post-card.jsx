@@ -2,7 +2,7 @@ import Image from "next/image";
 import CardActions from "./card-actions";
 import Link from "next/link";
 import CardOptions from "./card-options";
-import { getLoggedInUser } from "@/lib/appwrite";
+import { getLoggedInUser } from "@/lib/server/appwrite";
 
 export default async function PostCard({ post }) {
   const currentUser = await getLoggedInUser();

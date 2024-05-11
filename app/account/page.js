@@ -1,9 +1,9 @@
+import { getLoggedInUser, deleteUser } from "@/lib/server/appwrite";
 import { redirect } from "next/navigation";
-import { getLoggedInUser } from "@/lib/appwrite";
-import { deleteAccount, signOut } from "@/lib/actions";
 import Image from "next/image";
-import BackNavBtn from "@/components/back-nav-btn";
 import Transition from "../../components/transition";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 export default async function Page() {
   const user = await getLoggedInUser();
@@ -21,7 +21,10 @@ export default async function Page() {
     <div>
       <header className="flex items-center justify-between border-b">
         <div className="flex items-center">
-          <BackNavBtn text="Profile" />
+          <Link href="/" className="flex items-center p-3 hover:text-slate-500">
+            <ArrowLeftIcon className="size-5 mr-2" />
+            <h2 className="text-xl font-semibold">Profile</h2>
+          </Link>
         </div>
       </header>
 
@@ -35,17 +38,15 @@ export default async function Page() {
             className="h-44 w-full object-cover rounded-xl"
           />
           <div className="text-center my-4 -mt-20">
-            <div className="size-32 mx-auto my-4 shadow-xl rounded-full">
-              <Transition layoutId="profileIcon">
+            <Transition layoutId="profileIcon">
                 <Image
-                  className="size-full rounded-full"
+                  className="size-32 mx-auto my-4 shadow-xl rounded-full"
                   src="https://randomuser.me/api/portraits/women/21.jpg"
                   alt="Profile Picture"
                   width={40}
                   height={40}
                 />
-              </Transition>
-            </div>
+            </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">
                 {user.name}
@@ -72,7 +73,7 @@ export default async function Page() {
             <button className="flex-1 rounded-full bg-blue-600 dark:bg-blue-800 text-white dark:text-white antialiased font-bold hover:bg-blue-800 dark:hover:bg-blue-900 px-4 py-2">
               Edit
             </button>
-            <form action={deleteAccount}>
+            <form action={deleteUser}>
               <button className="flex-1 rounded-full border-2 border-gray-400 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
                 Delete Account
               </button>

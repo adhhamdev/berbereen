@@ -36,15 +36,17 @@ export default async function Page() {
             className="h-44 w-full object-cover rounded-xl"
           />
           <div className="text-center my-4 -mt-20">
-            <Transition layoutId="profileIcon">
-              <Image
-                className="h-32 w-32 rounded-full mx-auto my-4 shadow-xl"
-                src="https://randomuser.me/api/portraits/women/21.jpg"
-                alt="Profile Picture"
-                width={40}
-                height={40}
-              />
-            </Transition>
+            <div className="size-32 mx-auto my-4 shadow-xl rounded-full">
+              <Transition layoutId="profileIcon">
+                <Image
+                  className="size-full rounded-full"
+                  src="https://randomuser.me/api/portraits/women/21.jpg"
+                  alt="Profile Picture"
+                  width={40}
+                  height={40}
+                />
+              </Transition>
+            </div>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">
                 {user.name}

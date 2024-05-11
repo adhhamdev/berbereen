@@ -16,13 +16,13 @@ export default function Header() {
   return (
     <div>
       <header className="flex items-center body-font shadow">
-        <div className="container mx-auto flex py-4 px-2">
+        <div className="container mx-auto flex py-3 px-2">
           <Link
             href="/"
             className="flex title-font font-medium items-center text-gray-900"
 scroll={false}
           >
-            <span className={`${righteous.className} ml-3 text-xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
+            <span className={`${righteous.className} ml-3 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
               Berbereen.
             </span>
           </Link>

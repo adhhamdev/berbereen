@@ -15,5 +15,5 @@ export async function GET(request) {
     secure: true,
   });
 
-  return Response.redirect(`${request.nextUrl.origin}/signup`);
+  return Response.redirect(`${request.nextUrl.origin}/`);
 }

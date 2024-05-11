@@ -38,7 +38,7 @@ export default async function Page() {
           <div className="text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
               <Image
-                className="h-32 w-32 rounded-full border-4 border-white dark:border-gray-800 mx-auto my-4 shadow-xl"
+                className="h-32 w-32 rounded-full mx-auto my-4 shadow-xl"
                 src="https://randomuser.me/api/portraits/women/21.jpg"
                 alt="Profile Picture"
                 width={40}

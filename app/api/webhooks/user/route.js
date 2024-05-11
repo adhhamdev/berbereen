@@ -1,6 +1,6 @@
 export async function POST(req) {
   try {
-    const text = await request.text();
+    const text = await req.text();
     console.log(text);
   } catch (error) {
     return new Response(`Webhook error: ${error.message}`, {

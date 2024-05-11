@@ -7,8 +7,7 @@ import { righteous } from "@/lib/fonts";
 import { redirect } from "next/navigation";
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (!user) redirect("/");
-  redirect("/signup")
+  if (user) redirect("/account");
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">

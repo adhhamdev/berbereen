@@ -4,7 +4,6 @@ import {
   signUpWithGoogle,
 } from "@/lib/actions";
 import { righteous } from "@/lib/fonts";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 export default async function Page() {
   const user = await getLoggedInUser();

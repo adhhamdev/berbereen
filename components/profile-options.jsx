@@ -17,13 +17,15 @@ export default function ProfileOptions() {
           className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none "
           onClick={() => setIsOpen((prev) => !prev)}
         >
-          <Image
-            src="/profile.jpg"
-            width={40}
-            height={40}
-            className="rounded-full size-full"
-            alt="Profile Icon"
-          />
+          <Transition layoutId="profileIcon">
+            <Image
+              src="/profile.jpg"
+              width={40}
+              height={40}
+              className="rounded-full size-full"
+              alt="Profile Icon"
+            />
+          </Transition>
         </button>
         <AnimatePresence>
           {isOpen && (

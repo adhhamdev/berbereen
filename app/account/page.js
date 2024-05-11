@@ -2,7 +2,8 @@ import { redirect } from "next/navigation";
 import { getLoggedInUser } from "@/lib/appwrite";
 import { deleteAccount, signOut } from "@/lib/actions";
 import Image from "next/image";
-
+import BackNavBtn from "@/components/back-nav-btn";
+import Transition from "../../components/transition";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
@@ -19,16 +20,31 @@ export default async function Page() {
 
   return (
     <div>
+      <header className="flex items-center justify-between border-b">
+        <div className="flex items-center">
+          <BackNavBtn text="Profile" />
+        </div>
+      </header>
+
       <div className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg">
-        <div className="border-b px-4 pb-6">
-          <div className="text-center my-4">
-            <Image
-              className="h-32 w-32 rounded-full border-4 border-white dark:border-gray-800 mx-auto my-4"
-              src="https://randomuser.me/api/portraits/women/21.jpg"
-              alt="Profile Picture"
-              width={40}
-              height={40}
-            />
+        <div className="border-b px-4 py-6">
+          <Image
+            src="/profile.jpg"
+            width={100}
+            height={100}
+            alt="Profile Cover"
+            className="h-44 w-full object-cover rounded-xl"
+          />
+          <div className="text-center my-4 -mt-20">
+            <Transition layoutId="profileIcon">
+              <Image
+                className="h-32 w-32 rounded-full border-4 border-white dark:border-gray-800 mx-auto my-4 shadow-xl"
+                src="https://randomuser.me/api/portraits/women/21.jpg"
+                alt="Profile Picture"
+                width={40}
+                height={40}
+              />
+            </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">
                 {user.name}

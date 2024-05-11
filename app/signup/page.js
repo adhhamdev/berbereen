@@ -1,5 +1,6 @@
 import { getLoggedInUser, signUpWithEmail } from "@/lib/server/appwrite";
 import { signUpWithGoogle } from "@/lib/server/oauth";
+import { redirect } from 'next/navigation'
 import { righteous } from "@/lib/fonts";
 
 export const dynamic = "force-dynamic";

@@ -7,11 +7,11 @@ export default async function Page() {
   if (!user) redirect("/signup");
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3">
-      <div className="bg-slate-600"></div>
+      <div></div>
       <div>
         <PostList listData={[]} />
       </div>
-      <div className="bg-slate-600"></div>
+      <div></div>
     </div>
   );
 }

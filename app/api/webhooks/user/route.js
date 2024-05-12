@@ -17,6 +17,8 @@ const createUserEvent = async (user) => {
       emailVerification: user.emailVerification,
       phoneVerification: user.phoneVerification,
       mfa: user.mfa,
+      createdAt: user.$createdAt,
+      updatedAt: user.$updatedAt,
       accessedAt: user.accessedAt,
     };
     await database.createDocument("primary", "user", user.$id, data);

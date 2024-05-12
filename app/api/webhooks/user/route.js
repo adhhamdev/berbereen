@@ -21,7 +21,7 @@ const createUserEvent = async (user) => {
     };
     await database.createDocument("primary", "user", user.$id, data);
   } catch (error) {
-    throw new Error(error.message)
+    console.log(error)
   }
 };
 

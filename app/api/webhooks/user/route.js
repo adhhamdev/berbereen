@@ -1,8 +1,5 @@
 import {
   createDatabaseClient,
-  createSessionClient,
-  createUsersClient,
-  deleteUser,
 } from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {

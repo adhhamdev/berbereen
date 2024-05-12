@@ -4,7 +4,7 @@ import {
   createUsersClient,
 } from "@/lib/server/appwrite";
 
-const createUser = async (user) => {
+const createUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
     const data = {
@@ -34,7 +34,7 @@ export async function POST(req) {
       const event = events[i];
       switch (event) {
         case "users.*.create":
-          await createUser(user);
+          await createUserEvent(user);
           break;
         case "users.*.delete":
           console.log("User deleted:", user);
@@ -55,7 +55,7 @@ export async function POST(req) {
           console.log("User preferences updated:", user);
           break;
         default:
-          console.log(`Unhandled event: ${event}`);
+          console.log(`Other event: ${event}`);
       }
     }
   } catch (error) {

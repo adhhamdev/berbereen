@@ -20,6 +20,7 @@ const createUserEvent = async (user) => {
       accessedAt: user.accessedAt,
     };
     await database.createDocument("primary", "user", user.$id, data);
+    console.log("User created:", user)
   } catch (error) {
     console.log(error)
   }

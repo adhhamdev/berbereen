@@ -2,6 +2,7 @@ import {
   createDatabaseClient,
   createSessionClient,
   createUsersClient,
+  deleteUser,
 } from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {
@@ -21,10 +22,37 @@ const createUserEvent = async (user) => {
       updatedAt: user.$updatedAt,
       accessedAt: user.accessedAt,
     };
-    await database.createDocument("primary", "user", user.$id, data);
-    console.log("User created:", user)
+    const createdUser = await database.createDocument("primary", "user", user.$id, data);
+    console.log("User created:", createdUser)
   } catch (error) {
     console.log(error)
+  }
+};
+
+const deleteUserEvent = async (user) => {
+  try {
+    const { database } = await createDatabaseClient();
+    const deletedUser = await database.deleteDocument("primary", "user", user.$id);
+    console.log("User deleted:", deletedUser);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateUserEvent = async (user, attribute) => {
+  try {
+    const { database } = await createDatabaseClient();
+    const updatedUser = await database.updateDocument(
+      "primary",
+      "user",
+      user.$id,
+      {
+        attribute: user[attribute],
+      }
+    );
+    console.log(`User ${attribute} updated:`, updatedUser);
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -40,22 +68,22 @@ export async function POST(req) {
           await createUserEvent(user);
           break;
         case "users.*.delete":
-          console.log("User deleted:", user);
+          await deleteUserEvent(user);
           break;
         case "users.*.update.email":
-          console.log("User email updated:", user);
+          await updateUserEvent(user, "email");
           break;
         case "users.*.update.name":
-          console.log("User name updated:", user);
+          await updateUserEvent(user, "name");
           break;
         case "users.*.update.password":
-          console.log("User password updated:", user);
+          await updateUserEvent(user, "passwordUpdate");
           break;
         case "users.*.update.status":
-          console.log("User status updated:", user);
+          await updateUserEvent(user, "status");
           break;
         case "users.*.update.prefs":
-          console.log("User preferences updated:", user);
+          await updateUserEvent(user, "prefs");
           break;
         default:
           console.log(`Other event: ${event}`);

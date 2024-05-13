@@ -102,7 +102,7 @@ export async function POST(req) {
           await deleteUserEvent(user);
           break;
         case "users.*.sessions.*.create":
-          createSessionEvent(user);
+          await createSessionEvent(user);
           break;
         case "users.*.sessions.*.delete":
           deleteSessionEvent(user);

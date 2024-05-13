@@ -1,4 +1,5 @@
-import { getLoggedInUser, deleteUser } from "@/lib/server/appwrite";
+import { getLoggedInUser } from "@/lib/server/appwrite";
+import { deleteUser } from "@/lib/server/actions";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Transition from "../../components/transition";

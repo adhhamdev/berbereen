@@ -1,4 +1,5 @@
-import { getLoggedInUser, signUpWithEmail } from "@/lib/server/appwrite";
+import { getLoggedInUser } from "@/lib/server/appwrite";
+import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { redirect } from 'next/navigation'
 import { righteous } from "@/lib/fonts";

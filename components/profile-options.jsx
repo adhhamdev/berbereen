@@ -6,7 +6,7 @@ import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { signOut } from "@/lib/server/appwrite";
+import { signOut } from "@/lib/server/actions";
 
 export default function ProfileOptions() {
   const [isOpen, setIsOpen] = useState(false);

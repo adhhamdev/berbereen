@@ -1,4 +1,4 @@
-import { createDatabaseClient } from "@/lib/server/appwrite";
+import { createDatabaseClient, createUsersClient } from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {
   try {
@@ -48,23 +48,23 @@ const createSessionEvent = async (user) => {
   if (provider === "email") {
     return;
   }
-  // const data = {
-  //   name: user.name,
-  //   registration: user.registration,
-  //   status: user.status,
-  //   passwordUpdate: user.passwordUpdate,
-  //   email: user.email,
-  //   phone: user.phone,
-  //   emailVerification: user.emailVerification,
-  //   phoneVerification: user.phoneVerification,
-  //   mfa: user.mfa,
-  //   createdAt: user.$createdAt,
-  //   updatedAt: user.$updatedAt,
-  //   accessedAt: user.accessedAt,
-  // };
-  const { database } = await createDatabaseClient();
-  const DBUser = await database.getDocument("primary", "user", userId);
-  console.log(DBUser)
+  const data = {
+    name: user.name,
+    registration: user.registration,
+    status: user.status,
+    passwordUpdate: user.passwordUpdate,
+    email: user.email,
+    phone: user.phone,
+    emailVerification: user.emailVerification,
+    phoneVerification: user.phoneVerification,
+    mfa: user.mfa,
+    createdAt: user.$createdAt,
+    updatedAt: user.$updatedAt,
+    accessedAt: user.accessedAt,
+  };
+  const { users } = await createUsersClient();
+  const oauthUser = await users.get(userId);
+  console.log(oauthUser)
 };
 const deleteSessionEvent = async (user) => {
   console.log("Session deleted", user);

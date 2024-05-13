@@ -4,7 +4,9 @@ const createUserEvent = async (user) => {
   try {
     // const { database } = await createDatabaseClient();
     const { avatar } = await createAvatarClient();
-    const icon = await avatar.getInitials();
+    const avatarJSON = await avatar.getInitials();
+    const decoder = new TextDecoder();
+    const icon = decoder.decode(avatarJSON)
     console.log(JSON.parse(icon));
     // const createdUser = await database.createDocument(
     //   "primary",

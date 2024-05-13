@@ -1,4 +1,9 @@
-import { createDatabaseClient, createUsersClient, createAvatarClient } from "@/lib/server/appwrite";
+import {
+  createDatabaseClient,
+  createUsersClient,
+  createAvatarClient,
+  createStorageClient,
+} from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {
   try {
@@ -6,8 +11,10 @@ const createUserEvent = async (user) => {
     const { avatar } = await createAvatarClient();
     const avatarJSON = await avatar.getInitials();
     const decoder = new TextDecoder();
-    const icon = decoder.decode(avatarJSON)
-    console.log(JSON.parse(icon));
+    const icon = decoder.decode(avatarJSON);
+    const { storage } = await createStorageClient();
+    const file = await storage.createFile("primary", "", icon);
+    console.log(file)
     // const createdUser = await database.createDocument(
     //   "primary",
     //   "user",

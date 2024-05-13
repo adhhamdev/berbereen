@@ -2,17 +2,17 @@ import { createDatabaseClient, createUsersClient, createAvatarClient } from "@/l
 
 const createUserEvent = async (user) => {
   try {
-    const { database } = await createDatabaseClient();
+    // const { database } = await createDatabaseClient();
     const { avatar } = await createAvatarClient();
-    const icon = JSON.parse(await avatar.getInitials());
+    const icon = await avatar.getInitials();
     console.log(icon);
-    const createdUser = await database.createDocument(
-      "primary",
-      "user",
-      user.$id,
-      { profilePicture: null }
-    );
-    console.log("User created:", createdUser);
+    // const createdUser = await database.createDocument(
+    //   "primary",
+    //   "user",
+    //   user.$id,
+    //   { profilePicture: null }
+    // );
+    // console.log("User created:", createdUser);
   } catch (error) {
     console.log(error);
   }

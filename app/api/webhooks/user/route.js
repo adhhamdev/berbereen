@@ -1,13 +1,16 @@
-import { createDatabaseClient, createUsersClient } from "@/lib/server/appwrite";
+import { createDatabaseClient, createUsersClient, createAvatarClient } from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
+    const { avatar } = await createAvatarClient();
+    const icon = await avatar.getInitials();
+    console.log(icon);
     const createdUser = await database.createDocument(
       "primary",
       "user",
       user.$id,
-      {profilePicture: ""}
+      { profilePicture: icon.path }
     );
     console.log("User created:", createdUser);
   } catch (error) {
@@ -18,12 +21,7 @@ const createUserEvent = async (user) => {
 const deleteUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
-    await database.deleteDocument(
-      "primary",
-      "user",
-      user.$id,
-      {}
-    );
+    await database.deleteDocument("primary", "user", user.$id);
     console.log("User deleted!");
   } catch (error) {
     console.log(error);
@@ -38,7 +36,12 @@ const createSessionEvent = async (sessionUser) => {
   const { users } = await createUsersClient();
   const oauthUser = await users.get(userId);
   const { database } = await createDatabaseClient();
-  const createdUser = await database.createDocument("primary", "user", oauthUser.$id, {profilePicture: ""});
+  const createdUser = await database.createDocument(
+    "primary",
+    "user",
+    oauthUser.$id,
+    { profilePicture: "" }
+  );
   console.log("User created from Google:", createdUser);
 };
 const deleteSessionEvent = async (user) => {

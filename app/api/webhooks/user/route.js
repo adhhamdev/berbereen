@@ -5,11 +5,11 @@ import {
   createStorageClient,
 } from "@/lib/server/appwrite";
 
-const createUserEvent = async (user) => {
+export const createUserEvent = async (user) => {
   try {
     // const { database } = await createDatabaseClient();
     const { avatar } = await createAvatarClient();
-    const iconBlob = new Blob(await avatar.getInitials());
+    const iconBlob = await (new Blob(await avatar.getInitials())).text();
     const { storage } = await createStorageClient();
     const file = await storage.createFile("primary", "", iconBlob);
     console.log(file)

@@ -44,10 +44,10 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = (user) => {
-  confirm.log("Session created", user);
+  console.log("Session created", user);
 };
 const deleteSessionEvent = (user) => {
-  confirm.log("Session deleted", user);
+  console.log("Session deleted", user);
 };
 
 const updateUserEvent = async (user, attribute) => {

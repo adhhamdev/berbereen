@@ -7,6 +7,7 @@ const createUserEvent = async (user) => {
       "primary",
       "user",
       user.$id,
+      {}
     );
     console.log("User created:", createdUser);
   } catch (error) {
@@ -20,7 +21,8 @@ const deleteUserEvent = async (user) => {
     await database.deleteDocument(
       "primary",
       "user",
-      user.$id
+      user.$id,
+      {}
     );
     console.log("User deleted!");
   } catch (error) {
@@ -36,7 +38,7 @@ const createSessionEvent = async (sessionUser) => {
   const { users } = await createUsersClient();
   const oauthUser = await users.get(userId);
   const { database } = await createDatabaseClient();
-  const createdUser = await database.createDocument("primary", "user", oauthUser.$id);
+  const createdUser = await database.createDocument("primary", "user", oauthUser.$id, {});
   console.log("User created from Google:", createdUser);
 };
 const deleteSessionEvent = async (user) => {

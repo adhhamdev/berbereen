@@ -3,25 +3,10 @@ import { createDatabaseClient, createUsersClient } from "@/lib/server/appwrite";
 const createUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
-    const data = {
-      name: user.name,
-      registration: user.registration,
-      status: user.status,
-      passwordUpdate: user.passwordUpdate,
-      email: user.email,
-      phone: user.phone,
-      emailVerification: user.emailVerification,
-      phoneVerification: user.phoneVerification,
-      mfa: user.mfa,
-      createdAt: user.$createdAt,
-      updatedAt: user.$updatedAt,
-      accessedAt: user.accessedAt,
-    };
     const createdUser = await database.createDocument(
       "primary",
       "user",
       user.$id,
-      data
     );
     console.log("User created:", createdUser);
   } catch (error) {
@@ -51,21 +36,7 @@ const createSessionEvent = async (sessionUser) => {
   const { users } = await createUsersClient();
   const oauthUser = await users.get(userId);
   const { database } = await createDatabaseClient();
-  const data = {
-    name: oauthUser.name,
-    registration: oauthUser.registration,
-    status: oauthUser.status,
-    passwordUpdate: oauthUser.passwordUpdate,
-    email: oauthUser.email,
-    phone: oauthUser.phone,
-    emailVerification: oauthUser.emailVerification,
-    phoneVerification: oauthUser.phoneVerification,
-    mfa: oauthUser.mfa,
-    createdAt: oauthUser.$createdAt,
-    updatedAt: oauthUser.$updatedAt,
-    accessedAt: oauthUser.accessedAt,
-  };
-  const createdUser = await database.createDocument("primary", "user", oauthUser.$id, data);
+  const createdUser = await database.createDocument("primary", "user", oauthUser.$id);
   console.log("User created from Google:", createdUser);
 };
 const deleteSessionEvent = async (user) => {

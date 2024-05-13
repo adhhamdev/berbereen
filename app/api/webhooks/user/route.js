@@ -43,10 +43,30 @@ const deleteUserEvent = async (user) => {
   }
 };
 
-const createSessionEvent = (user) => {
-  console.log("Session created", user);
+const createSessionEvent = async (user) => {
+  const { userId, provider } = user;
+  if (provider === "email") {
+    return;
+  }
+  // const data = {
+  //   name: user.name,
+  //   registration: user.registration,
+  //   status: user.status,
+  //   passwordUpdate: user.passwordUpdate,
+  //   email: user.email,
+  //   phone: user.phone,
+  //   emailVerification: user.emailVerification,
+  //   phoneVerification: user.phoneVerification,
+  //   mfa: user.mfa,
+  //   createdAt: user.$createdAt,
+  //   updatedAt: user.$updatedAt,
+  //   accessedAt: user.accessedAt,
+  // };
+  const { database } = await createDatabaseClient();
+  const DBUser = await database.getDocument("primary", "user", userId);
+  console.log(DBUser)
 };
-const deleteSessionEvent = (user) => {
+const deleteSessionEvent = async (user) => {
   console.log("Session deleted", user);
 };
 

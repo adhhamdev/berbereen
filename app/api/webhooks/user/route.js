@@ -32,7 +32,7 @@ const createUserEvent = async (user) => {
 const deleteUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
-    const deletedUser = await database.deleteDocument(
+    await database.deleteDocument(
       "primary",
       "user",
       user.$id
@@ -107,7 +107,7 @@ export async function POST(req) {
           await createSessionEvent(user);
           break;
         case "users.*.sessions.*.delete":
-          deleteSessionEvent(user);
+          await deleteSessionEvent(user);
           break;
         case "users.*.update.email":
           await updateUserEvent(user, "email");

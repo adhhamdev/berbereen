@@ -1,6 +1,4 @@
-import {
-  createDatabaseClient,
-} from "@/lib/server/appwrite";
+import { createDatabaseClient } from "@/lib/server/appwrite";
 
 const createUserEvent = async (user) => {
   try {
@@ -19,21 +17,37 @@ const createUserEvent = async (user) => {
       updatedAt: user.$updatedAt,
       accessedAt: user.accessedAt,
     };
-    const createdUser = await database.createDocument("primary", "user", user.$id, data);
-    console.log("User created:", createdUser)
+    const createdUser = await database.createDocument(
+      "primary",
+      "user",
+      user.$id,
+      data
+    );
+    console.log("User created:", createdUser);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
 const deleteUserEvent = async (user) => {
   try {
     const { database } = await createDatabaseClient();
-    const deletedUser = await database.deleteDocument("primary", "user", user.$id);
-    console.log("User deleted:", deletedUser);
+    const deletedUser = await database.deleteDocument(
+      "primary",
+      "user",
+      user.$id
+    );
+    console.log("User deleted!");
   } catch (error) {
     console.log(error);
   }
+};
+
+const createSessionEvent = (user) => {
+  confirm.log("Session created", user);
+};
+const deleteSessionEvent = (user) => {
+  confirm.log("Session deleted", user);
 };
 
 const updateUserEvent = async (user, attribute) => {
@@ -66,6 +80,12 @@ export async function POST(req) {
           break;
         case "users.*.delete":
           await deleteUserEvent(user);
+          break;
+        case "sessions.*.create":
+          createSessionEvent(user);
+          break;
+        case "sessions.*.delete":
+          deleteSessionEvent(user);
           break;
         case "users.*.update.email":
           await updateUserEvent(user, "email");

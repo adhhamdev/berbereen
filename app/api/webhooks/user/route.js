@@ -81,10 +81,10 @@ export async function POST(req) {
         case "users.*.delete":
           await deleteUserEvent(user);
           break;
-        case "sessions.*.create":
+        case "users.*.sessions.*.create":
           createSessionEvent(user);
           break;
-        case "sessions.*.delete":
+        case "users.*.sessions.*.delete":
           deleteSessionEvent(user);
           break;
         case "users.*.update.email":

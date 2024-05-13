@@ -10,7 +10,7 @@ const createUserEvent = async (user) => {
       "primary",
       "user",
       user.$id,
-      { profilePicture: icon.path }
+      { profilePicture: null }
     );
     console.log("User created:", createdUser);
   } catch (error) {

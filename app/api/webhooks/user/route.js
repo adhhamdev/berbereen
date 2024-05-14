@@ -7,34 +7,31 @@ import {
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
-  console.log("user create event running...")
-  try {
-    const database = createDatabases();
-    console.log(database)
-    const avatar = createAvatars();
-    console.log(avatar)
-    const iconBuffer = await avatar.getInitials();
-    console.log(iconBuffer)
-    const storage = createStorage();
-    console.log(storage)
-    const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
-    console.log(file)
-    const uploadedFile = await storage.createFile("primary", "", file);
-    console.log(uploadedFile)
-    // const createdUser = await database.createDocument(
-    //   "primary",
-    //   "user",
-    //   user.$id,
-    //   { profilePicture: uploadedFile }
-    // );
-    // console.log("User created:", createdUser);
-  } catch (error) {
-    console.log(error);
-  }
+  console.log("user create event running...");
+  console.log("creation starting...");
+  const database = createDatabases();
+  console.log(database);
+  const avatar = createAvatars();
+  console.log(avatar);
+  const iconBuffer = await avatar.getInitials();
+  console.log(iconBuffer);
+  const storage = createStorage();
+  console.log(storage);
+  const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
+  console.log(file);
+  const uploadedFile = await storage.createFile("primary", "", file);
+  console.log(uploadedFile);
+  // const createdUser = await database.createDocument(
+  //   "primary",
+  //   "user",
+  //   user.$id,
+  //   { profilePicture: uploadedFile }
+  // );
+  // console.log("User created:", createdUser);
 };
 
 const deleteUserEvent = async (user) => {
-  console.log("user delete event running")
+  console.log("user delete event running");
   try {
     const databases = createDatabases();
     await databases.deleteDocument("primary", "user", user.$id);
@@ -45,7 +42,7 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (sessionUser) => {
-  console.log("user create session event running")
+  console.log("user create session event running");
   const { userId, provider } = sessionUser;
   if (provider === "email") {
     return;
@@ -66,7 +63,7 @@ const deleteSessionEvent = async (user) => {
 };
 
 const updateUserEvent = async (user, attribute) => {
-  console.log("user update user event running")
+  console.log("user update user event running");
   try {
     const database = createDatabases();
     const updatedUser = await database.updateDocument(
@@ -87,7 +84,7 @@ export async function POST(req) {
   try {
     const user = await req.json();
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
-    console.log("Events:", events)
+    console.log("Events:", events);
 
     for (let i = 1; i < events.length; i += 2) {
       const event = events[i];

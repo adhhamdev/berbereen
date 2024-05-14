@@ -10,19 +10,24 @@ export const createUserEvent = async (user) => {
   console.log("user create event running...")
   try {
     const database = createDatabases();
+    console.log(database)
     const avatar = createAvatars();
+    console.log(avatar)
     const iconBuffer = await avatar.getInitials();
+    console.log(iconBuffer)
     const storage = createStorage();
+    console.log(storage)
     const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
+    console.log(file)
     const uploadedFile = await storage.createFile("primary", "", file);
-    console.log(uploadedFile);
-    const createdUser = await database.createDocument(
-      "primary",
-      "user",
-      user.$id,
-      { profilePicture: uploadedFile }
-    );
-    console.log("User created:", createdUser);
+    console.log(uploadedFile)
+    // const createdUser = await database.createDocument(
+    //   "primary",
+    //   "user",
+    //   user.$id,
+    //   { profilePicture: uploadedFile }
+    // );
+    // console.log("User created:", createdUser);
   } catch (error) {
     console.log(error);
   }

@@ -9,13 +9,13 @@ import { InputFile } from "node-appwrite";
 export const createUserEvent = async (user) => {
   console.log("user create event running...");
   console.log("creation starting...");
-  const database = createDatabases();
+  const database = await createDatabases();
   console.log(database);
-  const avatar = createAvatars();
+  const avatar = await createAvatars();
   console.log(avatar);
   const iconBuffer = await avatar.getInitials();
   console.log(iconBuffer);
-  const storage = createStorage();
+  const storage = await createStorage();
   console.log(storage);
   const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
   console.log(file);
@@ -32,7 +32,7 @@ export const createUserEvent = async (user) => {
 
 const deleteUserEvent = async (user) => {
   console.log("user delete event running");
-    const databases = createDatabases();
+    const databases = await createDatabases();
     await databases.deleteDocument("primary", "user", user.$id);
     console.log("User deleted!");
 };
@@ -43,9 +43,9 @@ const createSessionEvent = async (sessionUser) => {
   if (provider === "email") {
     return;
   }
-  const users = createUsers();
+  const users = await createUsers();
   const oauthUser = await users.get(userId);
-  const databases = createDatabases();
+  const databases = await createDatabases();
   const createdUser = await databases.createDocument(
     "primary",
     "user",
@@ -60,7 +60,7 @@ const deleteSessionEvent = async (user) => {
 
 const updateUserEvent = async (user, attribute) => {
   console.log("user update user event running");
-    const database = createDatabases();
+    const database = await createDatabases();
     const updatedUser = await database.updateDocument(
       "primary",
       "user",

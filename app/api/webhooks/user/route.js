@@ -7,6 +7,7 @@ import {
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
+  console.log("user event running...")
   try {
     const database = createDatabases();
     const avatar = createAvatars();
@@ -78,6 +79,7 @@ export async function POST(req) {
   try {
     const user = await req.json();
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
+    console.log("Events:", events)
 
     for (let i = 1; i < events.length; i += 2) {
       const event = events[i];

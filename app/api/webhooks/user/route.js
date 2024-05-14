@@ -7,17 +7,11 @@ import {
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
-  console.log("user create event running...");
-  console.log("creation starting...");
-  const {databases} = await createDatabasesClient();
-  console.log(databases);
-  const {avatars} = await createAvatarsClient();
-  console.log(avatars);
+  const { databases } = await createDatabasesClient();
+  const { avatars } = await createAvatarsClient();
   const iconBuffer = await avatars.getInitials();
-  console.log(iconBuffer);
-  const {storage} = await createStorageClient();
-  console.log(storage);
-  const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
+  const { storage } = await createStorageClient();
+  const file = new InputFile.fromBuffer(iconBuffer, "avatar-icon");
   console.log(file);
   const uploadedFile = await storage.createFile("primary", "", file);
   console.log(uploadedFile);
@@ -32,9 +26,9 @@ export const createUserEvent = async (user) => {
 
 const deleteUserEvent = async (user) => {
   console.log("user delete event running");
-    const {databases} = await createDatabasesClient();
-    await databases.deleteDocument("primary", "user", user.$id);
-    console.log("User deleted!");
+  const { databases } = await createDatabasesClient();
+  await databases.deleteDocument("primary", "user", user.$id);
+  console.log("User deleted!");
 };
 
 const createSessionEvent = async (sessionUser) => {
@@ -43,9 +37,9 @@ const createSessionEvent = async (sessionUser) => {
   if (provider === "email") {
     return;
   }
-  const {users} = await createUsersClient();
+  const { users } = await createUsersClient();
   const oauthUser = await users.get(userId);
-  const {databases} = await createDatabasesClient();
+  const { databases } = await createDatabasesClient();
   const createdUser = await databases.createDocument(
     "primary",
     "user",
@@ -60,16 +54,16 @@ const deleteSessionEvent = async (user) => {
 
 const updateUserEvent = async (user, attribute) => {
   console.log("user update user event running");
-    const {databases} = await createDatabasesClient();
-    const updatedUser = await databases.updateDocument(
-      "primary",
-      "user",
-      user.$id,
-      {
-        attribute: user[attribute],
-      }
-    );
-    console.log(`User ${attribute} updated:`, updatedUser);
+  const { databases } = await createDatabasesClient();
+  const updatedUser = await databases.updateDocument(
+    "primary",
+    "user",
+    user.$id,
+    {
+      attribute: user[attribute],
+    }
+  );
+  console.log(`User ${attribute} updated:`, updatedUser);
 };
 
 export async function POST(req) {

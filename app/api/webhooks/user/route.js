@@ -1,17 +1,17 @@
 import {
-  createDatabaseClient,
-  createUsersClient,
-  createAvatarClient,
-  createStorageClient,
+  createDatabases,
+  createUsers,
+  createAvatars,
+  createStorage,
 } from "@/lib/server/appwrite";
 
 export const createUserEvent = async (user) => {
   try {
     // const { database } = await createDatabaseClient();
-    const { avatar } = await createAvatarClient();
-    const iconBlob = await (new Blob(await avatar.getInitials())).text();
-    const { storage } = await createStorageClient();
-    const file = await storage.createFile("primary", "", iconBlob);
+    const avatar = createAvatars();
+    const iconBlob = Uint8Array.from(await avatar.getInitials()).slice()
+    const storage = createStorage();
+    const file = await storage.createFile("primary", "mo", );
     console.log(file)
     // const createdUser = await database.createDocument(
     //   "primary",
@@ -27,8 +27,8 @@ export const createUserEvent = async (user) => {
 
 const deleteUserEvent = async (user) => {
   try {
-    const { database } = await createDatabaseClient();
-    await database.deleteDocument("primary", "user", user.$id);
+    const databases = createDatabases();
+    await databases.deleteDocument("primary", "user", user.$id);
     console.log("User deleted!");
   } catch (error) {
     console.log(error);
@@ -40,10 +40,10 @@ const createSessionEvent = async (sessionUser) => {
   if (provider === "email") {
     return;
   }
-  const { users } = await createUsersClient();
+  const users = createUsers();
   const oauthUser = await users.get(userId);
-  const { database } = await createDatabaseClient();
-  const createdUser = await database.createDocument(
+  const databases = createDatabases();
+  const createdUser = await databases.createDocument(
     "primary",
     "user",
     oauthUser.$id,
@@ -57,7 +57,7 @@ const deleteSessionEvent = async (user) => {
 
 const updateUserEvent = async (user, attribute) => {
   try {
-    const { database } = await createDatabaseClient();
+    const database = createDatabases();
     const updatedUser = await database.updateDocument(
       "primary",
       "user",

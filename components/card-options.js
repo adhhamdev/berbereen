@@ -27,6 +27,7 @@ export default function CardOptions() {
               <button className="size-full flex items-center px-4 py-2 hover:bg-slate-200 rounded-md">
                 <TrashIcon className="size-5 mr-2" /> Delete
               </button>
+              
             </div>
           </Transition>
         )}

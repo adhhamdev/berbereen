@@ -7,7 +7,7 @@ import {
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
-  console.log("user event running...")
+  console.log("user create event running...")
   try {
     const database = createDatabases();
     const avatar = createAvatars();
@@ -29,6 +29,7 @@ export const createUserEvent = async (user) => {
 };
 
 const deleteUserEvent = async (user) => {
+  console.log("user delete event running")
   try {
     const databases = createDatabases();
     await databases.deleteDocument("primary", "user", user.$id);
@@ -39,6 +40,7 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (sessionUser) => {
+  console.log("user create session event running")
   const { userId, provider } = sessionUser;
   if (provider === "email") {
     return;
@@ -59,6 +61,7 @@ const deleteSessionEvent = async (user) => {
 };
 
 const updateUserEvent = async (user, attribute) => {
+  console.log("user update user event running")
   try {
     const database = createDatabases();
     const updatedUser = await database.updateDocument(

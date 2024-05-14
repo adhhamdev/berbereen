@@ -4,22 +4,24 @@ import {
   createAvatars,
   createStorage,
 } from "@/lib/server/appwrite";
+import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
   try {
-    // const { database } = await createDatabaseClient();
+    const database = createDatabases();
     const avatar = createAvatars();
-    const iconBlob = Uint8Array.from(await avatar.getInitials()).slice()
+    const iconBuffer = await avatar.getInitials();
     const storage = createStorage();
-    const file = await storage.createFile("primary", "mo", );
-    console.log(file)
-    // const createdUser = await database.createDocument(
-    //   "primary",
-    //   "user",
-    //   user.$id,
-    //   { profilePicture: null }
-    // );
-    // console.log("User created:", createdUser);
+    const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
+    const uploadedFile = await storage.createFile("primary", "", file);
+    console.log(uploadedFile);
+    const createdUser = await database.createDocument(
+      "primary",
+      "user",
+      user.$id,
+      { profilePicture: uploadedFile }
+    );
+    console.log("User created:", createdUser);
   } catch (error) {
     console.log(error);
   }

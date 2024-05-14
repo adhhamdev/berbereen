@@ -1,38 +1,40 @@
 import {
-  createDatabases,
-  createUsers,
-  createAvatars,
-  createStorage,
+  createSessionClient, 
+  createAdminClient,
+  createDatabasesClient,
+  createStorageClient,
+  createAvatarsClient,
+  createUsersClient,
 } from "@/lib/server/appwrite";
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
   console.log("user create event running...");
   console.log("creation starting...");
-  const database = await createDatabases();
-  console.log(database);
-  const avatar = await createAvatars();
-  console.log(avatar);
-  const iconBuffer = await avatar.getInitials();
+  const {databases} = await createDatabasesClient();
+  console.log(databases);
+  const {avatars} = await createAvatarsClient();
+  console.log(avatars);
+  const iconBuffer = await avatars.getInitials();
   console.log(iconBuffer);
-  const storage = await createStorage();
+  const {storage} = await createStorageClient();
   console.log(storage);
   const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
   console.log(file);
   const uploadedFile = await storage.createFile("primary", "", file);
   console.log(uploadedFile);
-  // const createdUser = await database.createDocument(
-  //   "primary",
-  //   "user",
-  //   user.$id,
-  //   { profilePicture: uploadedFile }
-  // );
-  // console.log("User created:", createdUser);
+  const createdUser = await databases.createDocument(
+    "primary",
+    "user",
+    user.$id,
+    { profilePicture: uploadedFile }
+  );
+  console.log("User created:", createdUser);
 };
 
 const deleteUserEvent = async (user) => {
   console.log("user delete event running");
-    const databases = await createDatabases();
+    const {databases} = await createDatabasesClient();
     await databases.deleteDocument("primary", "user", user.$id);
     console.log("User deleted!");
 };
@@ -43,9 +45,9 @@ const createSessionEvent = async (sessionUser) => {
   if (provider === "email") {
     return;
   }
-  const users = await createUsers();
+  const {users} = await createUsersClient();
   const oauthUser = await users.get(userId);
-  const databases = await createDatabases();
+  const {databases} = await createDatabasesClient();
   const createdUser = await databases.createDocument(
     "primary",
     "user",
@@ -60,8 +62,8 @@ const deleteSessionEvent = async (user) => {
 
 const updateUserEvent = async (user, attribute) => {
   console.log("user update user event running");
-    const database = await createDatabases();
-    const updatedUser = await database.updateDocument(
+    const {databases} = await createDatabasesClient();
+    const updatedUser = await databases.updateDocument(
       "primary",
       "user",
       user.$id,

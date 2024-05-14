@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { createUserEvent } from "../api/webhooks/user/route";
 
 export default async function Page() {
-  await createUserEvent()
+  // await createUserEvent()
   const user = await getLoggedInUser();
   if (!user) redirect("/signup");
   return (

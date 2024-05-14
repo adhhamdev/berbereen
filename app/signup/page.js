@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export default async function Page() {
   const user = await getLoggedInUser();
   if (user) redirect("/");
-  return (
+  return ( 
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">

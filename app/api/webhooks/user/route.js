@@ -4,7 +4,7 @@ import {
   createAvatarsClient,
   createUsersClient,
 } from "@/lib/server/appwrite";
-import { InputFile } from "node-appwrite";
+import { ID, InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
   try {
@@ -14,14 +14,14 @@ export const createUserEvent = async (user) => {
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile(
       "primary",
-      "",
+      ID.unique(),
       file
     );
     const { databases } = await createDatabasesClient();
     const createdUser = await databases.createDocument(
       "primary",
       "user",
-      user.$id || crypto.randomUUID(),
+      user.$id,
       { profilePicture: uploadedFile.$id }
     );
     console.log("User created:", createdUser);

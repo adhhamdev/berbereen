@@ -7,21 +7,25 @@ import {
 import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
-  const { databases } = await createDatabasesClient();
-  const { avatars } = await createAvatarsClient();
-  const iconBuffer = await avatars.getInitials();
-  const { storage } = await createStorageClient();
-  const file = new InputFile.fromBuffer(iconBuffer, "avatar-icon");
-  console.log(file);
-  const uploadedFile = await storage.createFile("primary", "", file);
-  console.log(uploadedFile);
-  const createdUser = await databases.createDocument(
-    "primary",
-    "user",
-    user.$id,
-    { profilePicture: uploadedFile }
-  );
-  console.log("User created:", createdUser);
+  try {
+    const { databases } = await createDatabasesClient();
+    const { avatars } = await createAvatarsClient();
+    const iconBuffer = await avatars.getInitials();
+    const { storage } = await createStorageClient();
+    const file = new InputFile.fromBuffer(iconBuffer, "avatar-icon");
+    console.log(file);
+    const uploadedFile = await storage.createFile("primary", "", file);
+    console.log(uploadedFile);
+    const createdUser = await databases.createDocument(
+      "primary",
+      "user",
+      user.$id,
+      { profilePicture: uploadedFile }
+    );
+    console.log("User created:", createdUser);
+  } catch (error) {
+    console.error("Error creating user:", error);
+  }
 };
 
 const deleteUserEvent = async (user) => {

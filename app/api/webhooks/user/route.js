@@ -13,8 +13,11 @@ export const createUserEvent = async (user) => {
     const iconBuffer = await avatars.getInitials();
     const { storage } = await createStorageClient();
     const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
-    console.log(file);
-    const uploadedFile = await storage.createFile("primary", "", file);
+    const uploadedFile = await storage.createFile(
+      "primary",
+      crypto.randomUUID(),
+      file
+    );
     console.log(uploadedFile);
     const createdUser = await databases.createDocument(
       "primary",

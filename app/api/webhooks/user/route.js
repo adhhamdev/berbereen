@@ -10,12 +10,12 @@ export const createUserEvent = async (user) => {
   try {
     const { avatars } = await createAvatarsClient();
     console.log("av")
-    const iconBuffer = await avatars.getInitials();
+    const iconBuffer = Buffer.from(await avatars.getInitials());
     console.log("iconBuffer")
     const { storage } = await createStorageClient();
     console.log("storage")
     
-    const file = Buffer.from(InputFile.fromBuffer(iconBuffer, "avatar"));
+    const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile(
       "primary",
       crypto.randomUUID(),

@@ -8,8 +8,6 @@ import { InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
   try {
-    const { databases } = await createDatabasesClient();
-    console.log("db")
     const { avatars } = await createAvatarsClient();
     console.log("av")
     const iconBuffer = await avatars.getInitials();
@@ -17,13 +15,15 @@ export const createUserEvent = async (user) => {
     const { storage } = await createStorageClient();
     console.log("storage")
     
-    const file = InputFile.fromStream(iconBuffer, "avatar")
+    const file = Buffer.from(InputFile.fromBuffer(iconBuffer, "avatar"));
     const uploadedFile = await storage.createFile(
       "primary",
       crypto.randomUUID(),
       file
     );
     console.log(uploadedFile);
+    const { databases } = await createDatabasesClient();
+    console.log("db")
     const createdUser = await databases.createDocument(
       "primary",
       "user",

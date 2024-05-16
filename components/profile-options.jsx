@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { signOut } from "@/lib/server/actions";
 
-export default function ProfileOptions() {
+export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
@@ -19,7 +19,7 @@ export default function ProfileOptions() {
         >
           <Transition layoutId="profileIcon">
             <Image
-              src="/profile.jpg"
+              src={profilePicture}
               width={40}
               height={40}
               className="rounded-full size-full"

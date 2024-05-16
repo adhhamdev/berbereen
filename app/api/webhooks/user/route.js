@@ -38,18 +38,15 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (sessionUser) => {
-  console.log("user create session event running");
   const { userId, provider } = sessionUser;
   if (provider === "email") {
     return;
   }
-  const { users } = await createUsersClient();
-  const oauthUser = await users.get(userId);
   const { databases } = await createDatabasesClient();
   const createdUser = await databases.createDocument(
     "primary",
     "user",
-    oauthUser.$id,
+    userId,
     { profilePicture: "" }
   );
   console.log("User created from Google:", createdUser);

@@ -11,8 +11,10 @@ import ProfileOptions from "./profile-options";
 import { Suspense } from "react";
 import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
+import { getProfilePicture } from "@/lib/server/actions";
 
-export default function Header() {
+export default async function Header() {
+  const profilePicture = await getProfilePicture(40);
   return (
     <div>
       <header className="flex items-center body-font shadow">
@@ -77,7 +79,7 @@ scroll={false}
           </div>
         </nav>
         <Suspense fallback={<ProfileIconShimmer />}>
-          <ProfileOptions />
+          <ProfileOptions profilePicture={profilePicture} />
         </Suspense>
       </header>
     </div>

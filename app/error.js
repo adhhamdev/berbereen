@@ -1,15 +1,21 @@
-"use client"
-import { useEffect } from "react"
+"use client";
+import { useEffect } from "react";
 
-export default function Error({ error, reset }){
-     useEffect(() => {
-         console.log(error.message)
-     },[error])
+export default function Error({ error, reset }) {
+  useEffect(() => {
+    if (error && typeof error === "object" && error.message) {
+      console.log(error.message);
+    } else {
+      console.log("An error occurred:", error);
+    }
+  }, [error]);
 
-    return (
+  return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold text-slate-700 mb-4">{error.message}</h2>
+        <h2 className="text-2xl font-semibold text-slate-700 mb-4">
+          {error.message}
+        </h2>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={reset}
@@ -18,5 +24,5 @@ export default function Error({ error, reset }){
         </button>
       </div>
     </div>
-    );
+  );
 }

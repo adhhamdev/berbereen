@@ -9,10 +9,15 @@ import { InputFile } from "node-appwrite";
 export const createUserEvent = async (user) => {
   try {
     const { databases } = await createDatabasesClient();
+    console.log("db")
     const { avatars } = await createAvatarsClient();
+    console.log("av")
     const iconBuffer = await avatars.getInitials();
+    console.log("iconBuffer")
     const { storage } = await createStorageClient();
-    const file = InputFile.fromBuffer(iconBuffer, "avatar-icon");
+    console.log("storage")
+    
+    const file = InputFile.fromBuffer(iconBuffer, "image/png")
     const uploadedFile = await storage.createFile(
       "primary",
       crypto.randomUUID(),
@@ -22,7 +27,7 @@ export const createUserEvent = async (user) => {
     const createdUser = await databases.createDocument(
       "primary",
       "user",
-      user.$id,
+      user.$id || crypto.randomUUID(),
       { profilePicture: uploadedFile }
     );
     console.log("User created:", createdUser);

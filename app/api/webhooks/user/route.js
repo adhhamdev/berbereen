@@ -17,7 +17,7 @@ export const createUserEvent = async (user) => {
     const { storage } = await createStorageClient();
     console.log("storage")
     
-    const file = InputFile.fromBuffer(iconBuffer, "image/png")
+    const file = InputFile.fromStream(iconBuffer, "avatar")
     const uploadedFile = await storage.createFile(
       "primary",
       crypto.randomUUID(),

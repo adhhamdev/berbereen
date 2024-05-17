@@ -9,15 +9,16 @@ import { ID, InputFile } from "node-appwrite";
 export const createUserEvent = async (user) => {
   try {
     const { avatars } = await createAvatarsClient();
-    const iconBuffer = Buffer.from(await avatars.getInitials(user.name));
     const { storage } = await createStorageClient();
+    const { databases } = await createDatabasesClient();
+    const res = await avatars.getInitials(user.name);
+    const iconBuffer = Buffer.from(res, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile(
       "primary",
       ID.unique(),
       file
     );
-    const { databases } = await createDatabasesClient();
     const createdUser = await databases.createDocument(
       "primary",
       "user",

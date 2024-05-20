@@ -4,9 +4,13 @@ import { signUpWithGoogle } from "@/lib/server/oauth";
 import { redirect } from 'next/navigation'
 import { righteous } from "@/lib/fonts";
 
+import { getProfilePicture } from "@/lib/server/actions";
+
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
+    console.log("user: ", await getProfilePicture(40))
+
   const user = await getLoggedInUser();
   if (user) redirect("/");
   return ( 

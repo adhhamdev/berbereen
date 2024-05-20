@@ -12,9 +12,9 @@ import { Suspense } from "react";
 import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
 import { getProfilePicture } from "@/lib/server/actions";
-import { arrayBufferToImgSrc } from "@/lib/utils";
 export default async function Header() {
-  const profilePicture = arrayBufferToImgSrc(await getProfilePicture(40));
+  const profilePicture = await getProfilePicture(50);
+  console.log(profilePicture)
   return (
     <div>
       <header className="flex items-center body-font shadow">

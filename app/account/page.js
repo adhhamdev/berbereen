@@ -1,6 +1,5 @@
 import { getLoggedInUser } from "@/lib/server/appwrite";
-import { deleteUser } from "@/lib/server/actions";
-import { redirect } from "next/navigation";
+import { deleteUser, getProfilePicture } from "@/lib/server/actions";
 import Image from "next/image";
 import Transition from "../../components/transition";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
@@ -8,14 +7,14 @@ import Link from "next/link";
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  if (!user) redirect("/signup");
+  const profilePicture = await getProfilePicture(100);
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
-    "https://randomuser.me/api/portraits/women/21.jpg",
-    "https://randomuser.me/api/portraits/women/21.jpg",
-    "https://randomuser.me/api/portraits/women/21.jpg",
-    "https://randomuser.me/api/portraits/women/21.jpg",
-    "https://randomuser.me/api/portraits/women/21.jpg",
+    "https://randomuser.me/api/portraits/women/22.jpg",
+    "https://randomuser.me/api/portraits/women/23.jpg",
+    "https://randomuser.me/api/portraits/women/24.jpg",
+    "https://randomuser.me/api/portraits/women/25.jpg",
+    "https://randomuser.me/api/portraits/women/26.jpg",
   ];
 
   return (
@@ -41,8 +40,8 @@ export default async function Page() {
           <div className="text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
                 <Image
-                  className="size-32 mx-auto my-4 shadow-xl rounded-full"
-                  src="https://randomuser.me/api/portraits/women/21.jpg"
+                  className="size-32 mx-auto my-4 bg-black rounded-full dark:border-gray-800"
+                  src={profilePicture}
                   alt="Profile Picture"
                   width={40}
                   height={40}

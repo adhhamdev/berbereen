@@ -14,7 +14,7 @@ export default function ProfileOptions({ profilePicture }) {
     <div>
       <div className="relative" onBlur={() => setIsOpen(false)}>
         <button
-          className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 focus:outline-none "
+          className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 border-2 border-slate-200 rounded-full"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <Transition layoutId="profileIcon">

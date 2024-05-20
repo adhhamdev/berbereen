@@ -2,7 +2,6 @@ import {
   createDatabasesClient,
   createStorageClient,
   createAvatarsClient,
-  createUsersClient,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 

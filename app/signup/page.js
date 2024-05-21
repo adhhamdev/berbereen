@@ -10,9 +10,6 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
     console.log("user: ", await getProfilePicture(40))
-
-  const user = await getLoggedInUser();
-  if (user) redirect("/");
   return ( 
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">

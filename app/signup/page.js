@@ -2,14 +2,23 @@ import { getLoggedInUser } from "@/lib/server/appwrite";
 import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
+import Image from "next/image";
+import logo from "/public/icon.jpg";
 
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100">
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">
+          <Image
+            className=" w-24 mx-auto my-2 rounded-full"
+            src={logo}
+            width={100}
+            height={100}
+            alt="Berbereeb Logo"
+          />
           <span
             className={`${righteous.className} text-4xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}
             translate="no"

@@ -1,7 +1,7 @@
 import { getLoggedInUser } from "@/lib/server/appwrite";
 import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 import { righteous } from "@/lib/fonts";
 
 import { getProfilePicture } from "@/lib/server/actions";
@@ -9,8 +9,8 @@ import { getProfilePicture } from "@/lib/server/actions";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-    console.log("user: ", await getProfilePicture(40))
-  return ( 
+  console.log("user: ", await getProfilePicture(40));
+  return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">

@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
 
-export async function middleware(req) {
+export function middleware(req) {
   const session = req.cookies.get("user-session");
+  console.log("session: ", session)
   if(!session) {
-    return NextResponse.redirect("http://localhost:3000/signup");
+    return NextResponse.redirect(new URL('/signup', req.url));
   }
  return NextResponse.next();
 }
-
-export const config = {
-  matcher: "/",
-};

@@ -13,8 +13,8 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
 import { getProfilePicture } from "@/lib/server/actions";
 export default async function Header() {
-  // const profilePicture = await getProfilePicture(50);
-  // console.log(profilePicture)
+  const profilePicture = await getProfilePicture(50);
+  console.log(profilePicture)
   return (
     <div>
       <header className="flex items-center body-font shadow">

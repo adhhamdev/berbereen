@@ -10,6 +10,6 @@ export function middleware(req) {
 
 export const config = {
   matcher: [
-    "/", "/explore", "/market", "/saved", "/settings", "/api"
+    "/", "/explore", "/market", "/saved", "/settings", "/account", "/api"
   ]
 };

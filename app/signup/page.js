@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-slate-100">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">
           <Image

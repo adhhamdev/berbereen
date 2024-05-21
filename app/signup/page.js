@@ -15,7 +15,7 @@ export default async function Page() {
           <Image
             className=" w-24 mx-auto my-2 rounded-full"
             src={logo}
-            alt="Berbereeb Logo"
+            alt="Berbereen Logo"
           />
           <span
             className={`${righteous.className} text-4xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}

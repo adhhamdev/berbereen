@@ -14,7 +14,7 @@ export default function ProfileOptions({ profilePicture }) {
     <div>
       <div className="relative" onBlur={() => setIsOpen(false)}>
         <button
-          className="flex justify-center itemse-center mr-4 size-10 text-gray-600 hover:text-gray-800 border-2 border-slate-200 rounded-full"
+          className="flex justify-center itemse-center mr-2 size-10 text-gray-600 hover:text-gray-800 shadow-lg rounded-lg"
           onClick={() => setIsOpen((prev) => !prev)}
           title="Account"
         >
@@ -23,7 +23,7 @@ export default function ProfileOptions({ profilePicture }) {
               src={profilePicture}
               width={40}
               height={40}
-              className="rounded-full size-full"
+              className="rounded-lg size-full"
               alt="Profile Icon"
             />
           </Transition>
@@ -31,10 +31,10 @@ export default function ProfileOptions({ profilePicture }) {
         <AnimatePresence>
           {isOpen && (
             <Transition
-              className="absolute right-2 w-48 bg-white rounded-lg shadow-lg z-20"
-              initial={{ y: -10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
+              className="absolute right-2 w-48 bg-white rounded-lg shadow-xl z-20"
+              initial={{ y: 0, opacity: 0 }}
+              animate={{ y: 16, opacity: 1 }}
+              exit={{ y: 0, opacity: 0 }}
             >
               <div className="p-2">
                 <Link

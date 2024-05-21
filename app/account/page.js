@@ -31,7 +31,7 @@ export default async function Page() {
       <div className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg">
         <div className="border-b px-4 py-6">
           <Image
-            src="/profile.jpg"
+            src="/icon.jpg"
             width={100}
             height={100}
             alt="Profile Cover"

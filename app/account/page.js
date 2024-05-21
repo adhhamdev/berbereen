@@ -1,5 +1,5 @@
 import { getLoggedInUser } from "@/lib/server/appwrite";
-import { deleteUser, getProfilePicture } from "@/lib/server/actions";
+import { deleteUser, getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
 import Transition from "../../components/transition";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  const profilePicture = await getProfilePicture(100);
+  const profilePicture = await getAvatar(100);
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/22.jpg",

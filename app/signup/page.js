@@ -15,8 +15,6 @@ export default async function Page() {
           <Image
             className=" w-24 mx-auto my-2 rounded-full"
             src={logo}
-            width={100}
-            height={100}
             alt="Berbereeb Logo"
           />
           <span

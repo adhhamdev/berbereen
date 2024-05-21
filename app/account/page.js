@@ -19,9 +19,9 @@ export default async function Page() {
 
   return (
     <div>
-      <header className="flex items-center justify-between border-b">
+      <header className="flex items-center justify-between border-b px-4">
         <div className="flex items-center">
-          <Link href="/" className="flex items-center p-3 hover:text-slate-500">
+          <Link href="/" className="flex items-center py-3 px-4 hover:text-slate-500">
             <ArrowLeftIcon className="size-5 mr-2" />
             <h2 className="text-xl font-semibold">Profile</h2>
           </Link>
@@ -40,7 +40,7 @@ export default async function Page() {
           <div className="relative text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
                 <Image
-                  className="size-32 mx-auto my-4 bg-white rounded-full dark:border-gray-800"
+                  className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
                   src={profilePicture}
                   alt="Profile Picture"
                   width={40}

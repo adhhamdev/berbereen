@@ -22,7 +22,7 @@ export const createUserEvent = async (user) => {
       "primary",
       "user",
       user.$id,
-      { profilePicture: uploadedFile.$id }
+      { avatar: uploadedFile.$id }
     );
     console.log("User created:", createdUser);
   } catch (error) {
@@ -47,7 +47,7 @@ const createSessionEvent = async (sessionUser) => {
     "primary",
     "user",
     userId,
-    { profilePicture: "" }
+    { avatar: "" }
   );
   console.log("User created from Google:", createdUser);
 };

@@ -37,10 +37,10 @@ export default async function Page() {
             alt="Profile Cover"
             className="h-44 w-full object-cover rounded-xl"
           />
-          <div className="text-center my-4 -mt-20">
+          <div className="relative text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
                 <Image
-                  className="size-32 mx-auto my-4 bg-black rounded-full dark:border-gray-800"
+                  className="size-32 mx-auto my-4 bg-white rounded-full dark:border-gray-800"
                   src={profilePicture}
                   alt="Profile Picture"
                   width={40}
@@ -49,7 +49,7 @@ export default async function Page() {
             </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">
-                {user.name}
+                {user?.name}
               </h3>
               <div className="inline-flex text-gray-700 dark:text-gray-300 items-center">
                 <svg
@@ -65,7 +65,7 @@ export default async function Page() {
                     d="M5.64 16.36a9 9 0 1 1 12.72 0l-5.65 5.66a1 1 0 0 1-1.42 0l-5.65-5.66zm11.31-1.41a7 7 0 1 0-9.9 0L12 19.9l4.95-4.95zM12 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"
                   />
                 </svg>
-                {user.email}
+                {user?.email}
               </div>
             </div>
           </div>

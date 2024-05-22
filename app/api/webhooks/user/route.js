@@ -3,6 +3,7 @@ import {
   createStorageClient,
   createAvatarsClient,
 } from "@/lib/server/appwrite";
+import { OAuth2Client } from "google-auth-library";
 import { ID, InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
@@ -13,11 +14,7 @@ export const createUserEvent = async (user) => {
     const res = await avatars.getInitials(user.name);
     const iconBuffer = Buffer.from(res, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
-    const uploadedFile = await storage.createFile(
-      "primary",
-      ID.unique(),
-      file
-    );
+    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
     const createdUser = await databases.createDocument(
       "primary",
       "user",
@@ -38,19 +35,33 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (sessionUser) => {
-  const { userId, provider } = sessionUser;
-  if (provider === "email") {
-    return;
-  }
-  const { databases } = await createDatabasesClient();
-  const createdUser = await databases.createDocument(
-    "primary",
-    "user",
-    userId,
-    { avatar: "" }
-  );
-  console.log("User created from Google:", createdUser);
+  // const { userId, provider } = sessionUser;
+  // if (provider === "email") {
+  //   return;
+  // }
+  console.log(sessionUser)
+  // const client = new OAuth2Client(sessionUser.providerUid);
+  // const ticket = await client.verifyIdToken({
+  //   idToken: secret,
+  //   audience: sessionUser.providerUid,
+  // });
+  // const payload = ticket.getPayload();
+  // const userInfo = {
+  //   name: payload.name,
+  //   email: payload.email,
+  //   picture: payload.picture,
+  // };
+  // console.log(userInfo);
+  // const { databases } = await createDatabasesClient();
+  // const createdUser = await databases.createDocument(
+  //   "primary",
+  //   "user",
+  //   userId,
+  //   { avatar: "" }
+  // );
+  // console.log("User created from Google:", createdUser);
 };
+
 const deleteSessionEvent = async (user) => {
   console.log("Session deleted", user);
 };

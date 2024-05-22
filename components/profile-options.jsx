@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon, ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";

@@ -3,9 +3,7 @@ import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 import Image from "next/image";
-import logo from "/public/icon.jpg";
-
-export const dynamic = "force-dynamic";
+import logo from "@/public/icon.jpg";
 
 export default async function Page() {
   return (
@@ -42,6 +40,7 @@ export default async function Page() {
               placeholder="Enter your email"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
+              autoComplete="email"
             />
           </div>
           <div>
@@ -59,6 +58,7 @@ export default async function Page() {
               minLength={8}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
+              autoComplete="new-password"
             />
           </div>
           <div>
@@ -75,6 +75,7 @@ export default async function Page() {
               placeholder="Enter your name"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               required
+              autoComplete="name"
             />
           </div>
           <button

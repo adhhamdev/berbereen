@@ -1,6 +1,6 @@
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 
-export default async function Page() {
+export default function Page() {
   return (
     <div>
       <h1 className="flex items-center m-4 text-lg font-bold text-slate-700">

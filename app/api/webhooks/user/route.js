@@ -11,8 +11,8 @@ export const createUserEvent = async (user) => {
     const { avatars } = await createAvatarsClient();
     const { storage } = await createStorageClient();
     const { databases } = await createDatabasesClient();
-    const res = await avatars.getInitials(user.name);
-    const iconBuffer = Buffer.from(res, "base64");
+    const initialsAvatar = await avatars.getInitials(user.name);
+    const iconBuffer = Buffer.from(initialsAvatar, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile("primary", ID.unique(), file);
     const createdUser = await databases.createDocument(
@@ -24,14 +24,23 @@ export const createUserEvent = async (user) => {
     console.log("User created:", createdUser);
   } catch (error) {
     console.error("Error creating user:", error);
+    throw new Error(
+      "An error occurred while creating your account. Please try again later."
+    );
   }
 };
 
 const deleteUserEvent = async (user) => {
-  console.log("user delete event running");
-  const { databases } = await createDatabasesClient();
-  await databases.deleteDocument("primary", "user", user.$id);
-  console.log("User deleted!");
+  try {
+    const { databases } = await createDatabasesClient();
+    await databases.deleteDocument("primary", "user", user.$id);
+    console.log("User deleted!");
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    throw new Error(
+      "We're sorry, there was an issue deleting your account. Please try again later."
+    );
+  }
 };
 
 const createSessionEvent = async (sessionUser) => {
@@ -39,7 +48,7 @@ const createSessionEvent = async (sessionUser) => {
   // if (provider === "email") {
   //   return;
   // }
-  console.log(sessionUser)
+  console.log(sessionUser);
   // const client = new OAuth2Client(sessionUser.providerUid);
   // const ticket = await client.verifyIdToken({
   //   idToken: secret,
@@ -67,63 +76,64 @@ const deleteSessionEvent = async (user) => {
 };
 
 const updateUserEvent = async (user, attribute) => {
-  console.log("user update user event running");
-  const { databases } = await createDatabasesClient();
-  const updatedUser = await databases.updateDocument(
-    "primary",
-    "user",
-    user.$id,
-    {
-      attribute: user[attribute],
-    }
-  );
-  console.log(`User ${attribute} updated:`, updatedUser);
+  try {
+    const { databases } = await createDatabasesClient();
+    const updatedUser = await databases.updateDocument(
+      "primary",
+      "user",
+      user.$id,
+      { [attribute]: user[attribute] }
+    );
+    console.log(`User ${attribute} updated:`, updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    throw new Error(
+      "An error occurred while updating your account. Please try again later."
+    );
+  }
 };
 
 export async function POST(req) {
   try {
     const user = await req.json();
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
-    console.log("Events:", events);
 
-    for (let i = 1; i < events.length; i += 2) {
-      const event = events[i];
-      switch (event) {
-        case "users.*.create":
-          await createUserEvent(user);
-          break;
-        case "users.*.delete":
-          await deleteUserEvent(user);
-          break;
-        case "users.*.sessions.*.create":
-          await createSessionEvent(user);
-          break;
-        case "users.*.sessions.*.delete":
-          await deleteSessionEvent(user);
-          break;
-        case "users.*.update.email":
-          await updateUserEvent(user, "email");
-          break;
-        case "users.*.update.name":
-          await updateUserEvent(user, "name");
-          break;
-        case "users.*.update.password":
-          await updateUserEvent(user, "passwordUpdate");
-          break;
-        case "users.*.update.status":
-          await updateUserEvent(user, "status");
-          break;
-        case "users.*.update.prefs":
-          await updateUserEvent(user, "prefs");
-          break;
-        default:
-          break;
+    const eventHandlers = {
+      "users.*.create": createUserEvent,
+      "users.*.delete": deleteUserEvent,
+      "users.*.sessions.*.create": createSessionEvent,
+      "users.*.sessions.*.delete": deleteSessionEvent,
+      "users.*.update.email": () => updateUserEvent(user, "email"),
+      "users.*.update.name": () => updateUserEvent(user, "name"),
+      "users.*.update.password": () => updateUserEvent(user, "passwordUpdate"),
+      "users.*.update.status": () => updateUserEvent(user, "status"),
+      "users.*.update.prefs": () => updateUserEvent(user, "prefs"),
+    };
+
+    for (const event of events) {
+      const handler = eventHandlers[event];
+      if (handler) {
+        try {
+          await handler(user);
+        } catch (error) {
+          console.error(`Webhook error for event ${event}:`, error);
+          return new Response(
+            "An error occurred while processing the request. Please try again later.",
+            {
+              status: 500,
+            }
+          );
+        }
       }
     }
   } catch (error) {
-    return new Response(`Webhook error: ${error.message}`, {
-      status: 400,
-    });
+    console.error("Webhook error:", error);
+    return new Response(
+      "An error occurred while processing the request. Please try again later.",
+      {
+        status: 500,
+      }
+    );
   }
 
   return new Response("Success!", {

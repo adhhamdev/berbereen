@@ -21,7 +21,10 @@ export default async function Page() {
     <div>
       <header className="flex items-center justify-between border-b px-4">
         <div className="flex items-center">
-          <Link href="/" className="flex items-center py-3 px-4 hover:text-slate-500">
+          <Link
+            href="/"
+            className="flex items-center py-3 px-4 hover:text-slate-500"
+          >
             <ArrowLeftIcon className="size-5 mr-2" />
             <h2 className="text-xl font-semibold">Profile</h2>
           </Link>
@@ -30,22 +33,23 @@ export default async function Page() {
 
       <div className="max-w-sm mx-auto rounded-lg overflow-hidden shadow-lg">
         <div className="border-b px-4 py-6">
-          <Image
-            src="/icon.jpg"
+          <div className="h-44 w-full bg-slate-600 object-cover rounded-xl"></div>
+          {/* <Image
+            src=""
             width={100}
             height={100}
             alt="Profile Cover"
             className="h-44 w-full object-cover rounded-xl"
-          />
+          /> */}
           <div className="relative text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
-                <Image
-                  className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
-                  src={profilePicture}
-                  alt="Profile Picture"
-                  width={40}
-                  height={40}
-                />
+             {profilePicture &&  <Image
+                className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
+                src={profilePicture || "/icon.jpg"}
+                alt="Profile Picture"
+                width={40}
+                height={40}
+              />}
             </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">

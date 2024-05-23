@@ -1,5 +1,5 @@
 import ImageOptions from "@/components/image-options";
-import BackNavBtn from "@/components/back-nav-btm";
+import BackNavBtn from "@/components/back-nav-btn";
 import { getImage } from "@/lib/server/actions";
 import Image from "next/image";
 

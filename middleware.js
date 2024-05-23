@@ -5,6 +5,7 @@ export async function middleware(req) {
   if (!session) {
     return NextResponse.redirect(new URL("/signup", req.url));
   }
+  return NextResponse.next();
 }
 
 export const config = {
@@ -15,5 +16,6 @@ export const config = {
     "/saved",
     "/settings",
     "/account",
+    "/api"
   ],
 };

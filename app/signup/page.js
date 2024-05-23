@@ -3,7 +3,7 @@ import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 import Image from "next/image";
-import logo from "@/public/icon.jpg";
+import logo from "/public/icon.jpg";
 
 export default async function Page() {
   return (

@@ -3,10 +3,15 @@
   "short_name": "Berbereen",
   "start_url": "https://berbereen.vercel.app",
   "display": "standalone",
+  "display_override": ["fullscreen", "minimal-ui", "browser", "window-controls-overlay"],
   "orientation": "any",
   "background_color": "#fff",
   "theme_color": "#111122",
   "description": "The Platform of Berbereenians",
+  "scope": "/",
+  "dir": "auto",
+  "iarc_rating_id": "everyone",
+  "lang": "en-US",
   "icons": [
     {
       "src": "/icon.jpg",

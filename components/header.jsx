@@ -15,7 +15,7 @@ import { getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
 import logo from '/public/icon.jpg';
 export default async function Header() {
-  const profilePicture = await getAvatar(50);
+  const profilePicture = await getAvatar(100);
   return (
     <div>
       <header className="flex items-center body-font shadow bg-white px-2">

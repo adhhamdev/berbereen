@@ -21,7 +21,7 @@ export const metadata = {
   description: "The platform of Berbereenians",
      manifest: "/manifest.json",
      openGraph: {
-       title: "Berbereen (Beruwala)",
+       title: "Berbereen",
        description: "The platform of Berbereenians",
        url: "/",
        siteName: "Berbereen",
@@ -31,7 +31,7 @@ export const metadata = {
      },
      twitter: {
       card: 'summary_large_image',
-      title: 'Berbereen (Beruwala)',
+      title: 'Berbereen',
       description: 'The platform of Berbereenians',
       creator: '@AdhhamDev',
       creatorId: '@AdhhamDev',

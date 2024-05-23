@@ -19,13 +19,13 @@ export default function ProfileOptions({ profilePicture }) {
           title="Account"
         >
           <Transition layoutId="profileIcon">
-            <Image
+           {profilePicture && <Image
               src={profilePicture}
               width={40}
               height={40}
               className="rounded-lg size-full"
               alt="Profile Icon"
-            />
+            />}
           </Transition>
         </button>
         <AnimatePresence>

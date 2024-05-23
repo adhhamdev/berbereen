@@ -48,13 +48,13 @@ export default async function Page() {
           /> */}
           <div className="relative text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
-              <Image
+              {profilePicture && <Image
                 className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
                 src={profilePicture}
                 alt="Profile Picture"
                 width={40}
                 height={40}
-              />
+              />}
             </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">

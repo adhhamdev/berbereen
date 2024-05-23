@@ -4,6 +4,7 @@ import Image from "next/image";
 import Transition from "../../components/transition";
 import { ArrowLeftIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import {BackNavBtn} from '@/components/back-nav-btn'
 
 export const metadata = {
   title: "Profile",
@@ -26,13 +27,7 @@ export default async function Page() {
     <div>
       <header className="flex items-center justify-between border-b lg:px-4">
         <div className="flex items-center">
-          <Link
-            href="/"
-            className="flex items-center py-3 px-4 hover:text-slate-500"
-          >
-            <ArrowLeftIcon className="size-5 mr-2" />
-            <h2 className="text-xl font-semibold">Profile</h2>
-          </Link>
+          <BackNavBtn text="Profile" />
         </div>
       </header>
 

@@ -25,21 +25,35 @@
       "description": "Open the Home feed",
       "icons": [
         {
-          "src": "/icon.jpg",
+          "src": "/shortcut-home-icon.svg",
           "sizes": "48x48",
-          "type": "image/jpg"
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Profile",
+      "url": "/account",
+      "description": "Open Profile",
+      "icons": [
+        {
+          "src": "/shortcut-user-icon.svg",
+          "sizes": "48x48",
+          "type": "image/svg+xml"
         }
       ]
     },
     {
       "name": "Settings",
       "url": "/settings",
-      "description": "Open Settings"
-    },
-    {
-      "name": "Profile",
-      "url": "/account",
-      "description": "Open Profile"
+      "description": "Open Settings",
+      "icons": [
+        {
+          "src": "/shortcut-cog-icon.svg",
+          "sizes": "48x48",
+          "type": "image/svg+xml"
+        }
+      ]
     }
   ],
   "id": "berbereen",
@@ -47,13 +61,7 @@
   "scope": "/",
   "lang": "en",
   "orientation": "any",
-  "display_override": [
-    "standalone",
-    "fullscreen",
-    "minimal-ui",
-    "browser",
-    "window-controls-overlay"
-  ],
+  "display_override": "fullscreen",
   "iarc_rating_id": "Ages 12+",
   "screenshots": [
     {

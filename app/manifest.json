@@ -14,7 +14,7 @@
   "lang": "en-US",
   "icons": [
     {
-      "src": "/icon.jpg",
+      "src": "/pwa-icon.png",
       "sizes": "48x48",
       "type": "image/jpg"
     }
@@ -31,7 +31,7 @@
       "description": "Open the Home feed",
       "icons": [
         {
-          "src": "/icon.jpg",
+          "src": "/pwa-icon.png",
           "sizes": "48x48",
           "type": "image/jpg"
         }

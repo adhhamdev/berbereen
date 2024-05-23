@@ -10,6 +10,7 @@ export const viewport = {
 }
 
 export const metadata = {
+  metadataBase: new URL('https://berbereen.vercel.app'),
   other: {
     "google-site-verification": "0R28Xy-oyNhcE2_MB10Jrkoayy5JcPf7mkx89IIMySk"
   },
@@ -18,19 +19,12 @@ export const metadata = {
     default: 'Home',
   },
   description: "The platform of Berbereenians",
-     manifest: "https://berbereen.vercel.app/manifest.json",
+     manifest: "/manifest.json",
      openGraph: {
        title: "Berbereen (Beruwala)",
        description: "The platform of Berbereenians",
-       url: "https://berbereen.vercel.app",
+       url: "/",
        siteName: "Berbereen",
-       images: [
-         {
-           url: "https://berbereen.vercel.app/icon.jpg",
-           width: 1200,
-           height: 600,
-         },
-       ],
        locale: "en-US",
        type: "website",
        authors: ['Adhham Safwan']
@@ -41,12 +35,11 @@ export const metadata = {
       description: 'The platform of Berbereenians',
       creator: '@AdhhamDev',
       creatorId: '@AdhhamDev',
-      images: ['https://berbereen.vercel.app/icon.jpg'],
       app: {
         name: 'Berbereen',
         url: {
-          iphone: 'https://berbereen.vercel.app',
-          ipad: 'https://berbereen.vercel.app',
+          iphone: '/',
+          ipad: '/',
         },
       },
     },

@@ -1,0 +1,45 @@
+{
+    "name": "Berbereen (Beruwala)",
+    "short_name": "Berbereen",
+    "start_url": "https://berbereen.vercel.app",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "tealblue",
+    "description": "The Platform of Berbereenians",
+    "icons": [
+      {
+        "src": "/icon.jpg",
+        "sizes": "48x48",
+        "type": "image/jpg"
+      }
+    ],
+    "categories": [
+      "social",
+      "community",
+      "networking"
+    ],
+    "shortcuts" : [
+        {
+          "name": "Feed",
+          "url": "/",
+          "description": "Open the Home feed",
+          "icons": [
+            {
+              "src": "/icon.jpg",
+              "sizes": "48x48",
+              "type": "image/jpg"
+            }]
+        },
+        {
+          "name": "Settings",
+          "url": "/settings",
+          "description": "Open Settings"
+        },
+        {
+          "name": "Profile",
+          "url": "/account",
+          "description": "Open Profile"
+        }
+      ]
+  }
+  

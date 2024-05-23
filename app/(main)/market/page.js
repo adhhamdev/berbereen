@@ -1,4 +1,10 @@
 import { BuildingStorefrontIcon } from "@heroicons/react/24/solid";
+
+export const metadata = {
+  title: "Market",
+  description: "Sell & Buy Goods",
+};
+
 export default function Page() {
   return (
     <div>

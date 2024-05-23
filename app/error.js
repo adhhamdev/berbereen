@@ -14,7 +14,7 @@ export default function Error({ error, reset }) {
     <div className="flex flex-col items-center justify-center h-screen bg-white">
       <div className="p-8 rounded-xl shadow-md">
         <h2 className="text-2xl font-semibold text-black mb-4">
-          Something went wrong. Please try again.
+          {error.message}
         </h2>
         <button
           className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"

@@ -3,6 +3,11 @@ import BackBtn from "@/components/skeletons/back-btn";
 import { getImage } from "@/lib/server/actions";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Image",
+  description: "A Post image",
+};
+
 export default async function Page({ params }) {
   const imageUrl = await getImage(params.id);
   return (

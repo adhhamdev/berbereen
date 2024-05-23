@@ -5,6 +5,11 @@ import Transition from "../../components/transition";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Profile",
+  description: "User Profile",
+};
+
 export default async function Page() {
   const user = await getLoggedInUser();
   const profilePicture = await getAvatar(100);

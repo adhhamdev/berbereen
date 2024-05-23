@@ -1,4 +1,10 @@
 import { CogIcon } from "@heroicons/react/24/solid";
+
+export const metadata = {
+  title: "Settings",
+  description: "Set your preferences",
+};
+
 export default function Page() {
   return (
     <div>

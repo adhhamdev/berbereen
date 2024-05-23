@@ -1,5 +1,10 @@
 import { MapIcon } from "@heroicons/react/24/solid";
 
+export const metadata = {
+  title: "Explore",
+  description: "The Home feed",
+};
+
 export default function Page() {
   return (
     <div>

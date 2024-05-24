@@ -72,7 +72,7 @@ const createSessionEvent = async (userSession) => {
     );
     console.log("User created from Google:", createdUser);
   } catch (error) {
-    console.log(error.messsage)
+    console.log(error.message)
   }
 };
 

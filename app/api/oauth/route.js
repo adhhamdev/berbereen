@@ -12,6 +12,7 @@ export async function GET(request) {
 
     const { account } = await createAdminClient();
     const session = await account.createSession(userId, secret);
+    console.log("from oauth handler:", session, session.providerAccessToken)
 
     cookies().set("user-session", session.secret, {
       path: "/",

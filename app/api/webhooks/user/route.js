@@ -44,7 +44,7 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  const { id, userId, provider, secret } =
+  const { id, userId, provider, secret, providerAccessToken } =
     userSession;
   if (provider === "email") {
     return;
@@ -53,7 +53,7 @@ const createSessionEvent = async (userSession) => {
   try {
     const client = new OAuth2Client(userId);
     const ticket = await client.verifyIdToken({
-      idToken: secret,
+      idToken: providerAccessToken,
       audience: userId,
     });
     const payload = ticket.getPayload();

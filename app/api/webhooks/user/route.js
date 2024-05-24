@@ -40,9 +40,6 @@ const deleteUserEvent = async (user) => {
     console.log("User deleted!");
   } catch (error) {
     console.error("Error deleting user:", error);
-    throw new Error(
-      "We're sorry, there was an issue deleting your account. Please try again later."
-    );
   }
 };
 
@@ -91,9 +88,6 @@ const updateUserEvent = async (user, attribute) => {
     console.log(`User ${attribute} updated:`, updatedUser);
   } catch (error) {
     console.error("Error updating user:", error);
-    throw new Error(
-      "An error occurred while updating your account. Please try again later."
-    );
   }
 };
 

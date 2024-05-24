@@ -3,7 +3,7 @@ import {
   createStorageClient,
   createAvatarsClient,
 } from "@/lib/server/appwrite";
-import { GoogleAuth } from "google-auth-library";
+import { GoogleAuth, OAuth2Client } from "google-auth-library";
 import { ID, InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
@@ -44,32 +44,36 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (sessionUser) => {
-  // const { userId, provider } = sessionUser;
-  // if (provider === "email") {
-  //   return;
-  // }
-  console.log(sessionUser);
-  
-  // const client = new OAuth2Client(sessionUser.providerUid);
-  // const ticket = await client.verifyIdToken({
-  //   idToken: secret,
-  //   audience: sessionUser.providerUid,
-  // });
-  // const payload = ticket.getPayload();
-  // const userInfo = {
-  //   name: payload.name,
-  //   email: payload.email,
-  //   picture: payload.picture,
-  // };
-  // console.log(userInfo);
-  // const { databases } = await createDatabasesClient();
-  // const createdUser = await databases.createDocument(
-  //   "primary",
-  //   "user",
-  //   userId,
-  //   { avatar: "" }
-  // );
-  // console.log("User created from Google:", createdUser);
+  const { id, userId, providerUid, provider, providerAccessToken, secret } =
+    userSession;
+  if (provider === "email") {
+    return;
+  }
+  console.log(userSession);
+  try {
+    const client = new OAuth2Client(providerUid);
+    const ticket = await client.verifyIdToken({
+      idToken: secret,
+      audience: providerUid,
+    });
+    const payload = ticket.getPayload();
+    const userInfo = {
+      name: payload.name,
+      email: payload.email,
+      picture: payload.picture,
+    };
+    console.log("Provider info:", userInfo);
+    const { databases } = await createDatabasesClient();
+    const createdUser = await databases.createDocument(
+      "primary",
+      "user",
+      userId,
+      { avatar: "" }
+    );
+    console.log("User created from Google:", createdUser);
+  } catch (error) {
+    console.log(error.messsage)
+  }
 };
 
 const deleteSessionEvent = async (user) => {

@@ -3,7 +3,7 @@ import {
   createStorageClient,
   createAvatarsClient,
 } from "@/lib/server/appwrite";
-import { OAuth2Client } from "google-auth-library";
+import { GoogleAuth } from "google-auth-library";
 import { ID, InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
@@ -33,6 +33,9 @@ export const createUserEvent = async (user) => {
 const deleteUserEvent = async (user) => {
   try {
     const { databases } = await createDatabasesClient();
+    const { storage } = await createStorageClient();
+    const userDoc = await databases.getDocument("primary", "user", user.$id);
+    await storage.deleteFile("primary", userDoc.avatar);
     await databases.deleteDocument("primary", "user", user.$id);
     console.log("User deleted!");
   } catch (error) {
@@ -49,6 +52,7 @@ const createSessionEvent = async (sessionUser) => {
   //   return;
   // }
   console.log(sessionUser);
+  
   // const client = new OAuth2Client(sessionUser.providerUid);
   // const ticket = await client.verifyIdToken({
   //   idToken: secret,

@@ -25,7 +25,7 @@ export default function Error({ error, reset }) {
           ) : error.statusCode === 403 ? (
             <span>You don&apos;t have permission to access this resource.</span>
           ) : (
-            <span>{error.message || "An unexpected error occurred."}</span>
+            <span>{"An unexpected error occurred. Try again."}</span>
           )}
         </h2>
         <button

@@ -37,7 +37,7 @@ const deleteUserEvent = async (user) => {
     const userDoc = await databases.getDocument("primary", "user", user.$id);
     await storage.deleteFile("primary", userDoc.avatar);
     await databases.deleteDocument("primary", "user", user.$id);
-    console.log("User deleted!");
+    console.log("User Data deleted!");
   } catch (error) {
     console.error("Error deleting user:", error);
   }

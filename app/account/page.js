@@ -2,9 +2,8 @@ import { getLoggedInUser } from "@/lib/server/appwrite";
 import { deleteUser, getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
 import Transition from "../../components/transition";
-import { ArrowLeftIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
-import {BackNavBtn} from '@/components/back-nav-btn'
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
+import BackNavBtn from "@/components/back-nav-btn";
 
 export const metadata = {
   title: "Profile",
@@ -43,13 +42,15 @@ export default async function Page() {
           /> */}
           <div className="relative text-center my-4 -mt-20">
             <Transition layoutId="profileIcon">
-              {profilePicture && <Image
-                className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
-                src={profilePicture}
-                alt="Profile Picture"
-                width={40}
-                height={40}
-              />}
+              {profilePicture && (
+                <Image
+                  className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
+                  src={profilePicture}
+                  alt="Profile Picture"
+                  width={40}
+                  height={40}
+                />
+              )}
             </Transition>
             <div className="py-2">
               <h3 className="font-bold text-2xl text-gray-800 dark:text-white mb-1">

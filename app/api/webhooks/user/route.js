@@ -43,7 +43,7 @@ const deleteUserEvent = async (user) => {
   }
 };
 
-const createSessionEvent = async (sessionUser) => {
+const createSessionEvent = async (userSession) => {
   const { id, userId, providerUid, provider, providerAccessToken, secret } =
     userSession;
   if (provider === "email") {

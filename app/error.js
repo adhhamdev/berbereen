@@ -6,7 +6,7 @@ export default function Error({ error, reset }) {
     if (error && typeof error === "object" && error.message) {
       console.log(error.message);
     } else {
-      console.log("An error occurred:", error);
+      console.log("An unexpected error occurred:", error);
     }
   }, [error]);
 
@@ -18,6 +18,12 @@ export default function Error({ error, reset }) {
             <span>Oops, the thing you&apos;re looking for doesn&apos;t exist.</span>
           ) : error.statusCode === 500 ? (
             <span>Uh oh, something went wrong on our end.</span>
+          ) : error.statusCode === 400 ? (
+            <span>Oops, there was a problem with your request.</span>
+          ) : error.statusCode === 401 ? (
+            <span>Unauthorized access. Please log in.</span>
+          ) : error.statusCode === 403 ? (
+            <span>You don&apos;t have permission to access this resource.</span>
           ) : (
             <span>{error.message || "An unexpected error occurred."}</span>
           )}

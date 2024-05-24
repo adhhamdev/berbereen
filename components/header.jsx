@@ -17,10 +17,10 @@ import logo from "/public/icon.jpg";
 import { getLoggedInUser } from "@/lib/server/appwrite";
 export default async function Header() {
   const user = await getLoggedInUser();
-  // let profilePicture;
-  // if (user) {
-  //   profilePicture = await getAvatar(100);
-  // }
+  let profilePicture;
+  if (user) {
+    profilePicture = "";
+  }
   return (
     <div>
       <header className="flex items-center body-font shadow bg-white px-2">

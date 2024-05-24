@@ -13,7 +13,8 @@ export async function GET(request) {
     const { account } = await createAdminClient();
     const session = await account.createSession(userId, secret);
     console.log("from oauth handler:", session, session.providerAccessToken);
-    console.log(await account.updateSession(session.$id))
+    const { users } = await createUsersClient();
+    console.log(await users.update.updateSession(session.$id))
     cookies().set("user-session", session.secret, {
       path: "/",
       httpOnly: true,

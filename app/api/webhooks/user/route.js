@@ -46,7 +46,7 @@ const deleteUserEvent = async (user) => {
 const createSessionEvent = async (userSession) => {
   const { provider, $id } = userSession;
   const { users } = await createUsersClient();
-  const user = await users.create($id, email, )
+  const user = await users.get($id)
   console.log(user);
   if (provider === "email") {
     return;
@@ -73,8 +73,8 @@ const createSessionEvent = async (userSession) => {
   }
 };
 
-const deleteSessionEvent = async (user) => {
-  console.log("Session deleted", user);
+const deleteSessionEvent = async (userSession) => {
+  console.log("Session deleted", userSession);
 };
 
 const updateUserEvent = async (user, attribute) => {

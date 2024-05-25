@@ -12,7 +12,7 @@ export const metadata = {
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  const profilePicture = await getAvatar(100);
+  const profilePicture = await getAvatar(200);
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/22.jpg",

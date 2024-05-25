@@ -59,9 +59,12 @@ const createSessionEvent = async (userSession) => {
     const createdUser = await databases.createDocument(
       "primary",
       "user",
-      user.$id,
+      userSession.$id,
       { avatar: uploadedFile.$id }
     );
+    if(!createdUser) {
+      throw new Error("An error occurred while creating your account. Please try again.");
+    }
     console.log("User created:", createdUser);
   } catch (error) {
     console.log(error.message);

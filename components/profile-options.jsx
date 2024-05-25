@@ -13,21 +13,23 @@ export default function ProfileOptions({ profilePicture }) {
   return (
     <div>
       <div className="relative" onBlur={() => setIsOpen(false)}>
-        <button
-          className="flex justify-center itemse-center mr-2 size-10 text-gray-600 hover:text-gray-800 shadow-lg rounded-lg"
-          onClick={() => setIsOpen((prev) => !prev)}
-          title="Account"
-        >
-          <Transition layoutId="profileIcon">
-           {profilePicture && <Image
-              src={profilePicture}
-              width={40}
-              height={40}
-              className="rounded-lg size-full"
-              alt="Profile Icon"
-            />}
-          </Transition>
-        </button>
+        <Transition layoutId="profileIcon">
+          <button
+            className="flex justify-center itemse-center mr-2 size-10 text-gray-600 hover:text-gray-800 shadow-lg rounded-lg"
+            onClick={() => setIsOpen((prev) => !prev)}
+            title="Account"
+          >
+            {profilePicture && (
+              <Image
+                src={profilePicture}
+                width={40}
+                height={40}
+                className="rounded-lg size-full"
+                alt="Profile Icon"
+              />
+            )}
+          </button>
+        </Transition>
         <AnimatePresence>
           {isOpen && (
             <Transition

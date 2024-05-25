@@ -13,14 +13,10 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
 import { getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
-import logo from "/public/icon.jpg";
-import { getLoggedInUser } from "@/lib/server/appwrite";
+import logo from '/public/icon.jpg';
+
 export default async function Header() {
-  const user = await getLoggedInUser();
-  let profilePicture;
-  if (user) {
-    profilePicture = "";
-  }
+  const profilePicture = await getAvatar(100);
   return (
     <div>
       <header className="flex items-center body-font shadow bg-white px-2">
@@ -28,17 +24,10 @@ export default async function Header() {
           <Link
             href="/"
             className="flex title-font font-medium items-center text-gray-900"
-            scroll={false}
+scroll={false}
           >
-            <Image
-              src={logo}
-              alt="Berbereen Logo"
-              className="w-10 rounded-full"
-            />
-            <span
-              className={`${righteous.className} ml-2 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}
-              translate="no"
-            >
+            <Image src={logo} alt="Berbereen Logo" className="w-10 rounded-full" />
+            <span className={`${righteous.className} ml-2 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
               Berbereen.
             </span>
           </Link>
@@ -48,7 +37,7 @@ export default async function Header() {
             <Link
               href="/"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
-              scroll={false}
+scroll={false}
             >
               <span className="sr-only">Home</span>
               <HomeIcon className="size-7 p-1 text-slate-700" />
@@ -57,7 +46,7 @@ export default async function Header() {
             <Link
               href="/explore"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
-              scroll={false}
+scroll={false}
             >
               <span className="sr-only">Explore</span>
               <MapIcon className="size-7 p-1 text-slate-700" />
@@ -66,7 +55,7 @@ export default async function Header() {
             <Link
               href="/market"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
-              scroll={false}
+scroll={false}
             >
               <span className="sr-only">Market</span>
               <BuildingStorefrontIcon className="size-7 p-1 text-slate-700" />
@@ -75,7 +64,7 @@ export default async function Header() {
             <Link
               href="/saved"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
-              scroll={false}
+scroll={false}
             >
               <span className="sr-only">Saved</span>
               <BookmarkSquareIcon className="size-7 p-1 text-slate-700" />
@@ -84,7 +73,7 @@ export default async function Header() {
             <Link
               href="/settings"
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
-              scroll={false}
+scroll={false}
             >
               <span className="sr-only">Settings</span>
               <CogIcon className="size-7 p-1 text-slate-700" />

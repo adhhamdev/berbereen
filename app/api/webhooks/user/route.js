@@ -98,9 +98,9 @@ export async function POST(req) {
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
 
     const eventHandlers = {
-      "users.*.create": createUserEvent(user),
-      "users.*.delete": deleteUserEvent(user),
-      "users.*.sessions.*.create": createSessionEvent(user),
+      "users.*.create": createUserEvent,
+      "users.*.delete": deleteUserEvent,
+      "users.*.sessions.*.create": createSessionEvent,
       "users.*.sessions.*.delete": deleteSessionEvent(user),
       "users.*.update.email": () => updateUserEvent(user, "email"),
       "users.*.update.name": () => updateUserEvent(user, "name"),

@@ -51,7 +51,8 @@ const createSessionEvent = async (userSession) => {
   try {
     console.log(userSession);
     const { users } = await createUsersClient();
-    const user = await users.console.log(user);
+    const user = await users.get($id);
+    console.log(user);
     const { avatars } = await createAvatarsClient();
     const { storage } = await createStorageClient();
     const { databases } = await createDatabasesClient();

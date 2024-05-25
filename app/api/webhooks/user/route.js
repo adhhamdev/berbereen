@@ -45,14 +45,13 @@ const deleteUserEvent = async (user) => {
 
 const createSessionEvent = async (userSession) => {
   const { provider, $id } = userSession;
-  console.log(userSession);
-  const { users } = await createUsersClient();
-  const user = await users.get($id);
-  console.log(user);
   if (provider === "email") {
     return;
   }
   try {
+    console.log(userSession);
+    const { users } = await createUsersClient();
+    const user = await users.console.log(user);
     const { avatars } = await createAvatarsClient();
     const { storage } = await createStorageClient();
     const { databases } = await createDatabasesClient();
@@ -99,16 +98,15 @@ export async function POST(req) {
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
 
     const eventHandlers = {
-      "users.*.create": (user) => createUserEvent(user),
-      "users.*.delete": (user) => deleteUserEvent(user),
-      "users.*.sessions.*.create": (user) => createSessionEvent(user),
-      "users.*.sessions.*.delete": (user) => deleteSessionEvent(user),
-      "users.*.update.email": (user) => updateUserEvent(user, "email"),
-      "users.*.update.name": (user) => updateUserEvent(user, "name"),
-      "users.*.update.password": (user) =>
-        updateUserEvent(user, "passwordUpdate"),
-      "users.*.update.status": (user) => updateUserEvent(user, "status"),
-      "users.*.update.prefs": (user) => updateUserEvent(user, "prefs"),
+      "users.*.create": (u) => createUserEvent(u),
+      "users.*.delete": (u) => deleteUserEvent(u),
+      "users.*.sessions.*.create": (u) => createSessionEvent(u),
+      "users.*.sessions.*.delete": (u) => deleteSessionEvent(u),
+      "users.*.update.email": (u) => updateUserEvent(u, "email"),
+      "users.*.update.name": (u) => updateUserEvent(u, "name"),
+      "users.*.update.password": (u) => updateUserEvent(u, "passwordUpdate"),
+      "users.*.update.status": (u) => updateUserEvent(u, "status"),
+      "users.*.update.prefs": (u) => updateUserEvent(u, "prefs"),
     };
 
     for (const event of events) {

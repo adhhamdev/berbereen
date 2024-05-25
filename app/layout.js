@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'tealblue' },
+    { media: '(prefers-color-scheme: light)', color: 'blue' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
   colorScheme: 'light',

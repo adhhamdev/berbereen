@@ -19,15 +19,13 @@ export default function ProfileOptions({ profilePicture }) {
             onClick={() => setIsOpen((prev) => !prev)}
             title="Account"
           >
-            {profilePicture && (
-              <Image
-                src={profilePicture}
-                width={40}
-                height={40}
-                className="rounded-lg size-full"
-                alt="Profile Icon"
-              />
-            )}
+            <Image
+              src={profilePicture}
+              width={40}
+              height={40}
+              className="rounded-lg size-full"
+              alt="Profile Icon"
+            />
           </button>
         </Transition>
         <AnimatePresence>

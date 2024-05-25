@@ -19,8 +19,9 @@ export default function ProfileOptions({ profilePicture }) {
             onClick={() => setIsOpen((prev) => !prev)}
             title="Account"
           >
+            
             <Image
-              src={profilePicture}
+              src={profilePicture || ""}
               width={40}
               height={40}
               className="rounded-lg size-full"

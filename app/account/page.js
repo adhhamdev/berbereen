@@ -44,7 +44,7 @@ export default async function Page() {
             <Transition layoutId="profileIcon">
               <Image
                 className="size-32 mx-auto my-4 bg-white rounded-full border-8 border-white"
-                src={profilePicture}
+                src={profilePicture || ""}
                 alt="Profile Picture"
                 width={40}
                 height={40}

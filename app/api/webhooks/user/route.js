@@ -2,6 +2,7 @@ import {
   createDatabasesClient,
   createStorageClient,
   createAvatarsClient,
+  getLoggedInUser,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 
@@ -43,8 +44,9 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  const { name, provider } = userSession;
-  console.log(userSession)
+  const { provider } = userSession;
+  const user = await getLoggedInUser()
+  console.log(user)
   if (provider === "email") {
     return;
   }

@@ -3,7 +3,6 @@ import {
   createStorageClient,
   createAvatarsClient,
 } from "@/lib/server/appwrite";
-import { GoogleAuth, OAuth2Client } from "google-auth-library";
 import { ID, InputFile } from "node-appwrite";
 
 export const createUserEvent = async (user) => {
@@ -44,35 +43,28 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  const { id, userId, provider, secret, providerAccessToken } =
-    userSession;
+  const { name, provider } = userSession;
+  console.log(userSession)
   if (provider === "email") {
     return;
   }
-  console.log("testsession", userSession);
   try {
-    const client = new OAuth2Client(userId);
-    const ticket = await client.verifyIdToken({
-      idToken: providerAccessToken,
-      audience: userId,
-    });
-    const payload = ticket.getPayload();
-    const userInfo = {
-      name: payload.name,
-      email: payload.email,
-      picture: payload.picture,
-    };
-    console.log("Provider info:", userInfo);
+    const { avatars } = await createAvatarsClient();
+    const { storage } = await createStorageClient();
     const { databases } = await createDatabasesClient();
+    const initialsAvatar = await avatars.getInitials(name);
+    const iconBuffer = Buffer.from(initialsAvatar, "base64");
+    const file = InputFile.fromBuffer(iconBuffer, "avatar");
+    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
     const createdUser = await databases.createDocument(
       "primary",
       "user",
-      userId,
-      { avatar: "" }
+      user.$id,
+      { avatar: uploadedFile.$id }
     );
-    console.log("User created from Google:", createdUser);
+    console.log("User created:", createdUser);
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
 };
 

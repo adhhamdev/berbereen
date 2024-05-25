@@ -1,4 +1,4 @@
-import { createAdminClient, createUsersClient } from "@/lib/server/appwrite";
+import { createAdminClient } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -8,11 +8,10 @@ export async function GET(request) {
   try {
     const userId = request.nextUrl.searchParams.get("userId");
     const secret = request.nextUrl.searchParams.get("secret");
-    console.log(userId, secret);
 
     const { account } = await createAdminClient();
     const session = await account.createSession(userId, secret);
-    console.log("from oauth handler:", session, session.providerAccessToken);
+
     cookies().set("user-session", session.secret, {
       path: "/",
       httpOnly: true,
@@ -26,7 +25,7 @@ export async function GET(request) {
     return new NextResponse(
       "An error occurred. Please try again later or contact support if the issue persists.",
       {
-        status: 500,
+        status: 500
       }
     );
   }

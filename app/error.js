@@ -1,4 +1,6 @@
 "use client";
+import { inter } from "@/lib/fonts";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Error({ error, reset }) {
@@ -11,11 +13,13 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white">
-      <div className="p-8 rounded-xl shadow-md">
-        <h2 className="text-2xl font-semibold text-black mb-4">
+    <div className={`${inter.className} flex flex-col items-center justify-center h-screen bg-white`}>
+      <div className="p-16 m-5 rounded-xl shadow-2xl text-center">
+        <h2 className="text-xl font-semibold text-black mb-8">
           {error.statusCode === 404 ? (
-            <span>Oops, the thing you&apos;re looking for doesn&apos;t exist.</span>
+            <span>
+              Oops, the thing you&apos;re looking for doesn&apos;t exist.
+            </span>
           ) : error.statusCode === 500 ? (
             <span>Uh oh, something went wrong on our end.</span>
           ) : error.statusCode === 400 ? (
@@ -29,11 +33,17 @@ export default function Error({ error, reset }) {
           )}
         </h2>
         <button
-          className="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-black hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-md mt-8"
           onClick={reset}
         >
           Try again
         </button>
+        <Link
+          href="/"
+          className="block mt-4 hover:bg-slate-300 font-bold py-2 px-4 rounded-full border-2 border-slate-400"
+        >
+          Go Back
+        </Link>
       </div>
     </div>
   );

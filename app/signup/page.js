@@ -1,12 +1,15 @@
-"use client"
-import { getLoggedInUser } from "@/lib/server/appwrite";
 import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 import Image from "next/image";
 import logo from "/public/icon.jpg";
 
-export default function Page() {
+export const metadata = {
+  title: "Signup",
+  description: "Sign up to Berbereen",
+};
+
+export default async function Page() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">
@@ -90,7 +93,7 @@ export default function Page() {
           <span className="text-sm text-gray-600">Or</span>
         </div>
         <div className="mt-2 space-y-2">
-          <form onSubmit={async () => await signUpWithGoogle()}>
+          <form action={signUpWithGoogle}>
             <button
               type="submit"
               className="flex items-center justify-center w-full py-2 px-4 hover:bg-gray-300 focus:ring-gray-500 focus:ring-offset-gray-200 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"

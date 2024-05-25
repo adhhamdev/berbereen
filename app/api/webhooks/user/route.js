@@ -45,8 +45,9 @@ const deleteUserEvent = async (user) => {
 
 const createSessionEvent = async (userSession) => {
   const { provider, $id } = userSession;
+  console.log(userSession);
   const { users } = await createUsersClient();
-  const user = await users.get($id)
+  const user = await users.get($id);
   console.log(user);
   if (provider === "email") {
     return;
@@ -98,15 +99,16 @@ export async function POST(req) {
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
 
     const eventHandlers = {
-      "users.*.create": createUserEvent,
-      "users.*.delete": deleteUserEvent,
-      "users.*.sessions.*.create": createSessionEvent,
-      "users.*.sessions.*.delete": deleteSessionEvent(user),
-      "users.*.update.email": () => updateUserEvent(user, "email"),
-      "users.*.update.name": () => updateUserEvent(user, "name"),
-      "users.*.update.password": () => updateUserEvent(user, "passwordUpdate"),
-      "users.*.update.status": () => updateUserEvent(user, "status"),
-      "users.*.update.prefs": () => updateUserEvent(user, "prefs"),
+      "users.*.create": (user) => createUserEvent(user),
+      "users.*.delete": (user) => deleteUserEvent(user),
+      "users.*.sessions.*.create": (user) => createSessionEvent(user),
+      "users.*.sessions.*.delete": (user) => deleteSessionEvent(user),
+      "users.*.update.email": (user) => updateUserEvent(user, "email"),
+      "users.*.update.name": (user) => updateUserEvent(user, "name"),
+      "users.*.update.password": (user) =>
+        updateUserEvent(user, "passwordUpdate"),
+      "users.*.update.status": (user) => updateUserEvent(user, "status"),
+      "users.*.update.prefs": (user) => updateUserEvent(user, "prefs"),
     };
 
     for (const event of events) {

@@ -44,33 +44,33 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  const { provider, $id, email } = userSession;
+  const { provider, $id } = userSession;
   const { users } = await createUsersClient();
-  const user = await users.get($id);
+  const user = await users.create($id, email, )
   console.log(user);
-  // if (provider === "email") {
-  //   return;
-  // }
-  // try {
-  //   const { avatars } = await createAvatarsClient();
-  //   const { storage } = await createStorageClient();
-  //   const { databases } = await createDatabasesClient();
-  //   const initialsAvatar = await avatars.getInitials(user.name);
-  //   const iconBuffer = Buffer.from(initialsAvatar, "base64");
-  //   const file = InputFile.fromBuffer(iconBuffer, "avatar");
-  //   const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-  //   const createdUser = await databases.createDocument("primary", "user", $id, {
-  //     avatar: uploadedFile.$id,
-  //   });
-  //   if (!createdUser) {
-  //     throw new Error(
-  //       "An error occurred while creating your account. Please try again."
-  //     );
-  //   }
-  //   console.log("User created:", createdUser);
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
+  if (provider === "email") {
+    return;
+  }
+  try {
+    const { avatars } = await createAvatarsClient();
+    const { storage } = await createStorageClient();
+    const { databases } = await createDatabasesClient();
+    const initialsAvatar = await avatars.getInitials(user.name);
+    const iconBuffer = Buffer.from(initialsAvatar, "base64");
+    const file = InputFile.fromBuffer(iconBuffer, "avatar");
+    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
+    const createdUser = await databases.createDocument("primary", "user", $id, {
+      avatar: uploadedFile.$id,
+    });
+    if (!createdUser) {
+      throw new Error(
+        "An error occurred while creating your account. Please try again."
+      );
+    }
+    console.log("User created:", createdUser);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const deleteSessionEvent = async (user) => {
@@ -98,10 +98,10 @@ export async function POST(req) {
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
 
     const eventHandlers = {
-      "users.*.create": createUserEvent,
-      "users.*.delete": deleteUserEvent,
-      "users.*.sessions.*.create": createSessionEvent,
-      "users.*.sessions.*.delete": deleteSessionEvent,
+      "users.*.create": createUserEvent(user),
+      "users.*.delete": deleteUserEvent(user),
+      "users.*.sessions.*.create": createSessionEvent(user),
+      "users.*.sessions.*.delete": deleteSessionEvent(user),
       "users.*.update.email": () => updateUserEvent(user, "email"),
       "users.*.update.name": () => updateUserEvent(user, "name"),
       "users.*.update.password": () => updateUserEvent(user, "passwordUpdate"),

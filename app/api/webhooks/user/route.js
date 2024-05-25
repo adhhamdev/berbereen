@@ -45,30 +45,30 @@ const deleteUserEvent = async (user) => {
 const createSessionEvent = async (userSession) => {
   const { name, provider } = userSession;
   console.log(userSession)
-  if (provider === "email") {
-    return;
-  }
-  try {
-    const { avatars } = await createAvatarsClient();
-    const { storage } = await createStorageClient();
-    const { databases } = await createDatabasesClient();
-    const initialsAvatar = await avatars.getInitials(name);
-    const iconBuffer = Buffer.from(initialsAvatar, "base64");
-    const file = InputFile.fromBuffer(iconBuffer, "avatar");
-    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-    const createdUser = await databases.createDocument(
-      "primary",
-      "user",
-      userSession.$id,
-      { avatar: uploadedFile.$id }
-    );
-    if(!createdUser) {
-      throw new Error("An error occurred while creating your account. Please try again.");
-    }
-    console.log("User created:", createdUser);
-  } catch (error) {
-    console.log(error.message);
-  }
+  // if (provider === "email") {
+  //   return;
+  // }
+  // try {
+  //   const { avatars } = await createAvatarsClient();
+  //   const { storage } = await createStorageClient();
+  //   const { databases } = await createDatabasesClient();
+  //   const initialsAvatar = await avatars.getInitials(name);
+  //   const iconBuffer = Buffer.from(initialsAvatar, "base64");
+  //   const file = InputFile.fromBuffer(iconBuffer, "avatar");
+  //   const uploadedFile = await storage.createFile("primary", ID.unique(), file);
+  //   const createdUser = await databases.createDocument(
+  //     "primary",
+  //     "user",
+  //     userSession.$id,
+  //     { avatar: uploadedFile.$id }
+  //   );
+  //   if(!createdUser) {
+  //     throw new Error("An error occurred while creating your account. Please try again.");
+  //   }
+  //   console.log("User created:", createdUser);
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
 };
 
 const deleteSessionEvent = async (user) => {

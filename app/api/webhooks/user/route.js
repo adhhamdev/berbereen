@@ -3,6 +3,7 @@ import {
   createStorageClient,
   createAvatarsClient,
   getLoggedInUser,
+  createUsersClient,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 
@@ -44,9 +45,10 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  const { provider } = userSession;
-  const user = await getLoggedInUser()
-  console.log(user)
+  const { provider, $id } = userSession;
+  const { users } = await createUsersClient();
+  const user = await users.get($id);
+  console.log(user);
   if (provider === "email") {
     return;
   }
@@ -54,18 +56,17 @@ const createSessionEvent = async (userSession) => {
     const { avatars } = await createAvatarsClient();
     const { storage } = await createStorageClient();
     const { databases } = await createDatabasesClient();
-    const initialsAvatar = await avatars.getInitials(name);
+    const initialsAvatar = await avatars.getInitials(user.name);
     const iconBuffer = Buffer.from(initialsAvatar, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-    const createdUser = await databases.createDocument(
-      "primary",
-      "user",
-      userSession.$id,
-      { avatar: uploadedFile.$id }
-    );
-    if(!createdUser) {
-      throw new Error("An error occurred while creating your account. Please try again.");
+    const createdUser = await databases.createDocument("primary", "user", $id, {
+      avatar: uploadedFile.$id,
+    });
+    if (!createdUser) {
+      throw new Error(
+        "An error occurred while creating your account. Please try again."
+      );
     }
     console.log("User created:", createdUser);
   } catch (error) {

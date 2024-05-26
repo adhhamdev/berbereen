@@ -1,4 +1,4 @@
-import { createAdminClient } from "@/lib/server/appwrite";
+import { createAdminClient, getLoggedInUser } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -18,6 +18,9 @@ export async function GET(request) {
       sameSite: "strict",
       secure: true,
     });
+
+    const user = await getLoggedInUser()
+    console.log("from after signing", user)
 
     return NextResponse.redirect(`${request.nextUrl.origin}/`);
   } catch (error) {

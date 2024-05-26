@@ -55,7 +55,8 @@ const createSessionEvent = async (userSession) => {
     const createdUserDoc = await databases.createDocument(
       "primary",
       "user",
-      $id
+      $id,
+      {}
     );
     if (!createdUserDoc) {
       throw new Error(

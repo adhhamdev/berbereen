@@ -1,10 +1,7 @@
 import {
   createDatabasesClient,
   createStorageClient,
-  createAvatarsClient,
-  createUsersClient,
-  getLoggedInUser,
-  createAdminClient,
+  createAvatarsClient
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 

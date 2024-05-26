@@ -3,6 +3,7 @@ import {
   createStorageClient,
   createAvatarsClient,
   createUsersClient,
+  getLoggedInUser,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 
@@ -48,30 +49,28 @@ const createSessionEvent = async (userSession) => {
   if (provider === "email") {
     return;
   }
-  try {
-    console.log(userSession);
-    const { users } = await createUsersClient();
-    const user = await users.get($id);
-    console.log(user);
-    const { avatars } = await createAvatarsClient();
-    const { storage } = await createStorageClient();
-    const { databases } = await createDatabasesClient();
-    const initialsAvatar = await avatars.getInitials(user.name);
-    const iconBuffer = Buffer.from(initialsAvatar, "base64");
-    const file = InputFile.fromBuffer(iconBuffer, "avatar");
-    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-    const createdUser = await databases.createDocument("primary", "user", $id, {
-      avatar: uploadedFile.$id,
-    });
-    if (!createdUser) {
-      throw new Error(
-        "An error occurred while creating your account. Please try again."
-      );
-    }
-    console.log("User created:", createdUser);
-  } catch (error) {
-    console.log(error.message);
-  }
+    // const { users } = await createUsersClient();
+    const user = await getLoggedInUser();
+    console.log("from the event:", user);
+  //   const { avatars } = await createAvatarsClient();
+  //   const { storage } = await createStorageClient();
+  //   const { databases } = await createDatabasesClient();
+  //   const initialsAvatar = await avatars.getInitials(user.name);
+  //   const iconBuffer = Buffer.from(initialsAvatar, "base64");
+  //   const file = InputFile.fromBuffer(iconBuffer, "avatar");
+  //   const uploadedFile = await storage.createFile("primary", ID.unique(), file);
+  //   const createdUserDoc = await databases.createDocument("primary", "user", $id, {
+  //     avatar: uploadedFile.$id,
+  //   });
+  //   if (!createdUserDoc) {
+  //     throw new Error(
+  //       "An error occurred while creating your account. Please try again."
+  //     );
+  //   }
+  //   console.log("User created:", createdUser);
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
 };
 
 const deleteSessionEvent = async (userSession) => {

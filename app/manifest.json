@@ -27,7 +27,7 @@
         {
           "src": "/shortcut-home-icon.png",
           "sizes": "48x48",
-          "type": "image/svg+xml"
+          "type": "image/pmg"
         }
       ]
     },
@@ -39,7 +39,7 @@
         {
           "src": "/shortcut-user-icon.png",
           "sizes": "48x48",
-          "type": "image/svg+xml"
+          "type": "image/png"
         }
       ]
     },
@@ -51,7 +51,7 @@
         {
           "src": "/shortcut-cog-icon.png",
           "sizes": "48x48",
-          "type": "image/svg+xml"
+          "type": "image/png"
         }
       ]
     }

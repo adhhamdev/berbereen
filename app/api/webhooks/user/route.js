@@ -4,6 +4,7 @@ import {
   createAvatarsClient,
   createUsersClient,
   getLoggedInUser,
+  createAdminClient,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 
@@ -50,8 +51,8 @@ const createSessionEvent = async (userSession) => {
     return;
   }
     // const { users } = await createUsersClient();
-    const user = await getLoggedInUser();
-    console.log("from the event:", user);
+    const {account} = await createAdminClient();
+    console.log("from the event:", await account.get($id), await account.getSession($id))
   //   const { avatars } = await createAvatarsClient();
   //   const { storage } = await createStorageClient();
   //   const { databases } = await createDatabasesClient();

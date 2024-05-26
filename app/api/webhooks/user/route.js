@@ -50,28 +50,22 @@ const createSessionEvent = async (userSession) => {
   if (provider === "email") {
     return;
   }
-    // const { users } = await createUsersClient();
-    const {account} = await createAdminClient();
-    console.log("from the event:", await account.get($id), await account.getSession($id))
-  //   const { avatars } = await createAvatarsClient();
-  //   const { storage } = await createStorageClient();
-  //   const { databases } = await createDatabasesClient();
-  //   const initialsAvatar = await avatars.getInitials(user.name);
-  //   const iconBuffer = Buffer.from(initialsAvatar, "base64");
-  //   const file = InputFile.fromBuffer(iconBuffer, "avatar");
-  //   const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-  //   const createdUserDoc = await databases.createDocument("primary", "user", $id, {
-  //     avatar: uploadedFile.$id,
-  //   });
-  //   if (!createdUserDoc) {
-  //     throw new Error(
-  //       "An error occurred while creating your account. Please try again."
-  //     );
-  //   }
-  //   console.log("User created:", createdUser);
-  // } catch (error) {
-  //   console.log(error.message);
-  // }
+  try {
+    const { databases } = await createDatabasesClient();
+    const createdUserDoc = await databases.createDocument(
+      "primary",
+      "user",
+      $id
+    );
+    if (!createdUserDoc) {
+      throw new Error(
+        "An error occurred while creating your account. Please try again."
+      );
+    }
+    console.log("User created:", createdUserDoc);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const deleteSessionEvent = async (userSession) => {
@@ -105,7 +99,8 @@ export async function POST(req) {
       "users.*.sessions.*.delete": (user) => deleteSessionEvent(user),
       "users.*.update.email": (user) => updateUserEvent(user, "email"),
       "users.*.update.name": (user) => updateUserEvent(user, "name"),
-      "users.*.update.password": (user) => updateUserEvent(user, "passwordUpdate"),
+      "users.*.update.password": (user) =>
+        updateUserEvent(user, "passwordUpdate"),
       "users.*.update.status": (user) => updateUserEvent(user, "status"),
       "users.*.update.prefs": (user) => updateUserEvent(user, "prefs"),
     };

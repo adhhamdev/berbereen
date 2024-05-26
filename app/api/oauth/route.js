@@ -19,9 +19,6 @@ export async function GET(request) {
       secure: true,
     });
 
-    const user = await getLoggedInUser()
-    console.log("from after signing", user)
-
     return NextResponse.redirect(`${request.nextUrl.origin}/`);
   } catch (error) {
     console.error(error);

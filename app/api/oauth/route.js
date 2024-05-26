@@ -1,4 +1,10 @@
-import { createAdminClient, getLoggedInUser } from "@/lib/server/appwrite";
+import {
+  createAdminClient,
+  getLoggedInUser,
+  createDatabasesClient,
+  createAvatarsClient,
+} from "@/lib/server/appwrite";
+import { ID, InputFile } from "node-appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -19,13 +25,36 @@ export async function GET(request) {
       secure: true,
     });
 
+    try {
+      const user = await getLoggedInUser();
+      const { avatars } = await createAvatarsClient();
+      const { databases } = await createDatabasesClient();
+      const initialsAvatar = await avatars.getInitials(user.name);
+      const iconBuffer = Buffer.from(initialsAvatar, "base64");
+      const file = InputFile.fromBuffer(iconBuffer, "avatar");
+      const uploadedFile = await storage.createFile(
+        "primary",
+        ID.unique(),
+        file
+      );
+      const updatedUserDoc = await databases.updateDocument(
+        "primary",
+        "user",
+        $id,
+        { avatar: uploadedFile.$id }
+      );
+      console.log(updatedUserDoc);
+    } catch (error) {
+      console.log(error)
+    }
+
     return NextResponse.redirect(`${request.nextUrl.origin}/`);
   } catch (error) {
     console.error(error);
     return new NextResponse(
       "An error occurred. Please try again later or contact support if the issue persists.",
       {
-        status: 500
+        status: 500,
       }
     );
   }

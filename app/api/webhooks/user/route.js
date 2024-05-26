@@ -56,7 +56,7 @@ const createSessionEvent = async (userSession) => {
       "primary",
       "user",
       $id,
-      {}
+      {avatar: null}
     );
     if (!createdUserDoc) {
       throw new Error(

@@ -30,6 +30,7 @@ export const createUserEvent = async (user) => {
 };
 
 const deleteUserEvent = async (user) => {
+  console.log("Deleting user:", user)
   try {
     const { databases } = await createDatabasesClient();
     const { storage } = await createStorageClient();
@@ -43,6 +44,7 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
+  console.log("Session creating", userSession)
   const { provider, $id } = userSession;
   if (provider === "email") {
     return;

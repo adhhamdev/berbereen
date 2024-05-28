@@ -3,14 +3,40 @@
   "short_name": "Berbereen",
   "start_url": "https://berbereen.vercel.app",
   "display": "standalone",
+  "display_override": "fullscreen",
   "background_color": "#fff",
-  "theme_color": "#111122",
+  "theme_color": "#ffffff",
   "description": "The Platform of Berbereenians",
   "icons": [
     {
-      "src": "/icon.jpg",
+      "src": "/icon-48.png",
       "sizes": "48x48",
-      "type": "image/jpg"
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "categories": [
@@ -22,10 +48,10 @@
     {
       "name": "Feed",
       "url": "/",
-      "description": "Open the Home feed",
+      "description": "Open Feed",
       "icons": [
         {
-          "src": "/shortcut-home-icon.png",
+          "src": "/shortcut-feed-icon.png",
           "sizes": "48x48",
           "type": "image/pmg"
         }
@@ -57,11 +83,10 @@
     }
   ],
   "id": "berbereen",
-  "dir": "auto",
+  "dir": "ltr",
   "scope": "/",
   "lang": "en",
-  "orientation": "any",
-  "display_override": "fullscreen",
+  "orientation": "portrait",
   "iarc_rating_id": "Ages 12+",
   "screenshots": [
     {

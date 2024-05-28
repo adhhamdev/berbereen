@@ -3,14 +3,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import {
-  HomeIcon,
+  RectangleStackIcon,
   MapIcon,
   BuildingStorefrontIcon,
   BookmarkSquareIcon,
   CogIcon,
 } from "@heroicons/react/24/outline";
 import {
-  HomeIcon as SolidHomeIcon,
+  RectangleStackIcon as SolidRectangleStackIcon,
   MapIcon as SolidMapIcon,
   BuildingStorefrontIcon as SolidBuildingStorefrontIcon,
   BookmarkSquareIcon as SolidBookmarkSquareIcon,
@@ -27,8 +27,8 @@ export default function BottomBar() {
           className=" hover:text-gray-500 h-12 flex-grow flex justify-center items-center"
 scroll={false}
         >
-          <span className="sr-only">Home</span>
-          {pathname === "/" ? <SolidHomeIcon className="size-10 p-1 text-slate-900" /> : <HomeIcon className="size-10 p-1 text-slate-700" />}
+          <span className="sr-only">Feed</span>
+          {pathname === "/" ? <SolidRectangleStackIcon className="size-10 p-1 text-slate-900" /> : <RectangleStackIcon className="size-10 p-1 text-slate-700" />}
         </Link>
         <Link
           href="/explore"

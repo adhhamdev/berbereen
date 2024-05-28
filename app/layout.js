@@ -3,8 +3,8 @@ import "./globals.css";
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'blue' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111122' },
   ],
   colorScheme: 'light',
 }
@@ -16,7 +16,7 @@ export const metadata = {
   },
   title: {
     template: '%s | Berbereen',
-    default: 'Home',
+    default: 'Feed',
   },
   description: "The platform of Berbereenians",
      manifest: "/manifest.json",
@@ -45,9 +45,9 @@ export const metadata = {
     },
     appleWebApp: {
       title: 'Berbereen',
-      statusBarStyle: 'black-translucent',
+      statusBarStyle: 'white-translucent',
       startupImage: [
-        '/icon.jpg'
+        '/icon-512.png'
       ],
     },
      robots: {
@@ -81,7 +81,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} scroll-smooth bg-slate-50`}>{children}</body>
+      <body className={`${inter.className} scroll-smooth`}>{children}</body>
     </html>
   );
 }

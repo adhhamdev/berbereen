@@ -1,5 +1,5 @@
 import {
-  HomeIcon,
+  RectangleStackIcon,
   MapIcon,
   BuildingStorefrontIcon,
   BookmarkSquareIcon,
@@ -13,7 +13,7 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
 import { getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
-import logo from '/public/icon.jpg';
+import logoIcon from '/public/icon-72.png';
 
 export default async function Header() {
   const profilePicture = await getAvatar(100);
@@ -26,7 +26,7 @@ export default async function Header() {
             className="flex title-font font-medium items-center text-gray-900"
 scroll={false}
           >
-            <Image src={logo} alt="Berbereen Logo" className="w-10 rounded-full" />
+            <Image src={logoIcon} alt="Berbereen Logo" className="w-10 rounded-full" />
             <span className={`${righteous.className} ml-2 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`} translate="no">
               Berbereen.
             </span>
@@ -39,9 +39,9 @@ scroll={false}
               className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
 scroll={false}
             >
-              <span className="sr-only">Home</span>
-              <HomeIcon className="size-7 p-1 text-slate-700" />
-              Home
+              <span className="sr-only">Feed</span>
+              <RectangleStackIcon className="size-7 p-1 text-slate-700" />
+              Feed
             </Link>
             <Link
               href="/explore"

@@ -18,7 +18,7 @@ export default function NotFound() {
             className="px-4 py-2 bg-slate-900 text-white rounded hover:bg-gray-200"
             scroll={false}
           >
-            Go Home
+            Go to Home
           </Link>
         </div>
       </div>

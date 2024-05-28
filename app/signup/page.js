@@ -2,7 +2,7 @@ import { signUpWithEmail } from "@/lib/server/actions";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 import Image from "next/image";
-import logo from "/public/icon.jpg";
+import logoIcon from "/public/icon-192.png";
 
 export const metadata = {
   title: "Signup",
@@ -16,7 +16,7 @@ export default async function Page() {
         <div className="mb-5 text-center">
           <Image
             className=" w-24 mx-auto my-2 rounded-full"
-            src={logo}
+            src={logoIcon}
             alt="Berbereen Logo"
           />
           <span

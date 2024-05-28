@@ -2,7 +2,7 @@ import { MapIcon } from "@heroicons/react/24/solid";
 
 export const metadata = {
   title: "Explore",
-  description: "The Feed",
+  description: "Find anything in Beruwala",
 };
 
 export default function Page() {

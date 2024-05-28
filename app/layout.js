@@ -14,10 +14,6 @@ export const metadata = {
   other: {
     "google-site-verification": "0R28Xy-oyNhcE2_MB10Jrkoayy5JcPf7mkx89IIMySk"
   },
-  title: {
-    template: '%s | Berbereen',
-    default: 'Feed',
-  },
   description: "The platform of Berbereenians",
      manifest: "/manifest.json",
      openGraph: {

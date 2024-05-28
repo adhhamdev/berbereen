@@ -2,7 +2,7 @@ import { BookmarkIcon } from "@heroicons/react/24/solid";
 
 export const metadata = {
   title: "Saved",
-  description: "Saved Posts",
+  description: "Your Saved Posts",
 };
 
 export default function Page() {

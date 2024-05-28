@@ -3,10 +3,12 @@
   "short_name": "Berbereen",
   "start_url": "/",
   "display": "standalone",
-  "display_override": ["window-controls-overlay"],
+  "display_override": [
+    "window-controls-overlay"
+  ],
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
-  "description": "The Platform of Berbereenians",
+  "description": "The platform of Berbereenians",
   "icons": [
     {
       "src": "/icon-512.png",
@@ -93,6 +95,21 @@
   "scope": "https://berbereen.vercel.app",
   "lang": "en",
   "orientation": "any",
+  "launch_handler": {
+    "client_mode": "auto"
+  },
+  "scope_extensions": [
+    {
+      "origin": "berbereen.vercel.app"
+    },
+    {
+      "web_apps": [
+        {
+          "web_app_identity": "https://berbereen.vercel.app/"
+        }
+      ]
+    }
+  ],
   "screenshots": [
     {
       "src": "/screenshot2.png",

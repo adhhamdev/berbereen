@@ -1,42 +1,24 @@
 {
   "name": "Berbereen",
   "short_name": "Berbereen",
-  "start_url": "https://berbereen.vercel.app",
+  "start_url": "/",
   "display": "standalone",
-  "display_override": "fullscreen",
-  "background_color": "#fff",
+  "display_override": ["window-controls-overlay"],
+  "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "description": "The Platform of Berbereenians",
   "icons": [
     {
-      "src": "/icon-48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": [
@@ -52,7 +34,7 @@
       "icons": [
         {
           "src": "/feed-icon.png",
-          "sizes": "192x192",
+          "sizes": "96x96",
           "type": "image/png"
         }
       ]
@@ -64,7 +46,7 @@
       "icons": [
         {
           "src": "/profile-icon.png",
-          "sizes": "192x192",
+          "sizes": "96x96",
           "type": "image/png"
         }
       ]
@@ -76,7 +58,7 @@
       "icons": [
         {
           "src": "/saved-icon.png",
-          "sizes": "192x192",
+          "sizes": "96x96",
           "type": "image/png"
         }
       ]
@@ -88,7 +70,7 @@
       "icons": [
         {
           "src": "/settings-icon.png",
-          "sizes": "192x192",
+          "sizes": "96x96",
           "type": "image/png"
         }
       ]
@@ -96,10 +78,9 @@
   ],
   "id": "berbereen",
   "dir": "ltr",
-  "scope": "/",
+  "scope": "https://berbereen.vercel.app",
   "lang": "en",
-  "orientation": "portrait",
-  "iarc_rating_id": "Ages 12+",
+  "orientation": "any",
   "screenshots": [
     {
       "src": "/screenshot2.png",

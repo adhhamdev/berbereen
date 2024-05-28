@@ -28,12 +28,24 @@
   ],
   "shortcuts": [
     {
-      "name": "Feed",
-      "url": "/",
-      "description": "Open Feed",
+      "name": "Explore",
+      "url": "/explore",
+      "description": "Open Explore",
       "icons": [
         {
-          "src": "/feed-icon.png",
+          "src": "/explore-icon.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Market",
+      "url": "/market",
+      "description": "Open Market",
+      "icons": [
+        {
+          "src": "/market-icon.png",
           "sizes": "96x96",
           "type": "image/png"
         }

@@ -1,5 +1,6 @@
 {
   "name": "Berbereen",
+  "id": "/",
   "short_name": "Berbereen",
   "start_url": "/",
   "display": "standalone",
@@ -140,7 +141,7 @@
     },
     {
       "src": "/screenshot-1.jpg",
-      "sizes": "1080x2288",
+      "sizes": "1080x2287",
       "type": "image/jpg",
       "form_factor": "narrow",
       "label": "Home Screen",
@@ -153,6 +154,14 @@
       "form_factor": "narrow",
       "label": "Profile Screen",
       "platform": "android"
+    },
+    {
+      "src": "/screenshot-wide-1.png",
+      "sizes": "1920x903",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Signup Screen",
+      "platform": "windows"
     }
   ]
 }

@@ -133,7 +133,7 @@
     {
       "src": "/screenshot-2.jpg",
       "sizes": "1080x2288",
-      "type": "image/jpg",
+      "type": "image/jpg"
     },
     {
       "src": "/screenshot-1.jpg",

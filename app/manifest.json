@@ -131,19 +131,28 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot-2.jpg",
+      "src": "/screenshot-3.jpg",
       "sizes": "1080x2288",
-      "type": "image/jpg"
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Signup Screen",
+      "platform": "android"
     },
     {
       "src": "/screenshot-1.jpg",
       "sizes": "1080x2288",
-      "type": "image/jpg"
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Home Screen",
+      "platform": "android"
     },
     {
-      "src": "/screenshot-3.jpg",
+      "src": "/screenshot-2.jpg",
       "sizes": "1080x2288",
-      "type": "image/jpg"
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Profile Screen",
+      "platform": "android"
     }
   ]
 }

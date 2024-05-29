@@ -92,7 +92,7 @@ export async function POST(req) {
   try {
     const user = await req.json();
     const events = req.headers.get("x-appwrite-webhook-events").split(",");
-
+    console.log(events)
     const eventHandlers = {
       "users.*.create": (user) => createUserEvent(user),
       "users.*.delete": (user) => deleteUserEvent(user),

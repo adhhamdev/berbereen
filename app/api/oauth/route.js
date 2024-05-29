@@ -26,7 +26,7 @@ export async function GET(request) {
       secure: true,
     });
 
-    const user = await getLoggedInUser();
+    const {$id} = await getLoggedInUser();
     const { databases } = await createDatabasesClient();
     const { storage } = await createStorageClient();
     const { avatars } = await createAvatarsClient();

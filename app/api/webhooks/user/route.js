@@ -2,6 +2,7 @@ import {
   createDatabasesClient,
   createStorageClient,
   createAvatarsClient,
+  getLoggedInUser,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 
@@ -44,7 +45,7 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  console.log("Session creating", userSession);
+  console.log(await getLoggedInUser())
   const { provider, $id } = userSession;
   if (provider === "email") {
     return;
@@ -55,7 +56,7 @@ const createSessionEvent = async (userSession) => {
       "primary",
       "user",
       $id,
-      { avatar: "12345678900987654321123456789003" }
+      { avatar: "" }
     );
     if (!createdUserDoc) {
       throw new Error(

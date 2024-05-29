@@ -45,28 +45,28 @@ const deleteUserEvent = async (user) => {
 };
 
 const createSessionEvent = async (userSession) => {
-  console.log(await getLoggedInUser())
-  const { provider, $id } = userSession;
-  if (provider === "email") {
-    return;
-  }
-  try {
-    const { databases } = await createDatabasesClient();
-    const createdUserDoc = await databases.createDocument(
-      "primary",
-      "user",
-      $id,
-      { avatar: "" }
-    );
-    if (!createdUserDoc) {
-      throw new Error(
-        "An error occurred while creating your account. Please try again."
-      );
-    }
-    console.log("User created:", createdUserDoc);
-  } catch (error) {
-    console.log(error.message);
-  }
+  console.log("User session created:", userSession);
+  // const { provider, $id } = userSession;
+  // if (provider === "email") {
+  //   return;
+  // }
+  // try {
+  //   const { databases } = await createDatabasesClient();
+  //   const createdUserDoc = await databases.createDocument(
+  //     "primary",
+  //     "user",
+  //     $id,
+  //     { avatar: "" }
+  //   );
+  //   if (!createdUserDoc) {
+  //     throw new Error(
+  //       "An error occurred while creating your account. Please try again."
+  //     );
+  //   }
+  //   console.log("User created:", createdUserDoc);
+  // } catch (error) {
+  //   console.log(error.message);
+  // }
 };
 
 const deleteSessionEvent = async (userSession) => {

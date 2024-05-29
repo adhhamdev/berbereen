@@ -2,10 +2,7 @@ import { inter } from "@/lib/fonts";
 import "./globals.css";
 
 export const viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#111122' },
-  ],
+  themeColor: "#ffffff",
   colorScheme: 'light',
 }
 

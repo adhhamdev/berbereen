@@ -110,7 +110,6 @@
       ]
     }
   ],
-  "id": "berbereen",
   "dir": "ltr",
   "scope": "https://berbereen.vercel.app",
   "lang": "en",
@@ -132,14 +131,19 @@
   ],
   "screenshots": [
     {
-      "src": "/screenshot2.png",
-      "sizes": "1920x911",
-      "type": "image/png"
+      "src": "/screenshot-2.jpg",
+      "sizes": "1080x2288",
+      "type": "image/jpg",
     },
     {
-      "src": "/screenshot1.png",
-      "sizes": "1920x907",
-      "type": "image/png"
+      "src": "/screenshot-1.jpg",
+      "sizes": "1080x2288",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/screenshot-3.jpg",
+      "sizes": "1080x2288",
+      "type": "image/jpg"
     }
   ]
 }

@@ -3,6 +3,7 @@ import {
   getLoggedInUser,
   createDatabasesClient,
   createAvatarsClient,
+  createStorageClient,
 } from "@/lib/server/appwrite";
 import { ID, InputFile } from "node-appwrite";
 import { cookies } from "next/headers";
@@ -26,8 +27,9 @@ export async function GET(request) {
     });
 
     const user = await getLoggedInUser();
-    const { avatars } = await createAvatarsClient();
     const { databases } = await createDatabasesClient();
+    const { storage } = await createStorageClient();
+    const { avatars } = await createAvatarsClient();
     const initialsAvatar = await avatars.getInitials(user.name);
     const iconBuffer = Buffer.from(initialsAvatar, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");

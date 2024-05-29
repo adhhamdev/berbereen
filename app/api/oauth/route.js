@@ -26,11 +26,11 @@ export async function GET(request) {
       secure: true,
     });
 
-    const {$id} = await getLoggedInUser();
+    const {$id, name} = await getLoggedInUser();
     const { databases } = await createDatabasesClient();
     const { storage } = await createStorageClient();
     const { avatars } = await createAvatarsClient();
-    const initialsAvatar = await avatars.getInitials(user.name);
+    const initialsAvatar = await avatars.getInitials(name);
     const iconBuffer = Buffer.from(initialsAvatar, "base64");
     const file = InputFile.fromBuffer(iconBuffer, "avatar");
     const uploadedFile = await storage.createFile("primary", ID.unique(), file);

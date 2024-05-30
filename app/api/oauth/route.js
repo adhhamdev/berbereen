@@ -1,11 +1,4 @@
-import {
-  createAdminClient,
-  getLoggedInUser,
-  createDatabasesClient,
-  createAvatarsClient,
-  createStorageClient,
-} from "@/lib/server/appwrite";
-import { ID, InputFile } from "node-appwrite";
+import { createAdminClient } from "@/lib/server/appwrite";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -25,22 +18,6 @@ export async function GET(request) {
       sameSite: "strict",
       secure: true,
     });
-
-    const {$id, name} = await getLoggedInUser();
-    const { databases } = await createDatabasesClient();
-    const { storage } = await createStorageClient();
-    const { avatars } = await createAvatarsClient();
-    const initialsAvatar = await avatars.getInitials(name);
-    const iconBuffer = Buffer.from(initialsAvatar, "base64");
-    const file = InputFile.fromBuffer(iconBuffer, "avatar");
-    const uploadedFile = await storage.createFile("primary", ID.unique(), file);
-    const updatedUserDoc = await databases.createDocument(
-      "primary",
-      "user",
-      $id,
-      { avatar: uploadedFile.$id }
-    );
-    console.log(updatedUserDoc);
 
     return NextResponse.redirect(`${request.nextUrl.origin}/`);
   } catch (error) {

@@ -112,7 +112,7 @@
     }
   ],
   "dir": "ltr",
-  "scope": "https://berbereen.vercel.app",
+  "scope": "/",
   "lang": "en",
   "orientation": "any",
   "launch_handler": {

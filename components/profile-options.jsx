@@ -6,10 +6,25 @@ import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { signOut } from "@/lib/server/actions";
+import { useRouter } from "next/navigation";
 
 export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  const signOut = async () => {
+    try {
+      const account = createWebSessionClient();
+      await account.deleteSession("current");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      throw new Error(
+        "An error occurred while signing out. Please try again later."
+      );
+    }
+    router.push("/signup");
+  };
+
   return (
     <div>
       <div className="relative" onBlur={() => setIsOpen(false)}>
@@ -19,7 +34,6 @@ export default function ProfileOptions({ profilePicture }) {
             onClick={() => setIsOpen((prev) => !prev)}
             title="Account"
           >
-            
             <Image
               src={profilePicture || ""}
               width={40}
@@ -45,12 +59,13 @@ export default function ProfileOptions({ profilePicture }) {
                   <UserCircleIcon className="size-8 p-1 text-slate-900" />
                   Profile
                 </Link>
-                <form action={signOut}>
-                  <button className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg">
-                    <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
-                    Sign out
-                  </button>
-                </form>
+                <button
+                  onClick={signOut}
+                  className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
+                >
+                  <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
+                  Sign out
+                </button>
               </div>
             </Transition>
           )}

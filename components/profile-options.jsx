@@ -6,24 +6,10 @@ import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { signOut } from "@/lib/server/actions";
 
 export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-
-  const signOut = async () => {
-    try {
-      const account = createWebSessionClient();
-      await account.deleteSession("current");
-    } catch (error) {
-      console.error("Error signing out:", error);
-      throw new Error(
-        "An error occurred while signing out. Please try again later."
-      );
-    }
-    router.push("/signup");
-  };
 
   return (
     <div>

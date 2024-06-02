@@ -1,65 +1,8 @@
 "use client";
 
-import { ID } from "appwrite";
-import { useRouter } from "next/navigation";
-import {
-  createWebAvatarsClient,
-  createWebSessionClient,
-  createWebStorageClient,
-  createWebDatabasesClient,
-} from "@/lib/appwrite-web";
-import { useState } from "react";
+import { signUpWithEmail } from "@/lib/server/actions";
 
 const Form = () => {
-  const [fields, setFields] = useState({ email: "", password: "", name: "" });
-  const router = useRouter();
-
-  const signUpWithEmail = async (ev) => {
-    ev.preventDefault();
-    const { email, password, name } = fields;
-    try {
-      const account = createWebSessionClient();
-
-      const userId = ID.unique();
-      await account.create(userId, email, password, name);
-      const session = await account.createEmailPasswordSession(email, password);
-
-      const avatars = createWebAvatarsClient();
-      const storage = createWebStorageClient();
-      const databases = createWebDatabasesClient();
-      const initialsAvatar = avatars.getInitials(session.name);
-      console.log(initialsAvatar);
-      const buffer = await (new Blob([initialsAvatar]).arrayBuffer());
-      const file = new File([buffer], "avatar.png", {
-        type: "image/png",
-      });
-      console.log("the blob file:", file);
-      const uploadedFile = await storage.createFile(
-        "primary",
-        ID.unique(),
-        file
-      );
-      const fileData = storage.getFileView("primary", uploadedFile.$id);
-      account.updatePrefs({ avatar: fileData.href });
-      const createdUser = await databases.createDocument(
-        "primary",
-        "user",
-        userId,
-        {
-          post: [],
-          like: [],
-        }
-      );
-      console.log("User created:", createdUser);
-      router.push("/");
-    } catch (error) {
-      console.error(error);
-      throw new Error(
-        "An error occurred during sign up. Please try again later."
-      );
-    }
-  };
-
   return (
     <div>
       <form className="space-y-4" onSubmit={signUpWithEmail}>
@@ -71,9 +14,6 @@ const Form = () => {
             Email
           </label>
           <input
-            onChange={(ev) =>
-              setFields((prev) => ({ ...prev, email: ev.target.value }))
-            }
             id="email"
             name="email"
             type="email"
@@ -81,7 +21,6 @@ const Form = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
             autoComplete="email"
-            value={fields.email}
           />
         </div>
         <div>
@@ -92,9 +31,6 @@ const Form = () => {
             Password
           </label>
           <input
-            onChange={(ev) =>
-              setFields((prev) => ({ ...prev, password: ev.target.value }))
-            }
             id="password"
             name="password"
             type="password"
@@ -103,7 +39,6 @@ const Form = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
             autoComplete="new-password"
-            value={fields.password}
           />
         </div>
         <div>
@@ -114,9 +49,6 @@ const Form = () => {
             Name
           </label>
           <input
-            onChange={(ev) =>
-              setFields((prev) => ({ ...prev, name: ev.target.value }))
-            }
             id="name"
             name="name"
             type="text"
@@ -124,7 +56,6 @@ const Form = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             required
             autoComplete="name"
-            value={fields.name}
           />
         </div>
         <button

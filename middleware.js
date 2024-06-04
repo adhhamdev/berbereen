@@ -7,6 +7,7 @@ export async function middleware(req) {
     if (user) {
       return NextResponse.redirect(new URL("/", req.url));
     }
+    return NextResponse.next();
   }
   if (!user) {
     return NextResponse.redirect(new URL("/login", req.url));

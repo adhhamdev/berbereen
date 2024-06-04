@@ -20,7 +20,7 @@ const StartForm = ({user}) => {
             enterKeyHint="next"
             maxLength={32}
             minLength={5}
-            value={user?.name || ""}
+            defaultValue={user?.name || ""}
             required
           />
         </div>

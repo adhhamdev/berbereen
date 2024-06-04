@@ -3,10 +3,18 @@ import { getLoggedInUser } from "./lib/server/appwrite";
 
 export async function middleware(req) {
   const user = await getLoggedInUser();
+  if (req.nextUrl.pathname == "/login" || req.nextUrl.pathname == "/signup") {
+    if (user) {
+      return NextResponse.redirect(new URL("/", req.url));
+    }
+  }
   if (!user) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
-  if (user.prefs.isProfileComplete != true && req.nextUrl.pathname != "/start") {
+  if (
+    user.prefs.isProfileComplete != true &&
+    req.nextUrl.pathname != "/start"
+  ) {
     return NextResponse.redirect(new URL("/start", req.url));
   }
   return NextResponse.next();
@@ -21,6 +29,8 @@ export const config = {
     "/settings",
     "/account",
     "/start",
+    "/login",
+    "/signup",
     "/api",
   ],
 };

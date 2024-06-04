@@ -6,7 +6,7 @@ import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
 import Transition from "./transition";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { signOut } from "@/lib/server/actions";
+import { logOut } from "@/lib/server/actions";
 
 export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,11 +46,11 @@ export default function ProfileOptions({ profilePicture }) {
                   Profile
                 </Link>
                 <button
-                  onClick={signOut}
+                  onClick={logOut}
                   className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
                 >
                   <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
-                  Sign out
+                  Log out
                 </button>
               </div>
             </Transition>

@@ -1,11 +1,11 @@
 "use client";
 
-import { signUpWithEmail } from "@/lib/server/actions";
+import { signInWithEmail } from "@/lib/server/actions";
 
-const Form = () => {
+const LoginForm = () => {
   return (
     <div>
-      <form className="space-y-4" action={signUpWithEmail}>
+      <form className="space-y-4" action={signInWithEmail}>
         <div>
           <label
             htmlFor="email"
@@ -19,8 +19,8 @@ const Form = () => {
             type="email"
             placeholder="Enter your email"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            required
             autoComplete="email"
+            required
           />
         </div>
         <div>
@@ -37,36 +37,19 @@ const Form = () => {
             placeholder="Enter your password"
             minLength={8}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            autoComplete="current-password"
             required
-            autoComplete="new-password"
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Enter your name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            required
-            autoComplete="name"
           />
         </div>
         <button
           type="submit"
           className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
         >
-          Sign Up
+          Log In
         </button>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default LoginForm;

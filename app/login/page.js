@@ -2,8 +2,7 @@ import { signUpWithGoogle } from "@/lib/server/oauth";
 import { righteous } from "@/lib/fonts";
 import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
-import SignupForm from "@/components/signup-form";
-import Link from "next/link";
+import LoginForm from "@/components/login-form";
 
 export const metadata = {
   title: "Signup",
@@ -28,9 +27,9 @@ export default async function Page() {
           </span>
         </div>
         <h2 className="mb-6 text-3xl font-bold text-center text-gray-800">
-          Sign Up
+          Log In
         </h2>
-        <SignupForm />
+        <LoginForm />
         <div className="mt-4 text-center">
           <span className="text-sm text-gray-600">Or</span>
         </div>
@@ -70,15 +69,10 @@ export default async function Page() {
           </form>
         </div>
         <div className="mt-4 text-center">
-          <span className="text-sm text-gray-600">
-            Already have an account?
-          </span>
-          <Link
-            href="/login"
-            className="p-2 text-sm text-blue-600 hover:underline"
-          >
-            Log In
-          </Link>
+          <span className="text-sm text-gray-600">Don&apos;t have an account?</span>
+          <a href="/signup" className="p-2 text-sm text-blue-600 hover:underline">
+            Sign Up
+          </a>
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@ import logoIcon from '/public/icon-72.png';
 
 export default async function Header() {
   const profilePicture = await getAvatar();
-  console.log("profile picture:", profilePicture)
   return (
     <div>
       <header className="flex items-center body-font shadow bg-white px-2">

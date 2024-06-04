@@ -5,7 +5,7 @@ import { signUpWithEmail } from "@/lib/server/actions";
 const Form = () => {
   return (
     <div>
-      <form className="space-y-4" onSubmit={signUpWithEmail}>
+      <form className="space-y-4" action={signUpWithEmail}>
         <div>
           <label
             htmlFor="email"

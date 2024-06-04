@@ -11,11 +11,9 @@ export const metadata = {
 };
 
 export default async function Page() {
-  const user = await getLoggedInUser();
   let profilePicture;
-  const getAvatarInit = getAvatar.bind(null, [user, 200]);
   if (user) {
-    profilePicture = await getAvatarInit();
+    profilePicture = await getAvatar();
   }
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",

@@ -46,7 +46,7 @@ export default function ProfileOptions({ profilePicture }) {
                   Profile
                 </Link>
                 <button
-                  onClick={logOut}
+                  onClick={async () => await logOut()}
                   className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
                 >
                   <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />

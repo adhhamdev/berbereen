@@ -8,6 +8,7 @@ export default async function Page() {
         <PostList listData={[]} />
       </div>
       <div></div>
+      
     </div>
   );
 }

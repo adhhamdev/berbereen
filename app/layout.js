@@ -1,5 +1,7 @@
 import { inter } from "@/lib/fonts";
 import "./globals.css";
+import { initializeNotification } from "@/lib/utils";
+import Script from "next/script";
 
 export const viewport = {
   themeColor: "#ffffff",
@@ -70,7 +72,10 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} scroll-smooth`}>{children}</body>
+      <body className={`${inter.className} scroll-smooth`}>
+        {children}
+        <Script src="/service-worker.js" />
+      </body>
     </html>
   );
 }

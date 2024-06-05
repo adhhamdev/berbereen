@@ -3,6 +3,7 @@ import Link from "next/link";
 import Transition from "./transition";
 
 const Popup = ({ params, searchParams }) => {
+    console.log(params, searchParams)
   if (!searchParams.action) return;
   const actions = {
     "logged-out": {

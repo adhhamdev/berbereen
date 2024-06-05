@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { logOut } from "@/lib/server/actions";
 
+
 export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
 

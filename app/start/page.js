@@ -16,7 +16,7 @@ const page = async () => {
       <h1 className="text-4xl font-bold mb-8 text-center">
         Create Your Profile
       </h1>
-      <StartForm />
+      <StartForm user={user} />
     </div>
   );
 };

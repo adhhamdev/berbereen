@@ -11,7 +11,7 @@ import ProfileOptions from "./profile-options";
 import { Suspense } from "react";
 import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { righteous } from "@/lib/fonts";
-import { getAvatar } from "@/lib/server/actions";
+import { getAvatar } from "@/lib/utils";
 import Image from "next/image";
 import logoIcon from '/public/icon-72.png';
 

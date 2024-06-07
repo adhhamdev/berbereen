@@ -1,4 +1,4 @@
-import { createAdminClient } from "@/lib/server/appwrite";
+import { createAdminClient } from "@/lib/server/appwrite-admin";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -9,7 +9,7 @@ export async function GET(request) {
   const secret = request.nextUrl.searchParams.get("secret");
 
   try {
-    const { account } = await createAdminClient();
+    const { account } = createAdminClient();
     const session = await account.createSession(userId, secret);
     
     cookies().set("user-session", session.secret, {

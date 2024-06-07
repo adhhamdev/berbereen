@@ -3,13 +3,14 @@ import { righteous } from "@/lib/fonts";
 import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
 import LoginForm from "@/components/login-form";
+import Popup from "@/components/popup";
 
 export const metadata = {
   title: "Signup",
   description: "Sign up to Berbereen",
 };
 
-export default async function Page() {
+export default async function Page({params, searchParams}) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-gray-300 from-50% to-white to-60%">
       <div className="w-full max-w-md px-6">
@@ -75,6 +76,7 @@ export default async function Page() {
           </a>
         </div>
       </div>
+      <Popup params={params} searchParams={searchParams} />
     </div>
   );
 }

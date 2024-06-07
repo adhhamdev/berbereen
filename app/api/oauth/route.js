@@ -19,7 +19,7 @@ export async function GET(request) {
       secure: true,
     });
 
-    return NextResponse.redirect(`${request.nextUrl.origin}/`);
+    return NextResponse.redirect(`${request.nextUrl.origin}/?action=logged-in`);
   } catch (error) {
     console.error(error);
     return new NextResponse(

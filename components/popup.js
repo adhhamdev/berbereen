@@ -1,9 +1,14 @@
+"use client";
+
 import { XCircleIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
 import Transition from "./transition";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+
+export const dynamic = "force-dynamic";
 
 const Popup = ({ params, searchParams }) => {
-  if (!searchParams?.action) return;
+  const [isVisibile, setIsVisible] = useState(searchParams.action);
   const actions = {
     "logged-out": {
       message: "You have successfully logged out.",
@@ -31,26 +36,36 @@ const Popup = ({ params, searchParams }) => {
     },
   };
 
+  const handleClick = () => {
+    router.replace(path);
+    setIsVisible(false)
+  }
+
+  const router = useRouter();
+  const path = usePathname();
+  console.log(path);
+
   let action = actions[searchParams.action];
 
-  return (
-    <Transition
-      initial={{ x: 10, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.3 }}
-    >
-      <div
-        className={`fixed top-0 right-0 m-4 py-2 px-4 flex items-center justify-between bg-white shadow-lg rounded-md border-b-4 border-${action.accent}-500`}
+  if (isVisibile) {
+    return (
+      <Transition
+        initial={{ x: 10, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ ease: "easeInOut", duration: 0.3 }}
+        className={`fixed bottom-0 right-0 m-6 py-2 px-4 flex items-center justify-between bg-slate-950 border-2 shadow-lg rounded-md`}
       >
         <div>
-          <p>{action.message}</p>
+          <p className={`text-${action.accent}-500`}>{action.message}</p>
         </div>
-        <Link href={params}>
+        <button onClick={handleClick} className="text-white">
           <XCircleIcon className="size-6 ml-4" />
-        </Link>
-      </div>
-    </Transition>
-  );
+        </button>
+      </Transition>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Popup;

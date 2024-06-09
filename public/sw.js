@@ -7,8 +7,10 @@ const precacheResources = [
   '/explore',
   '/settings',
   '/saved',
-  'market'
+  '/market'
 ];
+
+fetch('/').then(response => console.log(response));
 
 self.addEventListener('install', event => {
   event.waitUntil(

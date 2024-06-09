@@ -10,7 +10,7 @@ export const metadata = {
   description: "Sign up to Berbereen",
 };
 
-export default async function Page({params, searchParams}) {
+export default async function Page({ params, searchParams }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-gray-300 from-50% to-white to-60%">
       <div className="w-full max-w-md px-6">
@@ -70,13 +70,19 @@ export default async function Page({params, searchParams}) {
           </form>
         </div>
         <div className="mt-4 text-center">
-          <span className="text-sm text-gray-600">Don&apos;t have an account?</span>
-          <a href="/signup" className="p-2 text-sm text-blue-600 hover:underline">
+          <span className="text-sm text-gray-600">
+            Don&apos;t have an account?
+          </span>
+          <a
+            href="/signup"
+            className="p-2 text-sm text-blue-600 hover:underline"
+          >
             Sign Up
           </a>
         </div>
       </div>
-      <Popup params={params} searchParams={searchParams} />
+      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+
     </div>
   );
 }

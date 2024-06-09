@@ -12,7 +12,8 @@ export default function Page({ params, searchParams}) {
       <h1 className="flex items-center m-4 text-lg font-bold text-slate-700">
         <BuildingStorefrontIcon className="size-6 mr-1" /> Market
       </h1>
-      <Popup params={params} searchParams={searchParams} />
+      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default async function Page({ params, searchParams }) {
         <PostList listData={[]} />
       </div>
       <div></div>
-      <Popup params={params} searchParams={searchParams} />
+      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
     </div>
   );
 }

@@ -1,10 +1,9 @@
-import { deleteCurrentUser } from "@/lib/server/actions";
+import { deleteCurrentUser, getAvatar } from "@/lib/server/actions";
 import { getLoggedInUser } from "@/lib/server/appwrite";
 import Image from "next/image";
 import Transition from "../../components/transition";
 import { EnvelopeIcon } from "@heroicons/react/24/solid";
 import BackNavBtn from "@/components/back-nav-btn";
-import { getAvatar } from "@/lib/utils";
 
 export const metadata = {
   title: "Profile",
@@ -13,7 +12,7 @@ export const metadata = {
 
 export default async function Page() {
   const user = await getLoggedInUser();
-  const profilePicture = await getAvatar(user.name);
+  const profilePicture = await getAvatar(512);
   const followersBrief = [
     "https://randomuser.me/api/portraits/women/21.jpg",
     "https://randomuser.me/api/portraits/women/22.jpg",

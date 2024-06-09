@@ -13,7 +13,8 @@ export default function Page({ params, searchParams}) {
         <BookmarkIcon className="size-6 mr-1" /> Saved
       </h1>
       {/* <PostList listData={listData} /> */}
-      <Popup params={params} searchParams={searchParams} />
+      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+
     </div>
   );
 }

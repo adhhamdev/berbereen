@@ -58,7 +58,8 @@ const Popup = ({ params, searchParams }) => {
       initial={{ x: 10, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.3 }}
-      className={`fixed bottom-0 right-0 m-6 py-2 px-4 flex items-center justify-between backdrop-blur-2xl border-2 border-slate-500 shadow-lg rounded-md`}
+      className={`fixed bottom-0 right-0 m-6 py-2 px-4 flex items-center justify-between backdrop-blur-2xl shadow-lg rounded-md`}
+      style={{borderColor: action?.accent, borderWidth: "2px"}}
     >
       <div className="flex items-center">
         {action?.icon}

@@ -1,25 +1,20 @@
-const cacheName = 'v1'
+const cacheName = "v1";
 
-const cacheClone = async (e) => {
-  const res = await fetch(e.request);
-  const resClone = res.clone();
-
-  const cache = await caches.open(cacheName);
-  await cache.put(e.request, resClone);
-  return res;
-};
-
-const fetchEvent = () => {
-  self.addEventListener("fetch", (e) => {
-    e.respondWith(
-      caches.match(e.request).then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        return cacheClone(e);
-      })
-    );
-  });
-};
-
-fetchEvent();
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    event.request.mode === "navigate" ||
+      (event.request.method === "GET" &&
+        event.request.headers.get("accept").includes("text/css"))
+      ? fetch(event.request)
+          .catch(function (err) {
+            return caches.match(event.request);
+          })
+          .then(function (res) {
+            return caches.open(cacheName).then(function (cache) {
+              cache.put(event.request.url, res.clone());
+              return res;
+            });
+          })
+      : fetch(event.request)
+  );
+});

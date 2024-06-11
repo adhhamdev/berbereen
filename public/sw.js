@@ -10,11 +10,14 @@ const cacheClone = async (e) => {
 };
 
 const fetchEvent = () => {
-  self.addEventListener('fetch', (e) => {
+  self.addEventListener("fetch", (e) => {
     e.respondWith(
-      cacheClone(e)
-        .catch(() => caches.match(e.request))
-        .then((res) => res)
+      caches.match(e.request).then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+        return cacheClone(e);
+      })
     );
   });
 };

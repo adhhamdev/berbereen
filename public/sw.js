@@ -1,41 +1,22 @@
-const cacheName = "cache-v1";
-const precacheResources = [
-  '/',
-  '/login',
-  '/public/signup',
-  '/account',
-  '/explore',
-  '/settings',
-  '/saved',
-  '/market'
-];
+const cacheName = 'v1'
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(cacheName)
-      .then(cache => cache.addAll(precacheResources))
-  );
-});
+const cacheClone = async (e) => {
+  const res = await fetch(e.request);
+  const resClone = res.clone();
 
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheName !== cacheName) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-});
+  const cache = await caches.open(cacheName);
+  await cache.put(e.request, resClone);
+  return res;
+};
 
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
-  );
-});
+const fetchEvent = () => {
+  self.addEventListener('fetch', (e) => {
+    e.respondWith(
+      cacheClone(e)
+        .catch(() => caches.match(e.request))
+        .then((res) => res)
+    );
+  });
+};
+
+fetchEvent();

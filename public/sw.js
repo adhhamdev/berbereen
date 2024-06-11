@@ -2,15 +2,13 @@ const cacheName = "cache-v1";
 const precacheResources = [
   '/',
   '/login',
-  'signup',
+  '/public/signup',
   '/account',
   '/explore',
   '/settings',
   '/saved',
   '/market'
 ];
-
-fetch('/').then(response => console.log(response));
 
 self.addEventListener('install', event => {
   event.waitUntil(

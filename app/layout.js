@@ -1,6 +1,5 @@
 import { inter } from "@/lib/fonts";
 import "./globals.css";
-import { initializeNotification } from "@/lib/utils";
 import Script from "next/script";
 
 export const viewport = {

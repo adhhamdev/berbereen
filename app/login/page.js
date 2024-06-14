@@ -12,7 +12,7 @@ export const metadata = {
 
 export default async function Page({ params, searchParams }) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-gray-300 from-50% to-white to-60%">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">
           <Image

@@ -17,9 +17,10 @@ export default async function Page({ params, searchParams }) {
       <div className="w-full max-w-md px-6">
         <div className="mb-5 text-center">
           <Image
-            className=" w-24 mx-auto my-2 rounded-full"
+            className="w-24 mx-auto my-2 rounded-full"
             src={logoIcon}
             alt="Berbereen Logo"
+            priority
           />
           <span
             className={`${righteous.className} text-4xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}

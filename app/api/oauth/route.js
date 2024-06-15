@@ -20,7 +20,7 @@ export async function GET(request) {
       secure: true,
     });
     console.log(request)
-    return redirect(request.url + "&action=profile-completed");
+    return redirect(request.url);
   } catch (error) {
     console.error(error);
     return new NextResponse(

@@ -1,4 +1,5 @@
 import { createAdminClient } from "@/lib/server/appwrite-admin";
+import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -19,7 +20,7 @@ export async function GET(request) {
       secure: true,
     });
     console.log(request)
-    return NextResponse.redirect(`${request.url}/?action=logged-in`);
+    return redirect(request.url + "&action=profile-completed");
   } catch (error) {
     console.error(error);
     return new NextResponse(

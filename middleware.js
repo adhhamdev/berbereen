@@ -3,12 +3,6 @@ import { getLoggedInUser } from "./lib/server/appwrite";
 
 export async function middleware(req) {
   const user = await getLoggedInUser();
-  if (req.nextUrl.pathname == "/login" || req.nextUrl.pathname == "/signup") {
-    if (user) {
-      return NextResponse.redirect(new URL("/", req.url));
-    }
-    return NextResponse.next();
-  }
   if (!user) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
@@ -30,8 +24,6 @@ export const config = {
     "/settings",
     "/account",
     "/start",
-    "/login",
-    "/signup",
     "/api",
   ],
 };

@@ -18,8 +18,8 @@ export async function GET(request) {
       sameSite: "strict",
       secure: true,
     });
-
-    return NextResponse.redirect(`${request.nextUrl.origin}?action=logged-in`);
+    console.log(request)
+    return NextResponse.redirect(`${request.url}?action=logged-in`);
   } catch (error) {
     console.error(error);
     return new NextResponse(

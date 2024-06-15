@@ -20,7 +20,7 @@ export default async function Page({ params, searchParams }) {
               className='w-20 rounded-full'
               src={logoIcon}
               alt='Berbereen Logo'
-              priority=""
+              priority=''
             />
           </div>
           <div>
@@ -32,7 +32,11 @@ export default async function Page({ params, searchParams }) {
             </h3>
           </div>
           <div>
-            <Image src={loginIllustration} alt='' className='mt-10 w-96 ' />
+            <Image
+              src={loginIllustration}
+              alt=''
+              className='mx-auto mt-10 w-52'
+            />
           </div>
         </div>
         <div className='w-full md:w-1/2'>

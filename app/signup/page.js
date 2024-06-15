@@ -33,7 +33,11 @@ export default async function Page({ params, searchParams }) {
             </h3>
           </div>
           <div>
-            <Image src={signupIllustration} alt='' className='mt-10 w-96 ' />
+            <Image
+              src={signupIllustration}
+              alt=''
+              className='mx-auto mt-10 w-52 '
+            />
           </div>
         </div>
         <div className='w-full md:w-1/2'>

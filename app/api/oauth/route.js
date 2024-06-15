@@ -19,7 +19,7 @@ export async function GET(request) {
       secure: true,
     });
     console.log(request)
-    return NextResponse.redirect(`${request.nextUrl.origin}?action=profile-completed`);
+    return NextResponse.redirect(`${request.nextUrl.origin}/start?action=profile-completed`);
   } catch (error) {
     console.error(error);
     return new NextResponse(

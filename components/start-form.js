@@ -3,11 +3,13 @@
 import { createProfile } from '@/lib/server/actions';
 import { getUserLocation } from '@/lib/utils';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 const StartForm = ({ user }) => {
+  const [location, setLocation] = useState({});
   useEffect(() => {
-    getUserLocation();
-  });
+    getUserLocation().then((loc) => setLocation(loc));
+  }, []);
   return (
     <div>
       <form className='space-y-4' action={createProfile}>
@@ -44,7 +46,7 @@ const StartForm = ({ user }) => {
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             minLength={5}
             required
-            autoComplete='name'
+            autoComplete='additional-name'
             enterKeyHint='done'
           />
         </div>
@@ -55,15 +57,18 @@ const StartForm = ({ user }) => {
             Location
           </label>
           <input
-            id='username'
-            name='username'
-            type='file'
+            id='location'
+            name='location'
+            type='text'
             placeholder='Enter your location'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             minLength={5}
             required
-            autoComplete='name'
+            autoComplete='street-address'
             enterKeyHint='done'
+            defaultValue={
+              (location?.city || '---') + ', ' + (location?.country || '---')
+            }
           />
         </div>
         <button

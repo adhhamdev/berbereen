@@ -1,8 +1,8 @@
+import LoginForm from "@/components/login-form";
+import Popup from "@/components/popup";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
-import LoginForm from "@/components/login-form";
-import Popup from "@/components/popup";
 
 export const metadata = {
   title: "Log In",
@@ -12,9 +12,9 @@ export const metadata = {
 export default async function Page({ params, searchParams }) {
   return (
     <div>
-      <div className="md:flex-row flex flex-col items-center justify-center h-screen">
-        <div className="md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between text-center md:rounded-r-lg">
-          <div className="hidden items-center mb-20 md:flex">
+      <div className="flex flex-col items-center justify-center h-screen md:flex-row">
+        <div className="text-center md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg">
+          <div className="items-center hidden mb-20 md:flex">
             <Image
               className="w-20 rounded-full"
               src={logoIcon}
@@ -23,16 +23,16 @@ export default async function Page({ params, searchParams }) {
             />
           </div>
           <div>
-            <h1 className="md:mb-2 text-4xl font-bold mb-3 md:text-white">
+            <h1 className="mb-3 text-4xl font-bold md:mb-2 md:text-white">
               Log In
             </h1>
-            <h3 className="font-semibold mb-4 md:text-gray-300 text-gray-500">
+            <h3 className="mb-4 font-semibold text-gray-500 md:text-gray-300">
               Log in to your account to get started.
             </h3>
           </div>
         </div>
-        <div className="md:w-1/2 w-full">
-          <div className="max-w-md mx-auto p-8">
+        <div className="w-full md:w-1/2">
+          <div className="max-w-md p-8 mx-auto">
             <LoginForm />
             <div className="mt-4 text-center">
               <span className="text-sm text-gray-600">Or</span>
@@ -41,7 +41,7 @@ export default async function Page({ params, searchParams }) {
               <form action={signUpWithGoogle}>
                 <button
                   type="submit"
-                  className="flex items-center justify-center w-full py-2 px-4 hover:bg-gray-300 focus:ring-gray-500 focus:ring-offset-gray-200 transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                  className="flex items-center justify-center w-full px-4 py-2 text-base font-semibold text-center transition duration-200 ease-in rounded-lg shadow-md hover:bg-gray-300 focus:ring-gray-500 focus:ring-offset-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -9,15 +9,17 @@ export async function GET(request) {
   try {
     const { account } = createAdminClient();
     const session = await account.createSession(userId, secret);
-    
+
     cookies().set("user-session", session.secret, {
       path: "/",
       httpOnly: true,
       sameSite: "strict",
       secure: true,
     });
-    console.log(request)
-    return NextResponse.redirect(`${request.nextUrl.origin}/start?action=signed-up`);
+    console.log(request);
+    return NextResponse.redirect(
+      `${request.nextUrl.origin}/start?action=signed-up`
+    );
   } catch (error) {
     console.error(error);
     return new NextResponse(

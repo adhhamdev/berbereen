@@ -6,14 +6,15 @@ export const metadata = {
   description: "Sell & Buy Goods",
 };
 
-export default function Page({ params, searchParams}) {
+export default function Page({ params, searchParams }) {
   return (
     <div>
       <h1 className="flex items-center m-4 text-lg font-bold text-slate-700">
-        <BuildingStorefrontIcon className="size-6 mr-1" /> Market
+        <BuildingStorefrontIcon className="mr-1 size-6" /> Market
       </h1>
-      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
-
+      {searchParams.action && (
+        <Popup params={params} searchParams={searchParams} />
+      )}
     </div>
   );
 }

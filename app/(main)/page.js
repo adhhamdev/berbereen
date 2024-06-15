@@ -1,7 +1,6 @@
 import Popup from "@/components/popup";
 import PostList from "@/components/post-list";
 
-
 export default async function Page({ params, searchParams }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3">
@@ -10,7 +9,9 @@ export default async function Page({ params, searchParams }) {
         <PostList listData={[]} />
       </div>
       <div></div>
-      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+      {searchParams.action && (
+        <Popup params={params} searchParams={searchParams} />
+      )}
     </div>
   );
 }

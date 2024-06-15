@@ -1,5 +1,5 @@
-import Header from "@/components/header";
 import BottomBar from "@/components/bottom-bar";
+import Header from "@/components/header";
 
 export default function Layout({ children }) {
   return (

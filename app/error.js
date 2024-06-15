@@ -13,9 +13,11 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className={`${inter.className} flex flex-col items-center justify-center h-screen bg-white`}>
-      <div className="p-16 m-5 rounded-xl shadow-2xl text-center">
-        <h2 className="text-xl font-semibold text-black mb-8">
+    <div
+      className={`${inter.className} flex flex-col items-center justify-center h-screen bg-white`}
+    >
+      <div className="p-16 m-5 text-center shadow-2xl rounded-xl">
+        <h2 className="mb-8 text-xl font-semibold text-black">
           {error.statusCode === 404 ? (
             <span>
               Oops, the thing you&apos;re looking for doesn&apos;t exist.
@@ -33,14 +35,14 @@ export default function Error({ error, reset }) {
           )}
         </h2>
         <button
-          className="bg-slate-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md mt-8"
+          className="px-4 py-2 mt-8 font-bold text-white rounded-md bg-slate-900 hover:bg-gray-700"
           onClick={reset}
         >
           Try again
         </button>
         <Link
           href="/"
-          className="block mt-4 hover:bg-slate-300 font-bold py-2 px-4 rounded-full border-2 border-slate-400"
+          className="block px-4 py-2 mt-4 font-bold border-2 rounded-full hover:bg-slate-300 border-slate-400"
         >
           Go Back
         </Link>

@@ -1,6 +1,6 @@
 import { inter } from "@/lib/fonts";
-import "./globals.css";
 import Script from "next/script";
+import "./globals.css";
 
 export const viewport = {
   themeColor: "#ffffff",

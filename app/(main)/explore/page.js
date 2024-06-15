@@ -10,9 +10,11 @@ export default function Page({ params, searchParams }) {
   return (
     <div>
       <h1 className="flex items-center m-4 text-lg font-bold text-slate-700">
-        <MapIcon className="size-6 mr-1" /> Explore
+        <MapIcon className="mr-1 size-6" /> Explore
       </h1>
-      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+      {searchParams.action && (
+        <Popup params={params} searchParams={searchParams} />
+      )}
     </div>
   );
 }

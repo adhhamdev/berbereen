@@ -1,10 +1,9 @@
+import Popup from "@/components/popup";
+import SignupForm from "@/components/signup-form";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import Image from "next/image";
-import logoIcon from "/public/icon-192.png";
-import SignupForm from "@/components/signup-form";
 import Link from "next/link";
-import Popup from "@/components/popup";
-import { righteous } from "@/lib/fonts";
+import logoIcon from "/public/icon-192.png";
 
 export const metadata = {
   title: "Sign Up",
@@ -22,7 +21,6 @@ export default async function Page({ params, searchParams }) {
               src={logoIcon}
               alt="Berbereen Logo"
               priority
-              
             />
           </div>
           <div>

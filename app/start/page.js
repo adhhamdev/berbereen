@@ -12,9 +12,9 @@ const page = async () => {
   const user = await getLoggedInUser();
 
   return (
-    <div className="md:flex-row flex flex-col items-center justify-center h-screen">
-      <div className="md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg text-center">
-        <div className="hidden items-center md:flex">
+    <div className="flex flex-col items-center justify-center h-screen md:flex-row">
+      <div className="text-center md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg">
+        <div className="items-center hidden md:flex">
           <Image
             className="w-20 rounded-full"
             src={logoIcon}
@@ -23,16 +23,16 @@ const page = async () => {
           />
         </div>
         <div>
-          <h1 className="md:mb-2 text-4xl font-bold mb-8 md:text-white">
+          <h1 className="mb-8 text-4xl font-bold md:mb-2 md:text-white">
             Create Your Profile
           </h1>
-          <h3 className="font-semibold mb-4 md:text-white">
+          <h3 className="mb-4 font-semibold md:text-white">
             Complete your profile to get started.
           </h3>
         </div>
       </div>
-      <div className="md:w-1/2 w-full">
-        <div className="max-w-md mx-auto p-8">
+      <div className="w-full md:w-1/2">
+        <div className="max-w-md p-8 mx-auto">
           <StartForm user={user} />
         </div>
       </div>

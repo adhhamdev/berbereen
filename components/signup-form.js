@@ -2,8 +2,6 @@
 
 import { signUpWithEmail } from "@/lib/server/actions";
 
-
-
 const SignupForm = () => {
   return (
     <div>
@@ -66,7 +64,7 @@ const SignupForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+          className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
         >
           Sign Up
         </button>

@@ -39,7 +39,7 @@
       "src": "/icon-48.png",
       "sizes": "48x48",
       "type": "image/png",
-      "purpose": "monochrome" 
+      "purpose": "monochrome"
     },
     {
       "src": "/icon-72.png",
@@ -84,7 +84,7 @@
           "src": "/explore-icon.png",
           "sizes": "96x96",
           "type": "image/png",
-          "purpose": "monochrome" 
+          "purpose": "monochrome"
         }
       ]
     },
@@ -97,7 +97,7 @@
           "src": "/market-icon.png",
           "sizes": "96x96",
           "type": "image/png",
-          "purpose": "monochrome" 
+          "purpose": "monochrome"
         }
       ]
     },
@@ -110,7 +110,7 @@
           "src": "/profile-icon.png",
           "sizes": "96x96",
           "type": "image/png",
-          "purpose": "monochrome" 
+          "purpose": "monochrome"
         }
       ]
     },
@@ -123,7 +123,7 @@
           "src": "/saved-icon.png",
           "sizes": "96x96",
           "type": "image/png",
-          "purpose": "monochrome" 
+          "purpose": "monochrome"
         }
       ]
     },
@@ -136,7 +136,7 @@
           "src": "/settings-icon.png",
           "sizes": "96x96",
           "type": "image/png",
-          "purpose": "monochrome" 
+          "purpose": "monochrome"
         }
       ]
     }

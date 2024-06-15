@@ -1,5 +1,5 @@
-import ImageOptions from "@/components/image-options";
 import BackNavBtn from "@/components/back-nav-btn";
+import ImageOptions from "@/components/image-options";
 import { getImage } from "@/lib/server/actions";
 import Image from "next/image";
 
@@ -11,12 +11,12 @@ export const metadata = {
 export default async function Page({ params }) {
   const imageUrl = await getImage(params.id);
   return (
-    <div className="h-screen w-screen flex items-center">
+    <div className="flex items-center w-screen h-screen">
       <div className="fixed top-0 left-0 p-3">
         <BackNavBtn text="Image" />
       </div>
       <Image
-        className="w-full h-auto max-w-full max-h-screen object-contain"
+        className="object-contain w-full h-auto max-w-full max-h-screen"
         src={imageUrl}
         width={500}
         height={500}

@@ -1,12 +1,12 @@
-import Image from "next/image";
 import { righteous } from "@/lib/fonts";
+import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
 
 const LogoIcon = () => {
   return (
     <div className="flex items-center mb-20">
       <Image
-        className="mx-auto md:mx-0 w-20 rounded-full"
+        className="w-20 mx-auto rounded-full md:mx-0"
         src={logoIcon}
         alt="Berbereen Logo"
         priority

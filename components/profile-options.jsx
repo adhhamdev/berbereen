@@ -1,13 +1,14 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { ArrowLeftStartOnRectangleIcon } from "@heroicons/react/24/outline";
-import Transition from "./transition";
-import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
 import { logOut } from "@/lib/server/actions";
-
+import {
+  ArrowLeftStartOnRectangleIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
+import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import Transition from "./transition";
 
 export default function ProfileOptions({ profilePicture }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function ProfileOptions({ profilePicture }) {
       <div className="relative" onBlur={() => setIsOpen(false)}>
         <Transition layoutId="profileIcon">
           <button
-            className="flex justify-center itemse-center mr-2 size-10 text-gray-600 hover:text-gray-800 shadow-lg rounded-lg"
+            className="flex justify-center mr-2 text-gray-600 rounded-lg shadow-lg itemse-center size-10 hover:text-gray-800"
             onClick={() => setIsOpen((prev) => !prev)}
             title="Account"
           >
@@ -33,7 +34,7 @@ export default function ProfileOptions({ profilePicture }) {
         <AnimatePresence>
           {isOpen && (
             <Transition
-              className="absolute right-2 w-48 bg-white rounded-lg shadow-xl z-20"
+              className="absolute z-20 w-48 bg-white rounded-lg shadow-xl right-2"
               initial={{ y: 0, opacity: 0 }}
               animate={{ y: 16, opacity: 1 }}
               exit={{ y: 0, opacity: 0 }}
@@ -41,16 +42,16 @@ export default function ProfileOptions({ profilePicture }) {
               <div className="p-2">
                 <Link
                   href="/account"
-                  className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-gray-700 hover:bg-gray-100 rounded-lg"
+                  className="flex items-center px-4 py-2 text-base text-gray-700 rounded-lg size-full sm:py-1 hover:bg-gray-100"
                 >
-                  <UserCircleIcon className="size-8 p-1 text-slate-900" />
+                  <UserCircleIcon className="p-1 size-8 text-slate-900" />
                   Profile
                 </Link>
                 <button
                   onClick={async () => await logOut()}
-                  className="flex size-full items-center px-4 py-2 sm:py-1 text-base text-rose-600 hover:bg-gray-100 rounded-lg"
+                  className="flex items-center px-4 py-2 text-base rounded-lg size-full sm:py-1 text-rose-600 hover:bg-gray-100"
                 >
-                  <ArrowLeftStartOnRectangleIcon className="size-8 p-1 text-rose-600" />
+                  <ArrowLeftStartOnRectangleIcon className="p-1 size-8 text-rose-600" />
                   Log out
                 </button>
               </div>

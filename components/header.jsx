@@ -1,34 +1,34 @@
 import {
-  RectangleStackIcon,
-  MapIcon,
-  BuildingStorefrontIcon,
   BookmarkSquareIcon,
+  BuildingStorefrontIcon,
   CogIcon,
+  MapIcon,
+  RectangleStackIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import ProfileOptions from "./profile-options";
 
-import { Suspense } from "react";
-import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
+import { righteous } from "@/lib/fonts";
 import { getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
+import { Suspense } from "react";
+import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import logoIcon from "/public/icon-192.png";
-import { righteous } from "@/lib/fonts";
 
 export default async function Header() {
   const profilePicture = await getAvatar(64);
   return (
     <div>
-      <header className="flex items-center body-font shadow bg-white px-2">
-        <div className="container mx-auto flex py-3 px-2">
+      <header className="flex items-center px-2 bg-white shadow body-font">
+        <div className="container flex px-2 py-3 mx-auto">
           <Link
             href="/"
-            className="flex title-font font-medium items-center text-gray-900"
+            className="flex items-center font-medium text-gray-900 title-font"
             scroll={false}
           >
             <div className="flex items-center mb-20">
               <Image
-                className="mx-auto md:mx-0 w-10 rounded-full"
+                className="w-10 mx-auto rounded-full md:mx-0"
                 src={logoIcon}
                 alt="Berbereen Logo"
                 priority
@@ -46,47 +46,47 @@ export default async function Header() {
           <div className="flex items-center px-4">
             <Link
               href="/"
-              className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+              className="flex items-center px-6 py-1 text-base text-gray-900 transition-colors duration-300 rounded-lg hover:bg-slate-200"
               scroll={false}
             >
               <span className="sr-only">Feed</span>
-              <RectangleStackIcon className="size-7 p-1 text-slate-700" />
+              <RectangleStackIcon className="p-1 size-7 text-slate-700" />
               Feed
             </Link>
             <Link
               href="/explore"
-              className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+              className="flex items-center px-6 py-1 text-base text-gray-900 transition-colors duration-300 rounded-lg hover:bg-slate-200"
               scroll={false}
             >
               <span className="sr-only">Explore</span>
-              <MapIcon className="size-7 p-1 text-slate-700" />
+              <MapIcon className="p-1 size-7 text-slate-700" />
               Explore
             </Link>
             <Link
               href="/market"
-              className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+              className="flex items-center px-6 py-1 text-base text-gray-900 transition-colors duration-300 rounded-lg hover:bg-slate-200"
               scroll={false}
             >
               <span className="sr-only">Market</span>
-              <BuildingStorefrontIcon className="size-7 p-1 text-slate-700" />
+              <BuildingStorefrontIcon className="p-1 size-7 text-slate-700" />
               Market
             </Link>
             <Link
               href="/saved"
-              className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+              className="flex items-center px-6 py-1 text-base text-gray-900 transition-colors duration-300 rounded-lg hover:bg-slate-200"
               scroll={false}
             >
               <span className="sr-only">Saved</span>
-              <BookmarkSquareIcon className="size-7 p-1 text-slate-700" />
+              <BookmarkSquareIcon className="p-1 size-7 text-slate-700" />
               Saved
             </Link>
             <Link
               href="/settings"
-              className="flex text-base items-center text-gray-900 px-6 py-1 rounded-lg  hover:bg-slate-200 transition-colors duration-300"
+              className="flex items-center px-6 py-1 text-base text-gray-900 transition-colors duration-300 rounded-lg hover:bg-slate-200"
               scroll={false}
             >
               <span className="sr-only">Settings</span>
-              <CogIcon className="size-7 p-1 text-slate-700" />
+              <CogIcon className="p-1 size-7 text-slate-700" />
               Settings
             </Link>
           </div>

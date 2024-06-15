@@ -1,5 +1,5 @@
-"use client"
-import { useEffect, useState } from "react"
+"use client";
+import { useState } from "react";
 
 import {
   ArrowPathRoundedSquareIcon,
@@ -7,13 +7,9 @@ import {
   HeartIcon,
   ShareIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ArrowPathRoundedSquareIcon as SolidArrowPathRoundedSquareIcon,
-  BookmarkIcon as SolidBookmarkIcon,
-  HeartIcon as SolidHeartIcon,
-} from "@heroicons/react/24/solid";
+import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
 
-export default function CardActions({post, currentUser}) {
+export default function CardActions({ post, currentUser }) {
   const userLiked = false;
   // const userLiked = post.like.user.some((user) => user.$id === currentUser.$id);
   const [liked, setLiked] = useState(userLiked);
@@ -24,24 +20,29 @@ export default function CardActions({post, currentUser}) {
 
   return (
     <div className="flex items-center justify-end text-slate-700">
-      <button className="flex items-center p-1 mx-1 hover:bg-slate-200 rounded-md">
+      <button className="flex items-center p-1 mx-1 rounded-md hover:bg-slate-200">
         <ShareIcon className="size-5" />
       </button>
-      <button className="flex items-center p-1 mx-1 hover:bg-slate-200 rounded-md">
+      <button className="flex items-center p-1 mx-1 rounded-md hover:bg-slate-200">
         <BookmarkIcon className="size-5" />
-        <span className="ml-1 font-medium text-sm">12</span>
+        <span className="ml-1 text-sm font-medium">12</span>
       </button>
-      <button className="flex items-center p-1 mx-1 hover:bg-slate-200 rounded-md">
+      <button className="flex items-center p-1 mx-1 rounded-md hover:bg-slate-200">
         <ArrowPathRoundedSquareIcon className="size-5" />
-        <span className="ml-1 font-medium text-sm">12</span>
+        <span className="ml-1 text-sm font-medium">12</span>
       </button>
-      <button className="flex items-center p-1 mx-1 hover:bg-slate-200 rounded-md" onClick={() => setLiked(prev => !prev)}>
+      <button
+        className="flex items-center p-1 mx-1 rounded-md hover:bg-slate-200"
+        onClick={() => setLiked((prev) => !prev)}
+      >
         {liked ? (
-          <SolidHeartIcon className="size-5 text-red-500" />
+          <SolidHeartIcon className="text-red-500 size-5" />
         ) : (
           <HeartIcon className="size-5" />
         )}
-        <span className={`ml-1 font-medium text-sm ${liked && 'text-red-500'}`}>{post.like.user.length}</span>
+        <span className={`ml-1 font-medium text-sm ${liked && "text-red-500"}`}>
+          {post.like.user.length}
+        </span>
       </button>
     </div>
   );

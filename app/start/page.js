@@ -1,7 +1,6 @@
 import StartForm from "@/components/start-form";
 import { getLoggedInUser } from "@/lib/server/appwrite";
 import Image from "next/image";
-import { righteous } from "@/lib/fonts";
 import logoIcon from "/public/icon-192.png";
 
 export const metadata = {

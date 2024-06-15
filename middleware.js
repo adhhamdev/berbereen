@@ -5,7 +5,6 @@ export const dynamic = "force-dynamic";
 
 export async function middleware(req) {
   const user = await getLoggedInUser();
-  console.log(user)
   if (!user) {
     return NextResponse.redirect(new URL("/login", req.url));
   }

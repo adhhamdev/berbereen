@@ -16,26 +16,20 @@ export default async function Page({ params, searchParams }) {
     <div>
       <div className="md:flex-row flex flex-col items-center justify-center h-screen">
         <div className="md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between text-center md:rounded-r-lg">
-          <div className="flex items-center mb-20">
+          <div className="hidden items-center mb-20 md:flex">
             <Image
-              className="mx-auto md:mx-0 w-24 rounded-full"
+              className="w-20 rounded-full"
               src={logoIcon}
               alt="Berbereen Logo"
               priority
             />
-            <span
-              className={`${righteous.className} ml-4 text-4xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500 md:hidden`}
-              translate="no"
-            >
-              Berbereen.
-            </span>
           </div>
           <div>
             <h1 className="md:mb-2 text-4xl font-bold mb-3 md:text-white">
               Sign Up
             </h1>
             <h3 className="font-semibold mb-4 md:text-gray-300 text-gray-500">
-              Create an account to get started
+              Create an account to get started.
             </h3>
           </div>
         </div>

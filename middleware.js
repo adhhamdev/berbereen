@@ -23,7 +23,7 @@ export const config = {
     "/saved",
     "/settings",
     "/account",
-    "/start",
+    // "/start",
     "/api",
   ],
 };

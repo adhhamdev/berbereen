@@ -16,7 +16,7 @@ const page = async () => {
       <div className="md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg text-center">
         <div className="hidden items-center md:flex">
           <Image
-            className="w-24 rounded-full"
+            className="w-20 rounded-full"
             src={logoIcon}
             alt="Berbereen Logo"
             priority

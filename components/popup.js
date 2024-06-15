@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import {
   XCircleIcon,
   CheckIcon,
@@ -8,7 +10,7 @@ import {
 import Transition from "./transition";
 import { usePathname, useRouter } from "next/navigation";
 
-const Popup = ({ params, searchParams }) => {
+const Popup = ({ searchParams }) => {
   const router = useRouter();
   const path = usePathname();
 

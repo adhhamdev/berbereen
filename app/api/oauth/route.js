@@ -19,7 +19,7 @@ export async function GET(request) {
       secure: true,
     });
     console.log(request)
-    return NextResponse.redirect(`${request.url.origin}/?action=logged-in`);
+    return NextResponse.redirect(`${request.nextUrl.origin}?action=profile-completed`);
   } catch (error) {
     console.error(error);
     return new NextResponse(

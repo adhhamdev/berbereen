@@ -82,7 +82,7 @@ export default async function Page({ params, searchParams }) {
           </a>
         </div>
       </div>
-      {searchParams.action && <Popup params={params} searchParams={searchParams} />}
+      {searchParams.action && <Popup searchParams={searchParams} />}
 
     </div>
   );

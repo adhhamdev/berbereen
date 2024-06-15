@@ -18,7 +18,7 @@ const SignupForm = () => {
             name="email"
             type="email"
             placeholder="Enter your email"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent"
             required
             autoFocus
             autoComplete="email"
@@ -38,7 +38,7 @@ const SignupForm = () => {
             type="password"
             placeholder="Enter your password"
             minLength={8}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent"
             required
             autoComplete="new-password"
             enterKeyHint="next"
@@ -56,7 +56,7 @@ const SignupForm = () => {
             name="name"
             type="text"
             placeholder="Enter your name"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent"
             required
             autoComplete="name"
             enterKeyHint="done"
@@ -64,7 +64,7 @@ const SignupForm = () => {
         </div>
         <button
           type="submit"
-          className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-600 rounded-lg shadow-md hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+          className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in rounded-lg shadow-md bg-slate-600 hover:bg-slate-800 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
         >
           Sign Up
         </button>

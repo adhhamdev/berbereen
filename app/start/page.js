@@ -1,6 +1,7 @@
 import StartForm from "@/components/start-form";
 import { getLoggedInUser } from "@/lib/server/appwrite";
 import Image from "next/image";
+import startIllustration from "/public//profile-illustration.svg";
 import logoIcon from "/public/icon-192.png";
 
 export const metadata = {
@@ -27,8 +28,11 @@ const page = async () => {
             Create Your Profile
           </h1>
           <h3 className="mb-4 font-semibold md:text-white">
-            Complete your profile to get started.
+            Complete your profile to move on.
           </h3>
+        </div>
+        <div>
+          <Image src={startIllustration} alt="" className="mt-10 w-96" />
         </div>
       </div>
       <div className="w-full md:w-1/2">

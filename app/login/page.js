@@ -2,6 +2,7 @@ import LoginForm from "@/components/login-form";
 import Popup from "@/components/popup";
 import { signUpWithGoogle } from "@/lib/server/oauth";
 import Image from "next/image";
+import loginIllustration from "/public//login-illustration.svg";
 import logoIcon from "/public/icon-192.png";
 
 export const metadata = {
@@ -26,9 +27,12 @@ export default async function Page({ params, searchParams }) {
             <h1 className="mb-3 text-4xl font-bold md:mb-2 md:text-white">
               Log In
             </h1>
-            <h3 className="mb-4 font-semibold text-gray-500 md:text-gray-300">
+            <h3 className="mb-4 font-semibold text-gray-600 md:text-gray-300">
               Log in to your account to get started.
             </h3>
+          </div>
+          <div>
+            <Image src={loginIllustration} alt="" className="mt-10 w-96 " />
           </div>
         </div>
         <div className="w-full md:w-1/2">
@@ -41,7 +45,7 @@ export default async function Page({ params, searchParams }) {
               <form action={signUpWithGoogle}>
                 <button
                   type="submit"
-                  className="flex items-center justify-center w-full px-4 py-2 text-base font-semibold text-center transition duration-200 ease-in rounded-lg shadow-md hover:bg-gray-300 focus:ring-gray-500 focus:ring-offset-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                  className="flex items-center justify-center w-full px-4 py-2 text-base font-semibold text-center transition duration-200 ease-in rounded-lg shadow-md hover:bg-gray-300 focus:ring-gray-600 focus:ring-offset-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

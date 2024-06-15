@@ -10,10 +10,10 @@ import ProfileOptions from "./profile-options";
 
 import { Suspense } from "react";
 import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
-import { righteous } from "@/lib/fonts";
-import Image from "next/image";
-import logoIcon from "/public/icon-72.png";
 import { getAvatar } from "@/lib/server/actions";
+import Image from "next/image";
+import logoIcon from "/public/icon-192.png";
+
 
 export default async function Header() {
   const profilePicture = await getAvatar(64);
@@ -26,17 +26,20 @@ export default async function Header() {
             className="flex title-font font-medium items-center text-gray-900"
             scroll={false}
           >
-            <Image
-              src={logoIcon}
-              alt="Berbereen Logo"
-              className="w-10 rounded-full"
-            />
-            <span
-              className={`${righteous.className} ml-2 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500`}
-              translate="no"
-            >
-              Berbereen.
-            </span>
+            <div className="flex items-center mb-20">
+              <Image
+                className="mx-auto md:mx-0 w-10 rounded-full"
+                src={logoIcon}
+                alt="Berbereen Logo"
+                priority
+              />
+              <span
+                className={`${righteous.className} ml-4 text-2xl text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-500 md:hidden`}
+                translate="no"
+              >
+                Berbereen.
+              </span>
+            </div>
           </Link>
         </div>
         <nav className="hidden sm:flex">

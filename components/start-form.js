@@ -2,11 +2,11 @@
 
 import { createProfile } from "@/lib/server/actions";
 
-const StartForm = ({user}) => {
+const StartForm = ({ user }) => {
   return (
     <div>
-      <form className="w-full max-w-md" action={createProfile}>
-        <div className="mb-4">
+      <form action={createProfile} className="space-y-4">
+        <div>
           <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
             Name
           </label>
@@ -14,7 +14,7 @@ const StartForm = ({user}) => {
             type="text"
             name="name"
             id="name"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-xl"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="Enter your name"
             autoComplete="name"
             enterKeyHint="next"
@@ -24,9 +24,19 @@ const StartForm = ({user}) => {
             required
           />
         </div>
-        <div className="flex flex-col items-center justify-center">
+        <div className="mb-6">
+          <label htmlFor="bio" className="block text-gray-700 font-bold mb-2">
+            Bio
+          </label>
+          <textarea
+            id="bio"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Enter your bio"
+          ></textarea>
+        </div>
+        <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4 sm:mb-0"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Create Profile

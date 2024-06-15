@@ -1,9 +1,9 @@
 import { signUpWithGoogle } from "@/lib/server/oauth";
-import { righteous } from "@/lib/fonts";
 import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
 import LoginForm from "@/components/login-form";
 import Popup from "@/components/popup";
+import { righteous } from "@/lib/fonts";
 
 export const metadata = {
   title: "Log In",

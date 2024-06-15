@@ -13,7 +13,7 @@ import ProfileIconShimmer from "./skeletons/profile-icon-shimmer";
 import { getAvatar } from "@/lib/server/actions";
 import Image from "next/image";
 import logoIcon from "/public/icon-192.png";
-
+import { righteous } from "@/lib/fonts";
 
 export default async function Header() {
   const profilePicture = await getAvatar(64);

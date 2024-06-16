@@ -4,7 +4,6 @@ import { signUpWithGoogle } from '@/lib/server/oauth';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoIcon from '/public/icon-192.png';
-import signupIllustration from '/public/signup-illustration.svg';
 
 export const metadata = {
   title: 'Sign Up',
@@ -31,13 +30,6 @@ export default async function Page({ params, searchParams }) {
             <h3 className='mb-4 font-semibold text-gray-500 md:text-gray-300'>
               Create an account to get started.
             </h3>
-          </div>
-          <div>
-            <Image
-              src={signupIllustration}
-              alt=''
-              className='mx-auto mt-10 w-52 '
-            />
           </div>
         </div>
         <div className='w-full md:w-1/2'>

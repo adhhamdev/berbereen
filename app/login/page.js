@@ -2,7 +2,6 @@ import LoginForm from '@/components/login-form';
 import Popup from '@/components/popup';
 import { signUpWithGoogle } from '@/lib/server/oauth';
 import Image from 'next/image';
-import loginIllustration from '/public//login-illustration.svg';
 import logoIcon from '/public/icon-192.png';
 
 export const metadata = {
@@ -30,13 +29,6 @@ export default async function Page({ params, searchParams }) {
             <h3 className='mb-4 font-semibold text-gray-600 md:text-gray-300'>
               Log in to your account to get started.
             </h3>
-          </div>
-          <div>
-            <Image
-              src={loginIllustration}
-              alt=''
-              className='mx-auto mt-10 w-52'
-            />
           </div>
         </div>
         <div className='w-full md:w-1/2'>

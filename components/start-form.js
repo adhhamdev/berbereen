@@ -30,7 +30,9 @@ const StartForm = ({ user }) => {
       const file = ev.target.files[0];
       setProfilePicture(URL.createObjectURL(file));
     });
-    getUserLocation().then((loc) => setLocation(loc.city + ', ' + loc.country));
+    getUserLocation().then((loc) =>
+      setLocation(loc?.city + ', ' + loc?.country)
+    );
   }, []);
 
   return (
@@ -61,6 +63,7 @@ const StartForm = ({ user }) => {
             </button>
             <input
               type='file'
+              name='profile-picture'
               id='profile-picture-input'
               defaultValue={profilePicture}
               hidden
@@ -82,6 +85,7 @@ const StartForm = ({ user }) => {
             placeholder='Enter your name'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             minLength={5}
+            maxLength={32}
             required
             autoComplete='name'
             enterKeyHint='next'
@@ -101,8 +105,8 @@ const StartForm = ({ user }) => {
             placeholder='Enter a unique username'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             minLength={5}
+            maxLength={32}
             required
-            autoComplete='additional-name'
             enterKeyHint='done'
           />
         </div>
@@ -134,10 +138,11 @@ const StartForm = ({ user }) => {
           <input
             id='age'
             name='age'
-            inputMode='numeric'
+            type='number'
             placeholder='Enter your age'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
-            maxLength={2}
+            max={100}
+            min={12}
             required
             enterKeyHint='next'
           />
@@ -154,12 +159,11 @@ const StartForm = ({ user }) => {
             type='tel'
             placeholder='+## ### ####'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
-            minLength={12}
-            maxLength={12}
             required
+            maxLength={12}
             autoComplete='mobile tel'
             enterKeyHint='next'
-            pattern='+[0-9]{2}[0-9]{3}[0-9]{4}'
+            pattern='((\+94)|0)?[0-9]{9}'
           />
         </div>
         <div>

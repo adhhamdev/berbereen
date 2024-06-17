@@ -8,7 +8,7 @@ import logoIcon from '/public/icon-192.png';
 
 const StartForm = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [profilePicture, setProfilePicture] = useState(logoIcon);
+  const [avatar, setAvatar] = useState(logoIcon);
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState('');
   const genders = ['Male', 'Female', 'None'];
@@ -19,16 +19,12 @@ const StartForm = ({ user }) => {
   };
 
   useEffect(() => {
-    const profilePictureBtn = document.getElementById('profile-picture-btn');
-    const profilePictureInput = document.getElementById(
-      'profile-picture-input'
-    );
-    profilePictureBtn.addEventListener('click', () =>
-      profilePictureInput.click()
-    );
-    profilePictureInput.addEventListener('change', (ev) => {
+    const avatarBtn = document.getElementById('profile-picture-btn');
+    const avatarInput = document.getElementById('profile-picture-input');
+    avatar.addEventListener('click', () => avatarInput.click());
+    avatarInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
-      setProfilePicture(URL.createObjectURL(file));
+      setavatar(URL.createObjectURL(file));
     });
     getUserLocation().then((loc) =>
       setLocation(
@@ -50,21 +46,20 @@ const StartForm = ({ user }) => {
         action={createProfile}>
         <div className='py-8 mx-auto text-center md:col-span-2'>
           <label
-            htmlFor='profilePicture'
+            htmlFor='avatar'
             className='block text-sm font-medium text-gray-700'>
             Profile Picture
           </label>
           <div className='flex flex-col items-center'>
-            <div></div>
             <Image
-              src={profilePicture}
+              src={avatar}
               width={200}
               height={200}
-              alt='Profile Picture'
+              alt='Avatar'
               className='object-cover my-5 rounded-full shadow-2xl size-24'
             />
             <button
-              id='profile-picture-btn'
+              id='avatar-btn'
               type='button'
               className='px-4 py-2 font-medium text-white rounded-full bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
               <i className='mr-2 fas fa-camera'></i>
@@ -72,9 +67,9 @@ const StartForm = ({ user }) => {
             </button>
             <input
               type='file'
-              name='profile-picture'
-              id='profile-picture-input'
-              defaultValue={profilePicture}
+              name='avatar'
+              id='avatar'
+              defaultValue={avatar}
               hidden
               aria-hidden='true'
               accept='image/*'

@@ -31,7 +31,15 @@ const StartForm = ({ user }) => {
       setProfilePicture(URL.createObjectURL(file));
     });
     getUserLocation().then((loc) =>
-      setLocation(loc?.city + ', ' + loc?.country)
+      setLocation(
+        loc?.city
+          ? loc?.country
+            ? `${loc.city}, ${loc.country}`
+            : loc.city
+          : loc?.country
+          ? loc.country
+          : ''
+      )
     );
   }, []);
 

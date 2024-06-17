@@ -68,7 +68,7 @@ const StartForm = ({ user }) => {
             <input
               type='file'
               name='avatar'
-              id='avatar'
+              id='avatar-input'
               defaultValue={avatar}
               hidden
               aria-hidden='true'

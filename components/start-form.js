@@ -2,37 +2,71 @@
 
 import { createProfile } from '@/lib/server/actions';
 import { getUserLocation } from '@/lib/utils';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import logoIcon from '/public/icon-192.png';
 
 const StartForm = ({ user }) => {
-  const [formData, setFormData] = useState({
-    name: user?.name || "",
-    email: '',
-    phoneNumber: '',
-    location: '',
-    gender: "",
-    age: "",
-    profilePicture: "",
-    coverPhoto: "",
-  })
-
-  const genders = ["Male", "Female", "None", ]
-
   const [isOpen, setIsOpen] = useState(false);
+  const [profilePicture, setProfilePicture] = useState(logoIcon);
+  const [location, setLocation] = useState('');
+  const [gender, setGender] = useState('');
+  const genders = ['Male', 'Female', 'None'];
 
   const handleSelect = (gender) => {
-    setFormData(prev => ({ ...prev, gender }));
+    setGender(gender);
     setIsOpen(false);
   };
 
   useEffect(() => {
-    getUserLocation().then((loc) => setFormData(prev => ({ ...prev, location: (loc?.city || '---') + ', ' + (loc?.country || '---') })));
+    const profilePictureBtn = document.getElementById('profile-picture-btn');
+    const profilePictureInput = document.getElementById(
+      'profile-picture-input'
+    );
+    profilePictureBtn.addEventListener('click', () =>
+      profilePictureInput.click()
+    );
+    profilePictureInput.addEventListener('change', (ev) => {
+      const file = ev.target.files[0];
+      console.log(file);
+    });
+    getUserLocation().then((loc) => setLocation(loc.city + ', ' + loc.country));
   }, []);
 
   return (
     <div>
-      <form className='space-y-4' action={createProfile}>
+      <form
+        className='gap-5 space-y-4 md:grid md:grid-cols-2'
+        action={createProfile}>
+        <div className='mx-auto text-center md:col-span-2'>
+          <label
+            htmlFor='profilePicture'
+            className='block mb-2 text-sm font-medium text-gray-700'>
+            Profile Picture
+          </label>
+          <div className='flex flex-col items-center gap-4'>
+            <Image
+              src={profilePicture}
+              alt='Profile Picture'
+              className='rounded-full size-20'
+            />
+            <button
+              id='profile-picture-btn'
+              type='button'
+              className='px-4 py-2 font-medium text-white rounded-md bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
+              <i className='mr-2 fas fa-camera'></i>
+              Edit Picture
+            </button>
+            <input
+              type='file'
+              id='profile-picture-input'
+              defaultValue={profilePicture}
+              hidden
+              aria-hidden='true'
+              accept='image/*'
+            />
+          </div>
+        </div>
         <div>
           <label
             htmlFor='name'
@@ -49,8 +83,7 @@ const StartForm = ({ user }) => {
             required
             autoComplete='name'
             enterKeyHint='next'
-            onChange={ev => setFormData(prev => ({ ...prev, name: ev.target.value }))}
-            value={formData.name}
+            defaultValue={user?.name}
           />
         </div>
         <div>
@@ -69,8 +102,6 @@ const StartForm = ({ user }) => {
             required
             autoComplete='additional-name'
             enterKeyHint='done'
-            onChange={ev => setFormData(prev => ({ ...prev, email: ev.target.value }))}
-            value={formData.email}
           />
         </div>
         <div>
@@ -89,8 +120,7 @@ const StartForm = ({ user }) => {
             required
             autoComplete='street-address'
             enterKeyHint='done'
-            onChange={ev => setFormData(prev => ({ ...prev, location: ev.target.value }))}
-            value={formData.location}
+            defaultValue={location}
           />
         </div>
         <div>
@@ -102,14 +132,12 @@ const StartForm = ({ user }) => {
           <input
             id='age'
             name='age'
-            inputMode="numeric"
+            inputMode='numeric'
             placeholder='Enter your age'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
-            maxLength={5}
+            maxLength={2}
             required
-            enterKeyHint='done'
-            onChange={ev => setFormData(prev => ({ ...prev, age: ev.target.value }))}
-            value={formData.age}
+            enterKeyHint='next'
           />
         </div>
         <div>
@@ -122,16 +150,14 @@ const StartForm = ({ user }) => {
             id='phone-number'
             name='phone-number'
             type='tel'
-            placeholder='###-###-####'
+            placeholder='+## ### ####'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             minLength={12}
             maxLength={12}
             required
-            autoComplete="mobile tel"
-            enterKeyHint="next"
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            onChange={ev => setFormData(prev => ({ ...prev, phoneNumber: ev.target.value }))}
-            value={formData.phoneNumber}
+            autoComplete='mobile tel'
+            enterKeyHint='next'
+            pattern='+[0-9]{2}[0-9]{3}[0-9]{4}'
           />
         </div>
         <div>
@@ -140,56 +166,53 @@ const StartForm = ({ user }) => {
             className='block text-sm font-medium text-gray-700'>
             Gender
           </label>
-          <div className="relative">
+          <div className='relative'>
             <button
-              id='gender'
-              type="button"
-              className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500"
-              onClick={() => setIsOpen(prev => !prev)}
-            >
-              {formData.gender ? (
-                <span>{formData.gender}</span>
-              ) : (
-                <span>Select Gender</span>
-              )}
+              type='button'
+              className='flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500'
+              onClick={() => setIsOpen((prev) => !prev)}>
+              {gender ? <span>{gender}</span> : <span>Select Gender</span>}
               <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+                className='w-4 h-4 ml-2'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'>
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
                   strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
+                  d='M19 9l-7 7-7-7'
                 />
               </svg>
             </button>
             {isOpen && (
               <div
-                className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-md"
-                role="listbox"
-              >
+                className='absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-md'
+                role='listbox'>
                 {genders.map((gender) => (
                   <button
-
                     key={gender}
-                    className="block w-full px-4 py-2 text-sm font-medium text-left text-gray-700 hover:bg-gray-100"
-                    role="radio"
-                    aria-checked="false"
-                    onClick={() => handleSelect(gender)}
-                  >
+                    className='block w-full px-4 py-2 text-sm font-medium text-left text-gray-700 hover:bg-gray-100'
+                    role='radio'
+                    aria-checked='false'
+                    onClick={() => handleSelect(gender)}>
                     {gender}
                   </button>
                 ))}
               </div>
             )}
+            <input
+              name='gender'
+              id='gender'
+              defaultValue={gender}
+              hidden
+              aria-hidden='true'
+            />
           </div>
         </div>
         <button
           type='submit'
-          className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md rounded-3xl bg-slate-800 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2'>
+          className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md md:col-span-2 rounded-3xl bg-slate-800 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2'>
           Sign Up
         </button>
       </form>

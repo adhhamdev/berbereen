@@ -13,7 +13,7 @@ export default async function Page({ params, searchParams }) {
   return (
     <div>
       <div className='flex flex-col items-center justify-center h-screen md:flex-row'>
-        <div className='text-center md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg'>
+        <div className='text-center md:py-12 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg'>
           <div className='items-center hidden mb-20 md:flex'>
             <Image
               className='w-20 rounded-full'

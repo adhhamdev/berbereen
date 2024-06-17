@@ -46,7 +46,7 @@ const StartForm = ({ user }) => {
   return (
     <div>
       <form
-        className='gap-5 space-y-4 md:grid md:grid-cols-2'
+        className='gap-5 space-y-4 md:space-y-0 md:grid md:grid-cols-2'
         action={createProfile}>
         <div className='py-8 mx-auto text-center md:col-span-2'>
           <label
@@ -151,8 +151,8 @@ const StartForm = ({ user }) => {
             type='number'
             placeholder='Enter your age'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
-            max={100}
-            min={12}
+            maxLength={2}
+            minLength={2}
             required
             enterKeyHint='next'
           />
@@ -167,7 +167,7 @@ const StartForm = ({ user }) => {
             id='phone-number'
             name='phone-number'
             type='tel'
-            placeholder='+## ### ####'
+            placeholder='+## ### #### / 0## ### ####'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
             required
             maxLength={12}
@@ -229,7 +229,7 @@ const StartForm = ({ user }) => {
         <button
           type='submit'
           className='w-full px-4 py-3 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md md:col-span-2 rounded-3xl bg-slate-800 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2'>
-          Sign Up
+          Complete
         </button>
       </form>
     </div>

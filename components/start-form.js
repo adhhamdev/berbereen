@@ -19,8 +19,8 @@ const StartForm = ({ user }) => {
   };
 
   useEffect(() => {
-    const avatarBtn = document.getElementById('profile-picture-btn');
-    const avatarInput = document.getElementById('profile-picture-input');
+    const avatarBtn = document.getElementById('avatar-btn');
+    const avatarInput = document.getElementById('avatar-input');
     avatarBtn.addEventListener('click', () => avatarInput.click());
     avatarInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];

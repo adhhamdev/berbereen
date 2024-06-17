@@ -8,7 +8,7 @@ import logoIcon from '/public/icon-192.png';
 
 const StartForm = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [avatar, setAvatar] = useState(logoIcon);
+  const [avatarIcon, setAvatarIcon] = useState(logoIcon);
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState('');
   const genders = ['Male', 'Female', 'None'];
@@ -24,7 +24,7 @@ const StartForm = ({ user }) => {
     avatarBtn.addEventListener('click', () => avatarInput.click());
     avatarInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
-      setAvatar(URL.createObjectURL(file));
+      setAvatarIcon(URL.createObjectURL(file));
     });
     getUserLocation().then((loc) =>
       setLocation(
@@ -52,7 +52,7 @@ const StartForm = ({ user }) => {
           </label>
           <div className='flex flex-col items-center'>
             <Image
-              src={avatar}
+              src={avatarIcon}
               width={200}
               height={200}
               alt='Avatar'
@@ -69,10 +69,11 @@ const StartForm = ({ user }) => {
               type='file'
               name='avatar'
               id='avatar-input'
-              defaultValue={avatar}
+              defaultValue={avatarIcon}
               hidden
               aria-hidden='true'
               accept='image/*'
+              required
             />
           </div>
         </div>
@@ -146,8 +147,8 @@ const StartForm = ({ user }) => {
             type='number'
             placeholder='Enter your age'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
-            maxLength={2}
-            minLength={2}
+            min={12}
+            max={100}
             required
             enterKeyHint='next'
           />
@@ -160,7 +161,7 @@ const StartForm = ({ user }) => {
           </label>
           <input
             id='phone-number'
-            name='phone-number'
+            name='phoneNumber'
             type='tel'
             placeholder='+## ### #### / 0## ### ####'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
@@ -218,6 +219,8 @@ const StartForm = ({ user }) => {
               defaultValue={gender}
               hidden
               aria-hidden='true'
+              required
+              onInvalid={() => alert('Please select a Gender!')}
             />
           </div>
         </div>

@@ -12,8 +12,8 @@ const page = async () => {
   const user = await getLoggedInUser();
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen overflow-y-auto md:flex-row md:overflow-y-hidden'>
-      <div className='text-center md:py-20 md:h-full md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg'>
+    <div className='flex flex-col items-center justify-center py-10 md:py-0 md:flex-row'>
+      <div className='text-center md:h-screen md:py-20 md:w-1/2 md:px-20 md:from-slate-800 md:to-slate-800 md:bg-gradient-to-t md:text-left md:flex md:flex-col md:justify-between md:rounded-r-lg'>
         <div className='items-center hidden md:flex'>
           <Image
             className='w-20 rounded-full'
@@ -31,7 +31,7 @@ const page = async () => {
           </h3>
         </div>
       </div>
-      <div className='w-full md:flex md:items-center md:h-screen md:w-1/2'>
+      <div className='w-full md:h-screen md:flex md:items-center md:w-1/2'>
         <div className='max-w-md p-8 mx-auto md:max-w-xl'>
           <StartForm user={user} />
         </div>

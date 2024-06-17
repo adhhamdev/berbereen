@@ -28,7 +28,7 @@ const StartForm = ({ user }) => {
     );
     profilePictureInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
-      console.log(file);
+      setProfilePicture(URL.createObjectURL(file));
     });
     getUserLocation().then((loc) => setLocation(loc.city + ', ' + loc.country));
   }, []);
@@ -38,22 +38,24 @@ const StartForm = ({ user }) => {
       <form
         className='gap-5 space-y-4 md:grid md:grid-cols-2'
         action={createProfile}>
-        <div className='mx-auto text-center md:col-span-2'>
+        <div className='py-8 mx-auto text-center md:col-span-2'>
           <label
             htmlFor='profilePicture'
-            className='block mb-2 text-sm font-medium text-gray-700'>
+            className='block text-sm font-medium text-gray-700'>
             Profile Picture
           </label>
-          <div className='flex flex-col items-center gap-4'>
+          <div className='flex flex-col items-center'>
             <Image
               src={profilePicture}
+              width={200}
+              height={200}
               alt='Profile Picture'
-              className='rounded-full size-20'
+              className='my-5 rounded-full shadow-2xl size-20'
             />
             <button
               id='profile-picture-btn'
               type='button'
-              className='px-4 py-2 font-medium text-white rounded-md bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
+              className='px-4 py-2 font-medium text-white rounded-full bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
               <i className='mr-2 fas fa-camera'></i>
               Edit Picture
             </button>
@@ -212,7 +214,7 @@ const StartForm = ({ user }) => {
         </div>
         <button
           type='submit'
-          className='w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md md:col-span-2 rounded-3xl bg-slate-800 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2'>
+          className='w-full px-4 py-3 text-base font-semibold text-center text-white transition duration-200 ease-in shadow-md md:col-span-2 rounded-3xl bg-slate-800 hover:bg-slate-600 focus:ring-slate-500 focus:ring-offset-slate-200 focus:outline-none focus:ring-2 focus:ring-offset-2'>
           Sign Up
         </button>
       </form>

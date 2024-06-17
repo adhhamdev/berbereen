@@ -21,10 +21,10 @@ const StartForm = ({ user }) => {
   useEffect(() => {
     const avatarBtn = document.getElementById('profile-picture-btn');
     const avatarInput = document.getElementById('profile-picture-input');
-    avatar.addEventListener('click', () => avatarInput.click());
+    avatarBtn.addEventListener('click', () => avatarInput.click());
     avatarInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
-      setavatar(URL.createObjectURL(file));
+      setAvatar(URL.createObjectURL(file));
     });
     getUserLocation().then((loc) =>
       setLocation(

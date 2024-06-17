@@ -47,12 +47,13 @@ const StartForm = ({ user }) => {
             Profile Picture
           </label>
           <div className='flex flex-col items-center'>
+            <div></div>
             <Image
               src={profilePicture}
               width={200}
               height={200}
               alt='Profile Picture'
-              className='my-5 rounded-full shadow-2xl size-20'
+              className='object-fill my-5 rounded-full shadow-2xl size-20'
             />
             <button
               id='profile-picture-btn'

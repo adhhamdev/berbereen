@@ -53,7 +53,7 @@ const StartForm = ({ user }) => {
               width={200}
               height={200}
               alt='Profile Picture'
-              className='object-fill my-5 rounded-full shadow-2xl size-20'
+              className='object-cover my-5 rounded-full shadow-2xl size-24'
             />
             <button
               id='profile-picture-btn'
@@ -89,6 +89,7 @@ const StartForm = ({ user }) => {
             maxLength={32}
             required
             autoComplete='name'
+            autoFocus
             enterKeyHint='next'
             defaultValue={user?.name}
           />

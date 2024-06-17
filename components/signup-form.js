@@ -18,6 +18,8 @@ const SignupForm = () => {
             type='email'
             placeholder='Enter your email'
             className='w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent'
+            minLength={5}
+            maxLength={32}
             required
             autoFocus
             autoComplete='email'

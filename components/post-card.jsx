@@ -11,13 +11,13 @@ export default async function PostCard({ post }) {
       <div className='flex items-center justify-between'>
         <div className='flex items-center'>
           <Image
-            src={post.user.avatar}
+            src={post.user?.avatar}
             alt=''
             width={30}
             height={30}
             className='rounded-full'
           />
-          <p className='ml-2 text-base font-semibold'>{post.user.name}</p>
+          <p className='ml-2 text-base font-semibold'>{post.user?.name}</p>
           <span className='mx-1'>•</span>
           <span className='text-sm font-medium text-slate-500'>
             {post.user.email}

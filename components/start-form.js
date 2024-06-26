@@ -4,11 +4,10 @@ import { createProfile } from '@/lib/server/actions';
 import { getUserLocation } from '@/lib/utils';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import logoIcon from '/public/icon-192.png';
 
-const StartForm = ({ user }) => {
+const StartForm = ({ user, defaultAvatar }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [avatarIcon, setAvatarIcon] = useState(logoIcon);
+  const [avatarIcon, setAvatarIcon] = useState(defaultAvatar);
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState('');
   const genders = ['Male', 'Female', 'None'];
@@ -69,11 +68,9 @@ const StartForm = ({ user }) => {
               type='file'
               name='avatar'
               id='avatar-input'
-              defaultValue={avatarIcon}
               hidden
               aria-hidden='true'
               accept='image/*'
-              required
             />
           </div>
         </div>

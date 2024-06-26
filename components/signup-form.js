@@ -1,7 +1,4 @@
-'use client';
-
 import { signUpWithEmail } from '@/lib/server/actions';
-
 const SignupForm = () => {
   return (
     <div>

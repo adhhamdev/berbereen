@@ -1,4 +1,5 @@
 import StartForm from '@/components/start-form';
+import { getAvatar, setAvatar } from '@/lib/server/actions';
 import { getLoggedInUser } from '@/lib/server/appwrite';
 import Image from 'next/image';
 import logoIcon from '/public/icon-192.png';
@@ -10,6 +11,9 @@ export const metadata = {
 
 const page = async () => {
   const user = await getLoggedInUser();
+  await setAvatar(user);
+  const avatarUrl = await getAvatar();
+  console.log(avatarUrl);
 
   return (
     <div className='flex flex-col items-center justify-center py-10 md:py-0 md:flex-row'>
@@ -33,7 +37,7 @@ const page = async () => {
       </div>
       <div className='w-full md:h-screen md:flex md:items-center md:w-1/2'>
         <div className='max-w-md p-8 mx-auto md:max-w-xl'>
-          <StartForm user={user} />
+          <StartForm user={user} defaultAvatar={avatarUrl} />
         </div>
       </div>
     </div>

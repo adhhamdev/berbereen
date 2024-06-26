@@ -70,7 +70,8 @@ const StartForm = ({ user, defaultAvatar }) => {
               id='avatar-input'
               hidden
               aria-hidden='true'
-              accept='image/*'
+              accept='image/png, image/jpeg, image/jpg'
+              defaultValue={avatarIcon}
             />
           </div>
         </div>

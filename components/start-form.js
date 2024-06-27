@@ -2,12 +2,14 @@
 
 import { createProfile } from '@/lib/server/actions';
 import { getUserLocation } from '@/lib/utils';
+import { CameraIcon, TrashIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const StartForm = ({ user, defaultAvatar }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [avatarIcon, setAvatarIcon] = useState(defaultAvatar);
+  const [avatarSelected, setAvatarSelected] = useState(false);
   const [location, setLocation] = useState('');
   const [gender, setGender] = useState('');
   const genders = ['Male', 'Female', 'None'];
@@ -17,6 +19,11 @@ const StartForm = ({ user, defaultAvatar }) => {
     setIsOpen(false);
   };
 
+  const resetAvatar = () => {
+    setAvatarIcon(defaultAvatar);
+    setAvatarSelected(false);
+  };
+
   useEffect(() => {
     const avatarBtn = document.getElementById('avatar-btn');
     const avatarInput = document.getElementById('avatar-input');
@@ -24,6 +31,7 @@ const StartForm = ({ user, defaultAvatar }) => {
     avatarInput.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
       setAvatarIcon(URL.createObjectURL(file));
+      setAvatarSelected(true);
     });
     getUserLocation().then((loc) =>
       setLocation(
@@ -50,20 +58,37 @@ const StartForm = ({ user, defaultAvatar }) => {
             Profile Picture
           </label>
           <div className='flex flex-col items-center'>
-            <Image
-              src={avatarIcon}
-              width={200}
-              height={200}
-              alt='Avatar'
-              className='object-cover my-5 rounded-full shadow-2xl size-24'
+            <div className='flex items-center'>
+              <div className='relative'>
+                <Image
+                  src={avatarIcon}
+                  width={200}
+                  height={200}
+                  alt='Avatar'
+                  className='object-cover my-5 rounded-full shadow-md size-24'
+                />
+                <button
+                  id='avatar-btn'
+                  type='button'
+                  className='absolute bottom-0 right-0 flex items-center justify-center p-3 rounded-full shadow-lg bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
+                  <CameraIcon className='w-5 h-5 text-white' />
+                </button>
+              </div>
+              {avatarSelected && (
+                <button
+                  type='button'
+                  className='p-3 ml-3 text-sm border rounded-full focus:outline-none'
+                  onClick={resetAvatar}>
+                  <TrashIcon className='w-5 h-5 text-red-500' />
+                </button>
+              )}
+            </div>
+            <input
+              name='avatarSelected'
+              defaultValue={avatarSelected}
+              hidden
+              aria-hidden='true'
             />
-            <button
-              id='avatar-btn'
-              type='button'
-              className='px-4 py-2 font-medium text-white rounded-full bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
-              <i className='mr-2 fas fa-camera'></i>
-              Edit Picture
-            </button>
             <input
               type='file'
               name='avatar'

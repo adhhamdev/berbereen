@@ -24,15 +24,18 @@ const StartForm = ({ user, defaultAvatar }) => {
     setAvatarSelected(false);
   };
 
-  useEffect(() => {
-    const avatarBtn = document.getElementById('avatar-btn');
+  const handleFileChange = (ev) => {
+    const file = ev.target.files[0];
+    setAvatarIcon(URL.createObjectURL(file));
+    setAvatarSelected(true);
+  };
+
+  const openFIleDirectory = () => {
     const avatarInput = document.getElementById('avatar-input');
-    avatarBtn.addEventListener('click', () => avatarInput.click());
-    avatarInput.addEventListener('change', (ev) => {
-      const file = ev.target.files[0];
-      setAvatarIcon(URL.createObjectURL(file));
-      setAvatarSelected(true);
-    });
+    avatarInput.click();
+  };
+
+  useEffect(() => {
     getUserLocation().then((loc) =>
       setLocation(
         loc?.city
@@ -68,7 +71,7 @@ const StartForm = ({ user, defaultAvatar }) => {
                   className='object-cover my-5 rounded-full shadow-md size-24'
                 />
                 <button
-                  id='avatar-btn'
+                  onClick={openFIleDirectory}
                   type='button'
                   className='absolute bottom-0 right-0 flex items-center justify-center p-3 rounded-full shadow-lg bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:ring-offset-2'>
                   <CameraIcon className='w-5 h-5 text-white' />
@@ -96,6 +99,7 @@ const StartForm = ({ user, defaultAvatar }) => {
               hidden
               aria-hidden='true'
               accept='image/png, image/jpeg, image/jpg'
+              onChange={handleFileChange}
               defaultValue={avatarIcon}
             />
           </div>

@@ -6,7 +6,7 @@ export async function middleware(req) {
   if (!user) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
-  if (!user.prefs.isProfileComplete && req.nextUrl.pathname != '/start') {
+  if (!user?.prefs.isProfileComplete && req.nextUrl.pathname != '/start') {
     return NextResponse.redirect(new URL('/start', req.url));
   }
   return NextResponse.next();

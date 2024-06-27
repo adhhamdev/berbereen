@@ -13,6 +13,7 @@ const page = async () => {
   const user = await getLoggedInUser();
   await setAvatar(user);
   const avatarUrl = await getAvatar(512);
+  console.log(avatarUrl);
 
   return (
     <div className='flex flex-col items-center justify-center py-10 md:py-0 md:flex-row'>

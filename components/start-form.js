@@ -36,7 +36,6 @@ const StartForm = ({ user, defaultAvatar }) => {
   };
 
   useEffect(() => {
-    setAvatarIcon(defaultAvatar);
     getUserLocation().then((loc) =>
       setLocation(
         loc?.city

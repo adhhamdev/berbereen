@@ -1,5 +1,4 @@
 import LoginForm from '@/components/login-form';
-import Popup from '@/components/popup';
 import { signUpWithGoogle } from '@/lib/server/oauth';
 import Image from 'next/image';
 import logoIcon from '/public/icon-192.png';
@@ -9,7 +8,7 @@ export const metadata = {
   description: 'Log in to Berbereen',
 };
 
-export default async function Page({ params, searchParams }) {
+export default async function Page() {
   return (
     <div>
       <div className='flex flex-col items-center justify-center h-screen md:flex-row'>
@@ -79,10 +78,6 @@ export default async function Page({ params, searchParams }) {
           </div>
         </div>
       </div>
-
-      {searchParams.action && (
-        <Popup params={params} searchParams={searchParams} />
-      )}
     </div>
   );
 }

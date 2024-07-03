@@ -4,6 +4,8 @@ import { getLoggedInUser } from '@/lib/server/appwrite';
 import Image from 'next/image';
 import logoIcon from '/public/icon-192.png';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Get Started',
   description: 'Create your profile',
@@ -13,7 +15,7 @@ const page = async () => {
   const user = await getLoggedInUser();
   await setAvatar(user);
   const avatarUrl = await getAvatar(512);
-  console.log(avatarUrl);
+  console.log('Got avatar url on Start:', avatarUrl);
 
   return (
     <div className='flex flex-col items-center justify-center py-10 md:py-0 md:flex-row'>

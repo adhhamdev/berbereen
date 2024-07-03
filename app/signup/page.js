@@ -1,4 +1,3 @@
-import Popup from '@/components/popup';
 import SignupForm from '@/components/signup-form';
 import { signUpWithGoogle } from '@/lib/server/oauth';
 import Image from 'next/image';
@@ -10,7 +9,7 @@ export const metadata = {
   description: 'Sign up to Berbereen',
 };
 
-export default async function Page({ params, searchParams }) {
+export default async function Page() {
   return (
     <div className='overflow-y-auto'>
       <div className='flex flex-col items-center justify-center h-screen md:flex-row'>
@@ -80,10 +79,6 @@ export default async function Page({ params, searchParams }) {
           </div>
         </div>
       </div>
-
-      {searchParams.action && (
-        <Popup params={params} searchParams={searchParams} />
-      )}
     </div>
   );
 }

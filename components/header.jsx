@@ -25,7 +25,7 @@ export default async function Header() {
             href='/'
             className='flex items-center font-medium text-gray-900 title-font'
             scroll={false}>
-            <div className='flex items-center mb-20'>
+            <div className='flex items-center'>
               <Image
                 className='w-10 mx-auto rounded-full md:mx-0'
                 src={logoIcon}
